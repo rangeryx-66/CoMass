@@ -1,0 +1,430 @@
+{
+  "success": false,
+  "release_mode": "contact",
+  "seed": 0,
+  "randomization": false,
+  "parameters": {
+    "family": "basketball",
+    "release_joints": [
+      0.0,
+      2.286623143088568,
+      -1.4839465661166664,
+      0.3288946320627679,
+      -0.1559768763804757,
+      0.0
+    ],
+    "release_joint_velocity": [
+      0.22895004127487284,
+      -2.3913452653025633,
+      -2.3913452653025695,
+      -0.005188554319561153,
+      -2.069062592441695,
+      0.1019735729297606
+    ],
+    "ramp_time": 0.6356579652585248,
+    "brake_time": 0.6356579652585248,
+    "open_lead": 0.0,
+    "profile": "smooth_acceleration"
+  },
+  "command_sha256": "6d52def530fefeb1b28f11d8fc096596da4b4650bee98a787a2e884f3b22e49d",
+  "mass": 0.1,
+  "com_local": [
+    0,
+    0,
+    0
+  ],
+  "release": {
+    "time": 3.2299999999997553,
+    "position": [
+      0.6675997628696974,
+      -0.010603286734859442,
+      0.8540221485312515
+    ],
+    "com_position": [
+      0.6675997628696974,
+      -0.010603286734859442,
+      0.8540221485312515
+    ],
+    "linear_velocity": [
+      0.8308578729455095,
+      -0.023056878887848027,
+      2.245421664595817
+    ],
+    "angular_velocity": [
+      -0.0958082162173366,
+      -4.923479327837256,
+      -0.2708144386413862
+    ],
+    "quaternion": [
+      -0.30069827430201673,
+      -0.508718949201053,
+      -0.6087538937438661,
+      0.5293432491373127
+    ]
+  },
+  "crossing": {
+    "time": 3.877087386395321,
+    "position": [
+      1.205237412340211,
+      -0.02552310223283799,
+      0.25
+    ],
+    "com_position": [
+      1.205237412340211,
+      -0.02552310223283799,
+      0.25
+    ],
+    "quaternion": [
+      -0.6271801683649426,
+      -0.5176086029476854,
+      0.4890765457856218,
+      -0.3154845525959604
+    ],
+    "error_xy": [
+      0.037637649470513734,
+      -0.014919815497978548
+    ],
+    "com_error_xy": [
+      0.037637649470513734,
+      -0.014919815497978548
+    ],
+    "full_horizontal_envelope_inside": true
+  },
+  "com_crossing": {
+    "time": 3.877087386395321,
+    "position": [
+      1.205237412340211,
+      -0.02552310223283799,
+      0.25
+    ],
+    "error_xy": [
+      0.037637649470513734,
+      -0.014919815497978548
+    ]
+  },
+  "rim_contact": false,
+  "stayed_in_bucket": true,
+  "perturbations": {
+    "release_delay_s": 0.0,
+    "actuator_gain_scale": 1.0
+  },
+  "slipped": true,
+  "post_release_robot_contact": false,
+  "violations": [
+    "actual_acceleration_limit",
+    "tracking_error_limit"
+  ],
+  "failure_reason": "actual_acceleration_limit;tracking_error_limit",
+  "tracking": {
+    "peak_velocity": [
+      0.22862274536547642,
+      2.5662500914317232,
+      2.3863820507973146,
+      0.37759963749469483,
+      2.0732644950042145,
+      0.10248510073564955
+    ],
+    "peak_acceleration": [
+      0.7220250682308665,
+      14.07779673472187,
+      6.935317640888838,
+      1.264897727349161,
+      5.845714126318735,
+      0.5894559227044294
+    ],
+    "peak_torque": [
+      0.8758648071197501,
+      12.0,
+      6.286358950422709,
+      0.7167884682354355,
+      2.5524244719194797,
+      0.4864865083384271
+    ],
+    "peak_position_error": [
+      0.0015404431196743146,
+      0.1913184863881563,
+      0.013820278441423639,
+      0.0037829524251971197,
+      0.01558226234773108,
+      0.004845698379759674
+    ],
+    "final_joint_velocity": [
+      2.40743651853206e-10,
+      -3.212834875269988e-10,
+      1.2860111921111305e-08,
+      -1.1430626434125423e-11,
+      -2.1161212475192232e-10,
+      1.5110888321725694e-11
+    ],
+    "phase_peak_acceleration": {
+      "initial_settle": [
+        0.27833238955491857,
+        0.10254250688813851,
+        0.4273175347426399,
+        1.264897727349161,
+        1.3352735743249595,
+        0.0689406658680455
+      ],
+      "pre_release": [
+        0.5767682867192647,
+        4.813950812300849,
+        5.356516944139411,
+        0.8757537666210304,
+        4.538802316858437,
+        0.32361131968759727
+      ],
+      "release_window": [
+        0.43332534879095275,
+        3.6340136161048253,
+        4.9191070176837215,
+        0.0867320677857969,
+        4.108865638717152,
+        0.5376512170145176
+      ],
+      "post_release": [
+        0.7220250682308665,
+        14.07779673472187,
+        6.935317640888838,
+        0.32437238007636493,
+        5.845714126318735,
+        0.5894559227044294
+      ]
+    },
+    "acceleration_exceedance_samples": 375,
+    "first_acceleration_exceedance": {
+      "time_s": 3.013999999999779,
+      "phase": "pre_release",
+      "joint": 3,
+      "actual_acceleration_rad_s2": -5.035314071812902,
+      "commanded_acceleration_rad_s2": -4.274999999999999,
+      "limit_rad_s2": 5.0,
+      "actuator_force_Nm": -3.7289237525819203,
+      "contact_geoms": [
+        "object_geom"
+      ],
+      "tracking_error_rad": 0.0015694414725286876
+    },
+    "top_acceleration_exceedances": [
+      {
+        "time_s": 3.5569999999997193,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.07779673472187,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.639519693516604,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.029383719451826718
+      },
+      {
+        "time_s": 3.557999999999719,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.076842246395715,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.694651398920712,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.02860524736403569
+      },
+      {
+        "time_s": 3.5559999999997194,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.076239044309435,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.581700180056373,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.030171993381864715
+      },
+      {
+        "time_s": 3.558999999999719,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.073424688499925,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.747137726870676,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.02783657370093251
+      },
+      {
+        "time_s": 3.5549999999997195,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.072119728199661,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.521150321562288,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.030970070108637282
+      },
+      {
+        "time_s": 3.559999999999719,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.067592829579478,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.7970209920325715,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.02707769263065929
+      },
+      {
+        "time_s": 3.5539999999997196,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.065389004453754,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.457827484378697,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.03177794807445422
+      },
+      {
+        "time_s": 3.560999999999719,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.0593950946033,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.844343383717671,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.026328595955480427
+      },
+      {
+        "time_s": 3.5529999999997197,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.05599675888558,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.3916889480000805,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.032595623159998866
+      },
+      {
+        "time_s": 3.5619999999997187,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.048879561947336,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.8891469566124215,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.025589273159864145
+      },
+      {
+        "time_s": 3.55199999999972,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.043892547827452,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.322691915026212,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.03342308863454857
+      },
+      {
+        "time_s": 3.5629999999997186,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.03609396029215,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.931473621661837,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.024859711458207645
+      },
+      {
+        "time_s": 3.55099999999972,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.029025601099532,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.25079352124277,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.03426033510585702
+      },
+      {
+        "time_s": 3.5639999999997185,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.021085665487654,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.971365137112969,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.02413989584221654
+      },
+      {
+        "time_s": 3.54999999999972,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.011344825330285,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 5.175950845825923,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.03510735046971325
+      },
+      {
+        "time_s": 3.5649999999997184,
+        "phase": "post_release",
+        "joint": 2,
+        "actual_acceleration_rad_s2": 14.00390169734056,
+        "commanded_acceleration_rad_s2": 4.274999999999988,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 6.008863099720315,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.02342980912792303
+      }
+    ],
+    "actuator_saturation_steps": [
+      0,
+      473,
+      0,
+      0,
+      0,
+      0
+    ],
+    "integration_steps": 7178
+  },
+  "airborne_environment_contacts": [],
+  "release_speed": 2.39432138121344,
+  "release_angle": 1.2162708049233595,
+  "release_angle_deg": 69.68718386708797,
+  "release_vertical_velocity": 2.245421664595817,
+  "horizontal_range": 0.4999999999999999,
+  "apex_height_above_release": 0.2558562795278442,
+  "apex_height_world": 1.1098784280590956,
+  "apex_geometry_height_world": 1.1098784280590956,
+  "apex_position": [
+    0.8570353579012614,
+    -0.01586025512128887,
+    1.1098784280590956
+  ],
+  "apex_time": 3.45799999999973,
+  "time_to_apex": 0.2279999999999749,
+  "ballistic_rise_prediction": 0.25697851436474256,
+  "ballistic_target_error": 0.04109120238551206,
+  "ballistic_com_crossing_prediction": [
+    1.2058797032981845,
+    -0.025540926249808873
+  ],
+  "apex_between_release_and_bucket": true,
+  "apex_horizontal_fraction": 0.37887119006312814,
+  "descending_entry_after_apex": true,
+  "collision_pairs": [],
+  "release_command_time": 3.177999999999761,
+  "grasp_translation_drift_max_m": 0.04887813238931918,
+  "gross_slip_threshold_m": 0.02,
+  "final_position": [
+    1.2397429822507617,
+    -0.015347788373786753,
+    0.07992687695915703
+  ],
+  "flight_time": 0.6470873863955657
+}

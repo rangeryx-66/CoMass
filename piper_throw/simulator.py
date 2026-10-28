@@ -6,6 +6,7 @@ import numpy as np
 import mujoco
 from .scene.build import build_model
 from .throw_controller import make_commands
+from .basketball_controller import gripper_commands, payload_support_fraction
 
 
 def _velocity(model, data, bid, com=False):
@@ -124,9 +125,8 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
     # load and contact state instead of weakening limits to make throws "pass".
     accel_events=[]; saturation_steps=np.zeros(6,dtype=int); phase_peaks={}
     airborne_environment_contacts=[]; control_rows=[]; integration_steps=0
-    jaw_start = float(data.qpos[6])
-    jaw_closed = scene.get("gripper_closed", .015)
-    jaw_motion_time = scene.get("gripper_motion_time", 0.)
+    gripper=gripper_commands(cmd["time"],release_at,scene)
+    payload_support=payload_support_fraction(cmd["time"],release_at,scene)
     for k, t in enumerate(cmd["time"]):
         data.ctrl[acts] = cmd["q"][k]
         if scene.get("bounded_bias_compensation",False):
@@ -138,7 +138,7 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
                 torque=np.zeros(model.nv);mujoco.mj_mulM(model,data,torque,desired_acc)
                 feed+=torque[va]-data.qfrc_passive[va]
             # Nominal point payload; hidden CoM/inertia are not controller inputs.
-            if attached and t<release_at and scene.get("bias_compensation", True):
+            if attached and payload_support[k]>0 and scene.get("bias_compensation", True):
                 J=np.zeros((3,model.nv));W=J.copy()
                 point=data.xpos[ee]+data.xmat[ee].reshape(3,3)@grasp
                 mujoco.mj_jac(model,data,J,W,point,ee);J=J[:,va]
@@ -147,23 +147,15 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
                     Jdot=np.zeros((3,model.nv))
                     mujoco.mj_jacDot(model,data,Jdot,None,point,ee)
                     load_acc += J@cmd["qdd"][k]+Jdot@data.qvel
-                feed+=scene.get("nominal_payload_mass",.1)*(J.T@load_acc)
+                feed+=payload_support[k]*scene.get("nominal_payload_mass",.1)*(J.T@load_acc)
             data.ctrl[acts]+=feed/nominal_gains
-        if jaw_motion_time:
-            # Finite jaw setpoint motion avoids the old 20 N step excitation.
-            u = np.clip(t/jaw_motion_time, 0, 1)
-            jaw_target = jaw_start + (jaw_closed-jaw_start)*u*u*(3-2*u)
-        else:
-            jaw_target = jaw_closed
         if t >= release_at:
-            u = np.clip((t-release_at)/jaw_motion_time, 0, 1) if jaw_motion_time else 1.
-            jaw_target = jaw_closed + (.035-jaw_closed)*u*u*(3-2*u)
             if release_command_time is None:
                 release_command_time = float(data.time)
             if release_mode != "contact" and not released:
                 data.eq_active[weld] = 0
                 released = True
-        data.ctrl[model.actuator("gripper").id] = jaw_target
+        data.ctrl[model.actuator("gripper").id] = gripper[k]
         touching = False
         for con in data.contact:
             g1,g2 = int(con.geom1),int(con.geom2)
@@ -300,7 +292,8 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
     if result["release"]:
         rv=np.asarray(result["release"]["linear_velocity"])
         if rv[2]<scene.get("min_release_vertical_velocity",-np.inf):violations.add("release_not_upward")
-        if rv[0]<scene.get("min_release_forward_velocity",-np.inf):violations.add("release_not_forward")
+        direction=np.asarray(scene.get("throw_direction",[1.,0.]))
+        if rv[:2]@direction<scene.get("min_release_forward_velocity",-np.inf):violations.add("release_not_forward")
     top_events=sorted(accel_events,key=lambda ev:abs(ev["actual_acceleration_rad_s2"])-ev["limit_rad_s2"],reverse=True)[:16]
     result["tracking"] = dict(peak_velocity=peak_velocity.tolist(),peak_acceleration=peak_acceleration.tolist(),
                               peak_torque=peak_torque.tolist(),peak_position_error=peak_tracking.tolist(),

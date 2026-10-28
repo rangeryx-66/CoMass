@@ -9,6 +9,24 @@ import mujoco
 from .quintic import quintic
 
 
+def gripper_commands(times,release_time,scene):
+    duration=scene.get('gripper_motion_time',0.)
+    closed=scene.get('gripper_closed',.015)
+    if not duration:
+        return np.where(times<release_time,closed,.035)
+    close=np.clip(times/duration,0,1);opening=np.clip((times-release_time)/duration,0,1)
+    close=close*close*(3-2*close);opening=opening*opening*(3-2*opening)
+    return np.where(times<release_time,.025+(closed-.025)*close,closed+(.035-closed)*opening)
+
+
+def payload_support_fraction(times,release_time,scene):
+    lead=scene.get('release_lead_s',0.) if scene.get('release_mode','ideal')=='contact' else 0.
+    if not lead:
+        return (times<release_time).astype(float)
+    u=np.clip((times-release_time)/lead,0,1)
+    return 1-u*u*(3-2*u)
+
+
 def ballistic_plan(release_position, rim_center, *, rise=.25, gravity=9.81):
     p=np.asarray(release_position,dtype=float);target=np.asarray(rim_center,dtype=float)
     if p.shape!=(3,) or target.shape!=(3,) or not np.isfinite([*p,*target,rise,gravity]).all() or gravity<=0 or rise<=0:
@@ -64,7 +82,7 @@ def make_arc_commands(params,scene):
     ready=np.asarray(scene.get('ready_joints',[0,.8,-1.8,0,.5,0]),dtype=float)
     q0=q-.5*v*ramp
     delta=np.max(np.abs(q0-ready))
-    prepare=max(1.,np.sqrt(6*delta/min(amax)),1.9*delta/min(scene.get('velocity_limits',[3]*6)))
+    prepare=max(1.,np.sqrt(8*delta/min(amax)),1.9*delta/min(scene.get('velocity_limits',[3]*6)))
     start=settle+prepare+scene.get('windup_settle_time',.3)
     nominal=start+ramp
     times=np.arange(int(np.ceil((nominal+max(brake,scene.get('flight_settle_time',4)))/dt))+1)*dt
@@ -89,4 +107,5 @@ def make_arc_commands(params,scene):
     qs=np.asarray(qs);release=nominal-float(params.get('open_lead',0))
     if release<start:raise ValueError('opening precedes swing')
     return dict(time=times,q=qs,qd=np.asarray(vs),qdd=np.asarray(acs),release_time=release,
+                gripper=gripper_commands(times,release,scene),
                 command_sha256=hashlib.sha256(qs.tobytes()+np.array([release]).tobytes()).hexdigest(),parameters=dict(params))
