@@ -1,0 +1,7 @@
+.venv*/
+__pycache__/
+.pytest_cache/
+*.pyc
+piper_throw/upstream
+*.tar.gz
+*.tar.zst

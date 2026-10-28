@@ -1,0 +1,31 @@
+object:
+  shape: capsule
+  mass: 0.1
+  com: [0, 0, 0]
+scene:
+  timestep: 0.002
+  base_position: [0, 0, 0.35]
+  initial_joints: [0, 0.30, -2.0, 0, 0.35, 0]
+  bucket_position: [0.8, 0, 0]
+  bucket_radius: 0.14
+  bucket_height: 0.22
+  grasp_offset: [0.025, 0, 0.105]
+  swing_duration: 0.8
+  settle_time: 0.3
+  flight_settle_time: 4.0
+  velocity_limits: [4, 4, 4, 5, 5, 5]
+  acceleration_limits: [40, 40, 40, 60, 60, 60]
+  release_mode: ideal
+  min_release_vertical_velocity: 0.05
+  min_release_forward_velocity: 0.1
+  brake_after_release: 0.2
+  search_bounds: [[1.0, 1.8], [0.32, 0.55], [0.7, 1.4], [-0.1, 0.1], [-0.2, 0.2]]
+params:
+  speed_scale: 1.0
+  release_phase: 0.48
+  swing_amplitude: 1.1
+  direction_offset: 0.0
+  wrist_pitch_offset: 0.0
+search:
+  seed: 0
+  budget: 100

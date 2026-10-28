@@ -1,0 +1,110 @@
+{
+  "success": true,
+  "release_mode": "ideal",
+  "seed": 0,
+  "randomization": false,
+  "parameters": {
+    "speed_scale": 1.494876763104,
+    "release_phase": 0.5241456794048001,
+    "swing_amplitude": 1.0982374284320002,
+    "direction_offset": -0.0012650342490109017,
+    "wrist_pitch_offset": 0.0072689517696,
+    "family": "eccentric"
+  },
+  "command_sha256": "5f83762e3e57ad5a7a4ed2231373251e2a04794de01d7a0a801b4d6d17055ef9",
+  "mass": 0.1,
+  "com_local": [
+    0,
+    0,
+    0
+  ],
+  "release": {
+    "time": 0.5820000000000004,
+    "position": [
+      -0.10979347325468865,
+      0.0016652256995090845,
+      1.082034176838141
+    ],
+    "com_position": [
+      -0.10979347325468865,
+      0.0016652256995090845,
+      1.082034176838141
+    ],
+    "linear_velocity": [
+      1.990653391475072,
+      -0.0014522805599369616,
+      0.3663676740623024
+    ],
+    "angular_velocity": [
+      0.005189511025304138,
+      3.2375047346679473,
+      0.009638681011213712
+    ],
+    "quaternion": [
+      -0.6910269401514338,
+      -0.6911982498464171,
+      -0.1500982104709383,
+      0.14898749815879678
+    ]
+  },
+  "crossing": {
+    "time": 1.0402268026532964,
+    "position": [
+      0.8023772655118758,
+      0.000999751821973651,
+      0.22
+    ],
+    "com_position": [
+      0.8023772655118758,
+      0.000999751821973651,
+      0.22
+    ],
+    "quaternion": [
+      -0.4058932662111537,
+      -0.407818711661671,
+      -0.57966749941751,
+      0.5769923266232461
+    ],
+    "error_xy": [
+      0.0023772655118757813,
+      0.000999751821973651
+    ],
+    "com_error_xy": [
+      0.0023772655118757813,
+      0.000999751821973651
+    ],
+    "full_horizontal_envelope_inside": true
+  },
+  "com_crossing": {
+    "time": 1.0402268026532964,
+    "position": [
+      0.8023772655118758,
+      0.000999751821973651,
+      0.22
+    ],
+    "error_xy": [
+      0.0023772655118757813,
+      0.000999751821973651
+    ]
+  },
+  "rim_contact": false,
+  "stayed_in_bucket": true,
+  "perturbations": {
+    "release_delay_s": 0.0,
+    "actuator_gain_scale": 1.0
+  },
+  "slipped": false,
+  "post_release_robot_contact": false,
+  "violations": [],
+  "failure_reason": null,
+  "collision_pairs": [],
+  "release_command_time": 0.5820000000000004,
+  "grasp_translation_drift_max_m": null,
+  "gross_slip_threshold_m": 0.02,
+  "final_position": [
+    0.7510354418670614,
+    0.0025917550394691886,
+    0.05991304022949284
+  ],
+  "flight_time": 0.45822680265329596
+}

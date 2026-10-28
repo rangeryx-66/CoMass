@@ -1,0 +1,15 @@
+object:
+  shape: capsule
+  mass: 0.1
+  com: [0, 0, 0]
+params_file: results/upward_final_optimization/best_params.json
+scene:
+  release_mode: ideal
+  flight_settle_time: 4.0
+  min_release_vertical_velocity: 0.05
+  min_release_forward_velocity: 0.1
+  brake_after_release: 0.2
+  search_bounds: [[1.0, 1.8], [0.32, 0.55], [0.7, 1.4], [-0.1, 0.1], [-0.2, 0.2]]
+search:
+  budget: 100
+  seed: 0

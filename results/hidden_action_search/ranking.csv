@@ -1,0 +1,6 @@
+name,family,distance_m,nominal_target_reached,valid,separation_m,within_com_rms_m,sensitivity_ratio,hits,trials,repeat_count_per_com,randomization,seed_start
+wrist_0.8m,wrist,0.8,True,True,0.057752377414728676,0.006000596452353209,9.624439482525167,79,80,20,"4ms release delay, 2.5% gain, 5% log friction",3000
+wrist_0.8m_local_07,wrist,0.8,True,True,0.06065570299807728,0.006315877477759446,9.603685823809688,79,80,20,"4ms release delay, 2.5% gain, 5% log friction",3000
+wrist_0.8m_local_05,wrist,0.8,True,True,0.0552788898759345,0.006810948229644168,8.116181185365212,79,80,20,"4ms release delay, 2.5% gain, 5% log friction",3000
+planar_0.8m,planar,0.8,True,True,0.020097292784253967,0.0027595511509584,7.282812198380204,80,80,20,"4ms release delay, 2.5% gain, 5% log friction",3000
+eccentric_0.8m,eccentric,0.8,True,True,0.019161415611168176,0.002739658954072397,6.994087925683405,80,80,20,"4ms release delay, 2.5% gain, 5% log friction",3000

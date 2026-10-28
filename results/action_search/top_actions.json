@@ -1,0 +1,117 @@
+[
+  {
+    "name": "eccentric_0.8m",
+    "family": "eccentric",
+    "distance_m": 0.8,
+    "params": {
+      "speed_scale": 1.1116690015233066,
+      "release_phase": 0.628678566079419,
+      "swing_amplitude": 1.2140527198831612,
+      "direction_offset": -0.0020653130932196395,
+      "wrist_pitch_offset": 0.1907816807769309,
+      "family": "eccentric"
+    },
+    "nominal_target_reached": true,
+    "valid": true,
+    "separation_m": 0.013590769175970532,
+    "within_com_rms_m": 0.0013524093324691034,
+    "sensitivity_ratio": 10.049301531480685,
+    "hits": 53,
+    "trials": 80,
+    "repeat_count_per_com": 20,
+    "randomization": "4ms release delay, 2.5% gain, 5% log friction",
+    "seed_start": 3000
+  },
+  {
+    "name": "planar_0.8m",
+    "family": "planar",
+    "distance_m": 0.8,
+    "params": {
+      "speed_scale": 1.2255968408531008,
+      "release_phase": 0.6654726709003495,
+      "swing_amplitude": 0.9565968106309297,
+      "direction_offset": -0.038214859788909795,
+      "wrist_pitch_offset": -0.19322152321057753,
+      "family": "planar"
+    },
+    "nominal_target_reached": true,
+    "valid": true,
+    "separation_m": 0.01779416378379827,
+    "within_com_rms_m": 0.002428348239865693,
+    "sensitivity_ratio": 7.327682039863619,
+    "hits": 52,
+    "trials": 80,
+    "repeat_count_per_com": 20,
+    "randomization": "4ms release delay, 2.5% gain, 5% log friction",
+    "seed_start": 3000
+  },
+  {
+    "name": "wrist_1.0m",
+    "family": "wrist",
+    "distance_m": 1.0,
+    "params": {
+      "speed_scale": 1.0723525401570928,
+      "release_phase": 0.5293249114012226,
+      "swing_amplitude": 1.405526208707923,
+      "direction_offset": 0.010932748774558892,
+      "wrist_pitch_offset": -0.1620798056280509,
+      "family": "wrist"
+    },
+    "nominal_target_reached": true,
+    "valid": true,
+    "separation_m": 0.030375642298931214,
+    "within_com_rms_m": 0.01031696471726886,
+    "sensitivity_ratio": 2.9442421420795895,
+    "hits": 25,
+    "trials": 80,
+    "repeat_count_per_com": 20,
+    "randomization": "4ms release delay, 2.5% gain, 5% log friction",
+    "seed_start": 3000
+  },
+  {
+    "name": "planar_1.0m",
+    "family": "planar",
+    "distance_m": 1.0,
+    "params": {
+      "speed_scale": 1.0,
+      "release_phase": 0.5757249114012226,
+      "swing_amplitude": 1.3915262087079232,
+      "direction_offset": -0.057178792613576196,
+      "wrist_pitch_offset": -0.1540798056280509,
+      "family": "planar"
+    },
+    "nominal_target_reached": true,
+    "valid": true,
+    "separation_m": 0.010614613080867034,
+    "within_com_rms_m": 0.0036203510159678247,
+    "sensitivity_ratio": 2.931929261568975,
+    "hits": 46,
+    "trials": 80,
+    "repeat_count_per_com": 20,
+    "randomization": "4ms release delay, 2.5% gain, 5% log friction",
+    "seed_start": 3000
+  },
+  {
+    "name": "wrist_0.5m",
+    "family": "wrist",
+    "distance_m": 0.5,
+    "params": {
+      "speed_scale": 1.0,
+      "release_phase": 0.48,
+      "swing_amplitude": 1.1,
+      "direction_offset": -0.003482128437049861,
+      "wrist_pitch_offset": 0.04,
+      "family": "wrist"
+    },
+    "nominal_target_reached": true,
+    "valid": true,
+    "separation_m": 0.015393839594408522,
+    "within_com_rms_m": 0.010255995534389781,
+    "sensitivity_ratio": 1.500960052370424,
+    "hits": 46,
+    "trials": 80,
+    "repeat_count_per_com": 20,
+    "randomization": "4ms release delay, 2.5% gain, 5% log friction",
+    "seed_start": 3000
+  }
+]

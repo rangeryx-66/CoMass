@@ -1,0 +1,11 @@
+{
+  "valid": true,
+  "separation_m": 0.0625497210774472,
+  "within_com_rms_m": 0.005925655884813031,
+  "sensitivity_ratio": 10.555746451250569,
+  "hits": 80,
+  "trials": 80,
+  "repeat_count_per_com": 20,
+  "randomization": "4ms release delay, 2.5% gain, 5% log friction",
+  "seed_start": 3000
+}

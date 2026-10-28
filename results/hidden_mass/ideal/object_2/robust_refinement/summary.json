@@ -1,0 +1,24 @@
+{
+  "object_id": "object_2",
+  "mode": "ideal",
+  "trials": 20,
+  "hits": 20,
+  "mean_error_m": 0.006241295621751927,
+  "best_params": {
+    "speed_scale": 1.0414849695415167,
+    "release_phase": 0.7322986658311613,
+    "swing_amplitude": 1.2805854326194326,
+    "direction_offset": -0.002589667736638615,
+    "wrist_pitch_offset": -0.1380798056280509,
+    "family": "eccentric"
+  },
+  "screening_seeds": [
+    5000,
+    5004
+  ],
+  "validation_seeds": [
+    6000,
+    6019
+  ],
+  "truth_visible_to_selector": false
+}

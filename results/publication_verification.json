@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-28",
+  "location": "isolated CoMass export",
+  "tests": {
+    "core": 9,
+    "original_openarm": 5,
+    "exit_code": 0
+  },
+  "asset_sha256_checks": 9,
+  "report_and_landing_page_broken_links": 0,
+  "changes_from_experiment_snapshot": [
+    "GitHub relative documentation links",
+    "standalone landing page and data access guide",
+    "asset verification independent of nested Git metadata",
+    "scoped packaging excludes other workspace projects"
+  ]
+}

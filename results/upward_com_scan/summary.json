@@ -1,0 +1,10 @@
+{
+  "valid": 45,
+  "skipped": 80,
+  "hits": 45,
+  "max_pairwise_geometry_crossing_distance_m": 0.05407242144445414,
+  "release_mode": "ideal",
+  "randomization": false,
+  "statistical_note": "Deterministic grid, no independent statistical repetitions.",
+  "command_sha256": "5f83762e3e57ad5a7a4ed2231373251e2a04794de01d7a0a801b4d6d17055ef9"
+}

@@ -1,0 +1,11 @@
+object:
+  shape: capsule
+  mass: 0.1
+  com: [0, 0, 0]
+scene:
+  release_mode: ideal
+  flight_settle_time: 4.0
+params_file: results/optimization_final/best_params.json
+search:
+  budget: 60
+  seed: 0

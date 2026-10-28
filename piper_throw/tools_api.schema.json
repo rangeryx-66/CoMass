@@ -1,0 +1,22 @@
+{
+  "name": "run_throw",
+  "description": "Run a simulation-only hidden-object throw. Returns observable geometry errors and status, never ground-truth mass distribution or CoM.",
+  "parameters": {
+    "type": "object", "additionalProperties": false,
+    "required": ["object_id", "params"],
+    "properties": {
+      "object_id": {"type": "string", "enum": ["object_0", "object_1", "object_2", "object_3"]},
+      "params": {
+        "type": "object", "additionalProperties": false,
+        "properties": {
+          "speed_scale": {"type": "number", "exclusiveMinimum": 0},
+          "release_phase": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+          "swing_amplitude": {"type": "number", "exclusiveMinimum": 0},
+          "direction_offset": {"type": "number"},
+          "wrist_pitch_offset": {"type": "number"},
+          "family": {"type": "string", "enum": ["translation", "planar", "eccentric", "wrist"]}
+        }
+      }
+    }
+  }
+}
