@@ -114,6 +114,9 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
     final_containment = []; release_command_time = None; grasp_drift_max=0.
     arm_bodies = {model.body(n).id for n in ["base_link"]+[f"link{i}" for i in range(1,9)]}
     peak_velocity=np.zeros(6);peak_acceleration=np.zeros(6);peak_torque=np.zeros(6);peak_tracking=np.zeros(6)
+    # Keep real time-step acceleration checks. Diagnose the actual joint, phase,
+    # load and contact state instead of weakening limits to make throws "pass".
+    accel_events=[]; saturation_steps=np.zeros(6,dtype=int); phase_peaks={}
     airborne_environment_contacts=[]
     for k, t in enumerate(cmd["time"]):
         data.ctrl[acts] = cmd["q"][k]
@@ -212,10 +215,40 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
         if ((data.qpos[qa]<limits[:,0]-scene.get("actual_position_tolerance",.01))|(data.qpos[qa]>limits[:,1]+scene.get("actual_position_tolerance",.01))).any(): violations.add("actual_joint_limit")
         if (np.abs(data.qvel[va]) > vmax*(1+scene.get("actual_velocity_tolerance",.05))).any(): violations.add("actual_velocity_limit")
         acceleration = (data.qvel[va]-last_v)/model.opt.timestep
-        if (np.abs(acceleration) > amax*(1+scene.get("actual_acceleration_tolerance",.1))).any(): violations.add("actual_acceleration_limit")
+        acc_tol=scene.get("actual_acceleration_tolerance",.1)
+        # The small numerical epsilon prevents a 5.0000000001 versus 5.0
+        # floating-point comparison; it is NOT a physical acceleration margin.
+        excess=np.abs(acceleration)-amax*(1+acc_tol)
+        if (excess > 1e-9).any(): violations.add("actual_acceleration_limit")
+        # MuJoCo contact impulses can create large single-step qvel changes.
+        # Log them rather than silently discarding them or declaring them motors.
+        at=float(data.time)
+        phase=("initial_settle" if at<scene.get("settle_time",.3)
+               else "pre_release" if at<release_at
+               else "release_window" if at<release_at+.15 else "post_release")
+        phase_peaks[phase]=np.maximum(phase_peaks.get(phase,np.zeros(6)),np.abs(acceleration))
+        forces=np.asarray(data.actuator_force[acts],dtype=float)
+        ranges=model.actuator_forcerange[acts]
+        bounded=model.actuator_forcelimited[acts].astype(bool)
+        saturation_steps+=np.asarray(bounded & (np.abs(forces)>=.99*np.maximum(np.abs(ranges[:,0]),np.abs(ranges[:,1]))),dtype=int)
+        worst=int(np.argmax(excess))
+        if excess[worst]>1e-9:
+            touching_names=[]
+            for contact in data.contact:
+                if contact.dist<0:
+                    touching_names.extend([model.geom(int(contact.geom1)).name or "",
+                                           model.geom(int(contact.geom2)).name or ""])
+            evt=dict(time_s=at,phase=phase,joint=worst+1,
+                     actual_acceleration_rad_s2=float(acceleration[worst]),
+                     commanded_acceleration_rad_s2=float(cmd["qdd"][min(k,len(cmd["qdd"])-1),worst]),
+                     limit_rad_s2=float(amax[worst]*(1+acc_tol)),
+                     actuator_force_Nm=float(forces[worst]),
+                     contact_geoms=sorted(set(n for n in touching_names if n)),
+                     tracking_error_rad=float(data.qpos[qa[worst]]-cmd["q"][min(k+1,len(cmd["q"])-1),worst]))
+            accel_events.append(evt)
         peak_velocity=np.maximum(peak_velocity,np.abs(data.qvel[va]))
         peak_acceleration=np.maximum(peak_acceleration,np.abs(acceleration))
-        peak_torque=np.maximum(peak_torque,np.abs(data.actuator_force[acts]))
+        peak_torque=np.maximum(peak_torque,np.abs(forces))
         peak_tracking=np.maximum(peak_tracking,np.abs(data.qpos[qa]-cmd["q"][min(k+1,len(cmd["q"])-1)]))
         last_v = data.qvel[va].copy()
     if np.max(peak_tracking)>scene.get("max_tracking_error",np.inf):violations.add("tracking_error_limit")
@@ -226,9 +259,16 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
         rv=np.asarray(result["release"]["linear_velocity"])
         if rv[2]<scene.get("min_release_vertical_velocity",-np.inf):violations.add("release_not_upward")
         if rv[0]<scene.get("min_release_forward_velocity",-np.inf):violations.add("release_not_forward")
+    top_events=sorted(accel_events,key=lambda ev:abs(ev["actual_acceleration_rad_s2"])-ev["limit_rad_s2"],reverse=True)[:16]
     result["tracking"] = dict(peak_velocity=peak_velocity.tolist(),peak_acceleration=peak_acceleration.tolist(),
                               peak_torque=peak_torque.tolist(),peak_position_error=peak_tracking.tolist(),
-                              final_joint_velocity=data.qvel[va].tolist())
+                              final_joint_velocity=data.qvel[va].tolist(),
+                              phase_peak_acceleration={key:peak.tolist() for key,peak in phase_peaks.items()},
+                              acceleration_exceedance_samples=len(accel_events),
+                              first_acceleration_exceedance=accel_events[0] if accel_events else None,
+                              top_acceleration_exceedances=top_events,
+                              actuator_saturation_steps=saturation_steps.tolist(),
+                              integration_steps=k+1)
     result["airborne_environment_contacts"]=airborne_environment_contacts
     from .basketball_metrics import flight_metrics
     result.update(flight_metrics(result,np.asarray(rows),bucket,rim))
