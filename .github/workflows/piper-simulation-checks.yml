@@ -1,0 +1,40 @@
+name: PiPER simulation checks
+
+on:
+  push:
+    branches: [codex/basketball-long-arc]
+  pull_request:
+    paths:
+      - 'piper_throw/**'
+      - 'configs/**'
+      - '.github/workflows/piper-simulation-checks.yml'
+
+jobs:
+  regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install simulation dependencies and pinned upstream assets
+        run: bash piper_throw/tools/bootstrap.sh
+      - name: Run all PiPER and OpenArm regression tests
+        env:
+          MUJOCO_GL: egl
+        run: |
+          source .venv-piper/bin/activate
+          python -m pytest piper_throw/tests piper_throw/upstream/openarm-control/tests/test_throwing.py -q
+      - name: Run controlled simulation diagnostics
+        env:
+          MUJOCO_GL: egl
+        run: |
+          source .venv-piper/bin/activate
+          python -m piper_throw.cli diagnose-sim --config configs/basketball_throw.yaml --output results/ci_sim_diagnostics
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: piper-sim-diagnostics
+          path: results/ci_sim_diagnostics/
+          if-no-files-found: ignore
