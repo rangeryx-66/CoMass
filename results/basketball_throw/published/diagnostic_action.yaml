@@ -1,0 +1,103 @@
+object:
+  shape: box
+  mass: 0.1
+  com:
+  - 0
+  - 0
+  - 0
+scene:
+  grasp_offset:
+  - 0.025
+  - 0
+  - 0.105
+  collision_penetration_tolerance: 0.0
+  base_position:
+  - 0
+  - 0
+  - 0.75
+  table:
+    height: 0.75
+    center_x: -0.45
+    half_size:
+    - 0.55
+    - 0.45
+    - 0.025
+  bucket_position:
+  - 1.4191492044341056
+  - -0.009889064016182392
+  - 0.0
+  bucket_height: 0.25
+  bucket_radius: 0.14
+  release_mode: contact
+  timestep: 0.001
+  integrator: implicitfast
+  settle_time: 0.6
+  flight_settle_time: 4.0
+  position_limits:
+  - - -2.6179
+    - 2.6179
+  - - 0
+    - 3.14
+  - - -2.967
+    - 0
+  - - -1.745
+    - 1.745
+  - - -1.22
+    - 1.22
+  - - -2.09439
+    - 2.09439
+  velocity_limits:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  acceleration_limits:
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  actual_velocity_tolerance: 0.0
+  actual_acceleration_tolerance: 0.0
+  torque_limits:
+  - 12
+  - 12
+  - 12
+  - 3
+  - 3
+  - 3
+  bounded_bias_compensation: true
+  acceleration_feedforward: true
+  nominal_payload_mass: 0.1
+  max_tracking_error: 0.15
+  final_brake_velocity_limit: 0.1
+  arc_profile: smooth_acceleration
+  require_high_arc: true
+  min_apex_rise: 0.2
+  min_release_vertical_velocity: 1.98
+  min_release_forward_velocity: 0.1
+  perturb_contact: false
+  actual_position_tolerance: 0.0
+params:
+  family: basketball
+  release_joints:
+  - 0.0
+  - 2.286623143088568
+  - -1.4839465661166664
+  - 0.3288946320627679
+  - -0.1559768763804757
+  - 0.0
+  release_joint_velocity:
+  - 0.22895004127487284
+  - -2.3913452653025633
+  - -2.3913452653025695
+  - -0.005188554319561153
+  - -2.069062592441695
+  - 0.1019735729297606
+  ramp_time: 0.6356579652585248
+  brake_time: 0.6356579652585248
+  open_lead: 0.0
+  profile: smooth_acceleration

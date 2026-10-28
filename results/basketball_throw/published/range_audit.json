@@ -1,0 +1,4429 @@
+[
+  {
+    "requested_distance": 0.8,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        2.286623143088568,
+        -1.4839465661166664,
+        0.3288946320627679,
+        -0.1559768763804757,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.24100004344723458,
+        -2.517205542423751,
+        -2.5172055424237576,
+        -0.005461636125853846,
+        -2.177960623622837,
+        0.10734060308395853
+      ],
+      "ramp_time": 0.6356579652585248,
+      "brake_time": 0.6356579652585248,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        1.3549799690120943,
+        -0.0010968410135827895,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "ideal",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_0.8m_ideal",
+    "success": false,
+    "release_mode": "ideal",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        2.286623143088568,
+        -1.4839465661166664,
+        0.3288946320627679,
+        -0.1559768763804757,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.24100004344723458,
+        -2.517205542423751,
+        -2.5172055424237576,
+        -0.005461636125853846,
+        -2.177960623622837,
+        0.10734060308395853
+      ],
+      "ramp_time": 0.6356579652585248,
+      "brake_time": 0.6356579652585248,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "a6ede1c1488a30af4415e0d70381a8bbb31f1d9cfe493960c770cc72ec32d4d1",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 3.1929999999997594,
+      "position": [
+        0.5549799690120941,
+        -0.0010968410135827895,
+        0.7445724219731411
+      ],
+      "com_position": [
+        0.5549799690120941,
+        -0.0010968410135827895,
+        0.7445724219731411
+      ],
+      "linear_velocity": [
+        1.2342106528115042,
+        -0.004359096202622884,
+        1.9279949471126712
+      ],
+      "angular_velocity": [
+        -0.43437325112013614,
+        -6.009270076438136,
+        -0.3030899269160383
+      ],
+      "quaternion": [
+        -0.1989518467010501,
+        -0.41875753374352614,
+        -0.6600571729988375,
+        0.5910878268075436
+      ]
+    },
+    "crossing": {
+      "time": 3.78375047745932,
+      "position": [
+        1.3078233554953202,
+        -0.002291503217092655,
+        0.25
+      ],
+      "com_position": [
+        1.3078233554953202,
+        -0.002291503217092655,
+        0.25
+      ],
+      "quaternion": [
+        -0.8144740515698281,
+        -0.5551251256861472,
+        0.14615399141669566,
+        0.08430376589653087
+      ],
+      "error_xy": [
+        -0.047156613516774026,
+        -0.0011946622035098654
+      ],
+      "com_error_xy": [
+        -0.047156613516774026,
+        -0.0011946622035098654
+      ],
+      "full_horizontal_envelope_inside": true
+    },
+    "com_crossing": {
+      "time": 3.78375047745932,
+      "position": [
+        1.3078233554953202,
+        -0.002291503217092655,
+        0.25
+      ],
+      "error_xy": [
+        -0.047156613516774026,
+        -0.0011946622035098654
+      ]
+    },
+    "rim_contact": true,
+    "stayed_in_bucket": true,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": false,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "insufficient_apex_rise",
+      "release_not_upward",
+      "tracking_error_limit"
+    ],
+    "failure_reason": "actual_acceleration_limit;insufficient_apex_rise;release_not_upward;tracking_error_limit",
+    "tracking": {
+      "peak_velocity": [
+        0.24302504167725497,
+        2.6736148807838025,
+        2.507242988884568,
+        0.3733116089211916,
+        2.1655687722273753,
+        0.10708589199442627
+      ],
+      "peak_acceleration": [
+        1.3087326044027878,
+        14.898452012243713,
+        7.261890113832159,
+        3.7819631986781137,
+        6.014046807885198,
+        0.9787719964867637
+      ],
+      "peak_torque": [
+        0.8712504550801321,
+        12.0,
+        5.939994416856052,
+        0.6378322412014974,
+        2.4730470632922277,
+        0.4830419864464979
+      ],
+      "peak_position_error": [
+        0.0018667087953684108,
+        0.21079589404986776,
+        0.017229833068432843,
+        0.005577212372220947,
+        0.023356700012384768,
+        0.005260628959116366
+      ],
+      "final_joint_velocity": [
+        2.6823344309707737e-10,
+        -3.9367109554887214e-10,
+        1.8397784033030087e-08,
+        -2.1276184660067838e-11,
+        -3.7965899853872843e-10,
+        2.597420451032431e-11
+      ]
+    },
+    "airborne_environment_contacts": [
+      {
+        "time": 3.7449999999996986,
+        "geom": "bucket_wall_25",
+        "sample_count": 53,
+        "last_time": 3.767999999999696
+      },
+      {
+        "time": 3.7459999999996985,
+        "geom": "bucket_wall_24",
+        "sample_count": 45,
+        "last_time": 3.768999999999696
+      },
+      {
+        "time": 3.7469999999996983,
+        "geom": "bucket_wall_23",
+        "sample_count": 37,
+        "last_time": 3.7659999999996963
+      },
+      {
+        "time": 3.7479999999996982,
+        "geom": "bucket_wall_22",
+        "sample_count": 36,
+        "last_time": 3.7649999999996964
+      }
+    ],
+    "release_speed": 2.289204982810647,
+    "release_angle": 1.0013721731322474,
+    "release_angle_deg": 57.374399242321346,
+    "release_vertical_velocity": 1.9279949471126712,
+    "horizontal_range": 0.8000000000000002,
+    "apex_height_above_release": 0.18849514963408187,
+    "apex_height_world": 0.933067571607223,
+    "apex_geometry_height_world": 0.933067571607223,
+    "apex_position": [
+      0.7968852569631452,
+      -0.0019512238692968801,
+      0.933067571607223
+    ],
+    "apex_time": 3.3889999999997378,
+    "time_to_apex": 0.1959999999999784,
+    "ballistic_rise_prediction": 0.18945792640631964,
+    "ballistic_target_error": 0.09656725470751552,
+    "ballistic_com_crossing_prediction": [
+      1.258444681973641,
+      -0.0035814009644830076
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.30238160993881374,
+    "descending_entry_after_apex": true,
+    "collision_pairs": [],
+    "release_command_time": 3.1929999999997594,
+    "grasp_translation_drift_max_m": null,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      1.4414719947903627,
+      0.012506664008897708,
+      0.07993417383986003
+    ],
+    "flight_time": 0.5907504774595607,
+    "environment_contact_sample_count": 171
+  },
+  {
+    "requested_distance": 0.8,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        2.286623143088568,
+        -1.4839465661166664,
+        0.3288946320627679,
+        -0.1559768763804757,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.2048500369301494,
+        -2.139624711060188,
+        -2.139624711060194,
+        -0.004642390706975769,
+        -1.8512665300794113,
+        0.09123951262136475
+      ],
+      "ramp_time": 0.6356579652585248,
+      "brake_time": 0.6356579652585248,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        1.4149907023651198,
+        -0.00866048282141728,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "contact",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_0.8m_contact",
+    "success": false,
+    "release_mode": "contact",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        2.286623143088568,
+        -1.4839465661166664,
+        0.3288946320627679,
+        -0.1559768763804757,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.2048500369301494,
+        -2.139624711060188,
+        -2.139624711060194,
+        -0.004642390706975769,
+        -1.8512665300794113,
+        0.09123951262136475
+      ],
+      "ramp_time": 0.6356579652585248,
+      "brake_time": 0.6356579652585248,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "ec6735a86a3d441e72d8121df47342abc9331fa65cd0db5bd888ef57b4864877",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 3.151999999999764,
+      "position": [
+        0.6149907023651198,
+        -0.00866048282141728,
+        0.7556801662161942
+      ],
+      "com_position": [
+        0.6149907023651198,
+        -0.00866048282141728,
+        0.7556801662161942
+      ],
+      "linear_velocity": [
+        1.1558482383658173,
+        -0.023219896016994857,
+        1.9807878778682029
+      ],
+      "angular_velocity": [
+        -0.38155658178040586,
+        -5.296228458416472,
+        -0.24504174293806924
+      ],
+      "quaternion": [
+        -0.21845854150491567,
+        -0.4328678196041858,
+        -0.65137881002097,
+        0.5836154232457614
+      ]
+    },
+    "crossing": {
+      "time": 3.992154122876022,
+      "position": [
+        1.2691030951326532,
+        0.17021211267090292,
+        0.25
+      ],
+      "com_position": [
+        1.2691030951326532,
+        0.17021211267090292,
+        0.25
+      ],
+      "quaternion": [
+        -0.17874571471067643,
+        0.8540423079585889,
+        -0.042233244753670185,
+        0.48670120066311046
+      ],
+      "error_xy": [
+        -0.14588760723246663,
+        0.1788725954923202
+      ],
+      "com_error_xy": [
+        -0.14588760723246663,
+        0.1788725954923202
+      ],
+      "full_horizontal_envelope_inside": false
+    },
+    "com_crossing": {
+      "time": 3.992154122876022,
+      "position": [
+        1.2691030951326532,
+        0.17021211267090292,
+        0.25
+      ],
+      "error_xy": [
+        -0.14588760723246663,
+        0.1788725954923202
+      ]
+    },
+    "rim_contact": true,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": true,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "insufficient_apex_rise"
+    ],
+    "failure_reason": "actual_acceleration_limit;insufficient_apex_rise",
+    "tracking": {
+      "peak_velocity": [
+        0.20820851646881372,
+        2.5187225911776268,
+        2.127760992917954,
+        0.38324542156784785,
+        1.836040167713313,
+        0.09020043656006492
+      ],
+      "peak_acceleration": [
+        0.6867277442935138,
+        9.88936827207998,
+        5.488235356176929,
+        0.8483947367523281,
+        4.597334005148612,
+        0.4185054496532309
+      ],
+      "peak_torque": [
+        0.7170596736937884,
+        12.0,
+        5.993339108849625,
+        0.6443559358915198,
+        2.3993334612661883,
+        0.47858179981052285
+      ],
+      "peak_position_error": [
+        0.001716652121782368,
+        0.1156944288698738,
+        0.012766175996955953,
+        0.005619301998125825,
+        0.01916365301206646,
+        0.004851022316402923
+      ],
+      "final_joint_velocity": [
+        3.066226692832432e-10,
+        1.3553907007215373e-09,
+        -5.6881574645714665e-08,
+        1.0835858280585712e-12,
+        7.182120769932926e-10,
+        -5.190187337010694e-12
+      ]
+    },
+    "airborne_environment_contacts": [
+      {
+        "time": 3.713999999999702,
+        "geom": "bucket_wall_24",
+        "sample_count": 151,
+        "last_time": 3.777999999999695
+      },
+      {
+        "time": 3.714999999999702,
+        "geom": "bucket_wall_25",
+        "sample_count": 160,
+        "last_time": 3.776999999999695
+      },
+      {
+        "time": 3.7159999999997018,
+        "geom": "bucket_wall_23",
+        "sample_count": 56,
+        "last_time": 3.7559999999996974
+      },
+      {
+        "time": 3.7179999999997015,
+        "geom": "bucket_wall_26",
+        "sample_count": 80,
+        "last_time": 3.7529999999996977
+      },
+      {
+        "time": 3.8179999999996905,
+        "geom": "bucket_wall_18",
+        "sample_count": 44,
+        "last_time": 3.8559999999996863
+      },
+      {
+        "time": 3.8179999999996905,
+        "geom": "bucket_wall_19",
+        "sample_count": 94,
+        "last_time": 3.8619999999996857
+      },
+      {
+        "time": 3.82299999999969,
+        "geom": "bucket_wall_20",
+        "sample_count": 15,
+        "last_time": 3.8369999999996884
+      },
+      {
+        "time": 3.9089999999996805,
+        "geom": "bucket_wall_16",
+        "sample_count": 31,
+        "last_time": 3.938999999999677
+      },
+      {
+        "time": 3.9089999999996805,
+        "geom": "bucket_wall_17",
+        "sample_count": 69,
+        "last_time": 3.9459999999996764
+      }
+    ],
+    "release_speed": 2.2934787835979695,
+    "release_angle": 1.0424876739448388,
+    "release_angle_deg": 59.73014391144954,
+    "release_vertical_velocity": 1.9807878778682029,
+    "horizontal_range": 0.8,
+    "apex_height_above_release": 0.19898555345150726,
+    "apex_height_world": 0.9546657196677014,
+    "apex_geometry_height_world": 0.9546657196677014,
+    "apex_position": [
+      0.8473161982766428,
+      -0.013327681920833204,
+      0.9546657196677014
+    ],
+    "apex_time": 3.3529999999997417,
+    "time_to_apex": 0.20099999999997786,
+    "ballistic_rise_prediction": 0.19997556662128532,
+    "ballistic_target_error": 0.12891776506920613,
+    "ballistic_com_crossing_prediction": [
+      1.286781272300638,
+      -0.022156118893117124
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.2904068698894038,
+    "descending_entry_after_apex": true,
+    "collision_pairs": [],
+    "release_command_time": 3.148999999999764,
+    "grasp_translation_drift_max_m": 0.05509599238633879,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      1.2107495485347495,
+      0.27259087265506987,
+      0.02489224457978379
+    ],
+    "flight_time": 0.8401541228762581,
+    "environment_contact_sample_count": 700
+  },
+  {
+    "requested_distance": 1.2,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        2.305164347863949,
+        -1.7026347130949866,
+        -0.32912539816237246,
+        0.2655898222821925,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.1957246116090656,
+        -2.4833300430194307,
+        -2.4833300430194307,
+        -2.4833300430194307,
+        -2.4833300430194307,
+        -2.4833300262275455
+      ],
+      "ramp_time": 0.6271035462170281,
+      "brake_time": 0.6271035462170281,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        1.751949320568043,
+        -0.02328292658576524,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "ideal",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_1.2m_ideal",
+    "success": false,
+    "release_mode": "ideal",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        2.305164347863949,
+        -1.7026347130949866,
+        -0.32912539816237246,
+        0.2655898222821925,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.1957246116090656,
+        -2.4833300430194307,
+        -2.4833300430194307,
+        -2.4833300430194307,
+        -2.4833300430194307,
+        -2.4833300262275455
+      ],
+      "ramp_time": 0.6271035462170281,
+      "brake_time": 0.6271035462170281,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "c375fec4677c715d622c8f9d91fc5de757d798c4e26480521842a9b7934b3e7d",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 3.1829999999997605,
+      "position": [
+        0.5519493205680431,
+        -0.02328292658576524,
+        0.7452822925854714
+      ],
+      "com_position": [
+        0.5519493205680431,
+        -0.02328292658576524,
+        0.7452822925854714
+      ],
+      "linear_velocity": [
+        1.3386761528294842,
+        3.595120800648031e-05,
+        1.7836682719822088
+      ],
+      "angular_velocity": [
+        -3.123414654316818,
+        -5.85569129547741,
+        4.164770623572188
+      ],
+      "quaternion": [
+        -0.3166375341565389,
+        -0.14531986438000385,
+        -0.5975590709108791,
+        0.7221813939392036
+      ]
+    },
+    "crossing": {
+      "time": 3.7301797381133253,
+      "position": [
+        1.2844457872922426,
+        -0.02326325481318304,
+        0.25
+      ],
+      "com_position": [
+        1.2844457872922426,
+        -0.02326325481318304,
+        0.25
+      ],
+      "quaternion": [
+        -0.5510769708938067,
+        -0.36656253019884494,
+        0.42355640271034906,
+        -0.6185030778644486
+      ],
+      "error_xy": [
+        -0.4675035332758004,
+        1.9671772582201957e-05
+      ],
+      "com_error_xy": [
+        -0.4675035332758004,
+        1.9671772582201957e-05
+      ],
+      "full_horizontal_envelope_inside": false
+    },
+    "com_crossing": {
+      "time": 3.7301797381133253,
+      "position": [
+        1.2844457872922426,
+        -0.02326325481318304,
+        0.25
+      ],
+      "error_xy": [
+        -0.4675035332758004,
+        1.9671772582201957e-05
+      ]
+    },
+    "rim_contact": false,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": false,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "insufficient_apex_rise",
+      "release_not_upward",
+      "tracking_error_limit"
+    ],
+    "failure_reason": "actual_acceleration_limit;insufficient_apex_rise;release_not_upward;tracking_error_limit",
+    "tracking": {
+      "peak_velocity": [
+        0.20061251204197889,
+        2.717611395966389,
+        2.4721258307668417,
+        2.4705639841903,
+        2.4690382303971443,
+        2.4716127242190784
+      ],
+      "peak_acceleration": [
+        1.3087326044027878,
+        16.94198218721543,
+        8.402587146300933,
+        7.185087546401014,
+        6.08597986324988,
+        4.673386566210885
+      ],
+      "peak_torque": [
+        1.5527200827188106,
+        12.0,
+        6.1526214326828494,
+        1.0559861147734253,
+        2.109975427539524,
+        1.0911615108461916
+      ],
+      "peak_position_error": [
+        0.0022922024278493047,
+        0.2642653014901455,
+        0.01865014582840141,
+        0.01533203401194333,
+        0.020327158982058724,
+        0.01552653341291678
+      ],
+      "final_joint_velocity": [
+        1.796128305505766e-10,
+        -1.2139573916495656e-09,
+        5.3939413597233885e-08,
+        -1.5645724111261767e-10,
+        -6.804969141725278e-10,
+        1.7917237904508416e-10
+      ]
+    },
+    "airborne_environment_contacts": [],
+    "release_speed": 2.2301404323321967,
+    "release_angle": 0.9269634185044546,
+    "release_angle_deg": 53.111091643324286,
+    "release_vertical_velocity": 1.7836682719822088,
+    "horizontal_range": 1.1999999999999997,
+    "apex_height_above_release": 0.16126344722877917,
+    "apex_height_world": 0.9065457398142506,
+    "apex_geometry_height_world": 0.9065457398142506,
+    "apex_position": [
+      0.7942497042301744,
+      -0.023276419417115952,
+      0.9065457398142506
+    ],
+    "apex_time": 3.3639999999997405,
+    "time_to_apex": 0.18099999999998007,
+    "ballistic_rise_prediction": 0.162154561899898,
+    "ballistic_target_error": 0.46650185355386636,
+    "ballistic_com_crossing_prediction": [
+      1.2854474674300782,
+      -0.023263227912270184
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.20191698638510944,
+    "descending_entry_after_apex": true,
+    "collision_pairs": [],
+    "release_command_time": 3.1829999999997605,
+    "grasp_translation_drift_max_m": null,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      1.3663053566880725,
+      0.04831259806566637,
+      0.024892244579783764
+    ],
+    "flight_time": 0.5471797381135648,
+    "environment_contact_sample_count": 0
+  },
+  {
+    "requested_distance": 1.2,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        2.305164347863949,
+        -1.7026347130949866,
+        -0.32912539816237246,
+        0.2655898222821925,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.16636591986770574,
+        -2.110830536566516,
+        -2.110830536566516,
+        -2.110830536566516,
+        -2.110830536566516,
+        -2.110830522293414
+      ],
+      "ramp_time": 0.6271035462170281,
+      "brake_time": 0.6271035462170281,
+      "open_lead": 0.015,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        1.790386109148805,
+        -0.018966622635938145,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "contact",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_1.2m_contact",
+    "success": false,
+    "release_mode": "contact",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        2.305164347863949,
+        -1.7026347130949866,
+        -0.32912539816237246,
+        0.2655898222821925,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.16636591986770574,
+        -2.110830536566516,
+        -2.110830536566516,
+        -2.110830536566516,
+        -2.110830536566516,
+        -2.110830522293414
+      ],
+      "ramp_time": 0.6271035462170281,
+      "brake_time": 0.6271035462170281,
+      "open_lead": 0.015,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "0b73fca870df996ad28c5acb944966799c3ff47ebb46a0bc276d437cab4ac297",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 3.1299999999997663,
+      "position": [
+        0.590386109148805,
+        -0.018966622635938145,
+        0.7268945657517634
+      ],
+      "com_position": [
+        0.590386109148805,
+        -0.018966622635938145,
+        0.7268945657517634
+      ],
+      "linear_velocity": [
+        1.3629444463109341,
+        0.06831837459139348,
+        1.6959201211147068
+      ],
+      "angular_velocity": [
+        -2.5118755547443268,
+        -5.265405770370621,
+        3.5826511662510696
+      ],
+      "quaternion": [
+        -0.30809802368623496,
+        -0.14438034631037922,
+        -0.6108930885732068,
+        0.7148703083311125
+      ]
+    },
+    "crossing": {
+      "time": 3.658662654470803,
+      "position": [
+        1.3109239380321926,
+        0.0171507506246987,
+        0.25
+      ],
+      "com_position": [
+        1.3109239380321926,
+        0.0171507506246987,
+        0.25
+      ],
+      "quaternion": [
+        -0.7275963321471285,
+        -0.4347111582347375,
+        0.4139119292629036,
+        -0.3321245265952505
+      ],
+      "error_xy": [
+        -0.47946217111661227,
+        0.03611737326063684
+      ],
+      "com_error_xy": [
+        -0.47946217111661227,
+        0.03611737326063684
+      ],
+      "full_horizontal_envelope_inside": false
+    },
+    "com_crossing": {
+      "time": 3.658662654470803,
+      "position": [
+        1.3109239380321926,
+        0.0171507506246987,
+        0.25
+      ],
+      "error_xy": [
+        -0.47946217111661227,
+        0.03611737326063684
+      ]
+    },
+    "rim_contact": false,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": true,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "insufficient_apex_rise",
+      "release_not_upward"
+    ],
+    "failure_reason": "actual_acceleration_limit;insufficient_apex_rise;release_not_upward",
+    "tracking": {
+      "peak_velocity": [
+        0.1730041483215004,
+        2.5189110883115466,
+        2.0979244283600345,
+        2.098270474406161,
+        2.0944246203919494,
+        2.1016150866259817
+      ],
+      "peak_acceleration": [
+        0.7933105053163081,
+        11.376310505074372,
+        5.90822391729573,
+        4.722006903583376,
+        4.970322888691925,
+        4.032269240764691
+      ],
+      "peak_torque": [
+        1.2495910923921585,
+        12.0,
+        6.217325368624415,
+        0.9451918721304438,
+        1.966221292781002,
+        0.9515395619969942
+      ],
+      "peak_position_error": [
+        0.0018595366536374933,
+        0.14965085418754587,
+        0.014030355396642769,
+        0.01359366693391495,
+        0.0184434083866854,
+        0.013708093667601881
+      ],
+      "final_joint_velocity": [
+        1.753672105679068e-10,
+        5.565362044391104e-10,
+        -2.280390062972681e-08,
+        -1.472386016964126e-10,
+        4.880009790758314e-11,
+        -1.1146372037956637e-10
+      ]
+    },
+    "airborne_environment_contacts": [],
+    "release_speed": 2.176793518282878,
+    "release_angle": 0.8932144547083359,
+    "release_angle_deg": 51.177418454866874,
+    "release_vertical_velocity": 1.6959201211147068,
+    "horizontal_range": 1.2,
+    "apex_height_above_release": 0.14574508083172788,
+    "apex_height_world": 0.8726396465834912,
+    "apex_geometry_height_world": 0.8726396465834912,
+    "apex_position": [
+      0.8248125539142814,
+      -0.0072158622062184,
+      0.8726396465834912
+    ],
+    "apex_time": 3.3019999999997474,
+    "time_to_apex": 0.17199999999998106,
+    "ballistic_rise_prediction": 0.14659251056074013,
+    "ballistic_target_error": 0.47981530209644946,
+    "ballistic_com_crossing_prediction": [
+      1.311935910336103,
+      0.017201476318708032
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.19535537063789707,
+    "descending_entry_after_apex": true,
+    "collision_pairs": [],
+    "release_command_time": 3.124999999999767,
+    "grasp_translation_drift_max_m": 0.05025036181773239,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      1.3828542303660787,
+      0.005894178275578884,
+      0.059892244579783864
+    ],
+    "flight_time": 0.5286626544710367,
+    "environment_contact_sample_count": 0
+  },
+  {
+    "requested_distance": 1.5,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        2.279613645313467,
+        -1.5101249835375452,
+        -0.11825472235490038,
+        0.03788683968495182,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.09222315076345816,
+        -2.433127481272981,
+        -2.433127481272981,
+        -1.6397385626516676,
+        -2.433127481272981,
+        -2.0060495018133833
+      ],
+      "ramp_time": 0.6144261316345914,
+      "brake_time": 0.6144261316345914,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        2.03602159453761,
+        -0.002836048211849823,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "ideal",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_1.5m_ideal",
+    "success": false,
+    "release_mode": "ideal",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        2.279613645313467,
+        -1.5101249835375452,
+        -0.11825472235490038,
+        0.03788683968495182,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.09222315076345816,
+        -2.433127481272981,
+        -2.433127481272981,
+        -1.6397385626516676,
+        -2.433127481272981,
+        -2.0060495018133833
+      ],
+      "ramp_time": 0.6144261316345914,
+      "brake_time": 0.6144261316345914,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "556d8b0c9dbdcb97d258faee8b69e000ba697f1cee3b3d654d6a37ce7b6b6192",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 3.149999999999764,
+      "position": [
+        0.53602159453761,
+        -0.002836048211849823,
+        0.7372377209323309
+      ],
+      "com_position": [
+        0.53602159453761,
+        -0.002836048211849823,
+        0.7372377209323309
+      ],
+      "linear_velocity": [
+        1.3495930809048606,
+        -0.008853280278616085,
+        1.8322187872771958
+      ],
+      "angular_velocity": [
+        -2.3908500768344654,
+        -6.264319880388681,
+        2.845928197027561
+      ],
+      "quaternion": [
+        -0.29418225398630404,
+        -0.2332000113669961,
+        -0.6406277109549796,
+        0.6698288528382116
+      ]
+    },
+    "crossing": {
+      "time": 3.7023734815933773,
+      "position": [
+        1.2815010233717694,
+        -0.007726365462873515,
+        0.25
+      ],
+      "com_position": [
+        1.2815010233717694,
+        -0.007726365462873515,
+        0.25
+      ],
+      "quaternion": [
+        -0.5828358857901754,
+        -0.3900766457773288,
+        0.5148215920033539,
+        -0.4930530083686961
+      ],
+      "error_xy": [
+        -0.7545205711658407,
+        -0.004890317251023692
+      ],
+      "com_error_xy": [
+        -0.7545205711658407,
+        -0.004890317251023692
+      ],
+      "full_horizontal_envelope_inside": false
+    },
+    "com_crossing": {
+      "time": 3.7023734815933773,
+      "position": [
+        1.2815010233717694,
+        -0.007726365462873515,
+        0.25
+      ],
+      "error_xy": [
+        -0.7545205711658407,
+        -0.004890317251023692
+      ]
+    },
+    "rim_contact": false,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": false,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "insufficient_apex_rise",
+      "release_not_upward",
+      "tracking_error_limit"
+    ],
+    "failure_reason": "actual_acceleration_limit;insufficient_apex_rise;release_not_upward;tracking_error_limit",
+    "tracking": {
+      "peak_velocity": [
+        0.09664332227670958,
+        2.553315227002684,
+        2.4274777636498204,
+        1.632236676015175,
+        2.420925620514586,
+        1.9965406319279038
+      ],
+      "peak_acceleration": [
+        1.3087326044027878,
+        13.661831284090598,
+        6.962074670090135,
+        5.0285927103130845,
+        6.288814382190311,
+        3.9608290183101857
+      ],
+      "peak_torque": [
+        1.167923263457693,
+        12.0,
+        5.978454314707733,
+        0.7482125782570499,
+        2.379012445673901,
+        0.9118107759337502
+      ],
+      "peak_position_error": [
+        0.0019515010730624428,
+        0.18252359483140834,
+        0.01608171981056339,
+        0.011566356378356318,
+        0.02283097359111308,
+        0.01326152228622117
+      ],
+      "final_joint_velocity": [
+        2.232955710660993e-10,
+        -3.208643173446754e-10,
+        1.3014358683479921e-08,
+        -1.3633184088657077e-10,
+        -3.069154029392858e-10,
+        1.5013330816009837e-11
+      ]
+    },
+    "airborne_environment_contacts": [],
+    "release_speed": 2.275632999639767,
+    "release_angle": 0.9359230681904513,
+    "release_angle_deg": 53.62444175624761,
+    "release_vertical_velocity": 1.8322187872771958,
+    "horizontal_range": 1.5,
+    "apex_height_above_release": 0.17018698443355662,
+    "apex_height_world": 0.9074247053658875,
+    "apex_geometry_height_world": 0.9074247053658875,
+    "apex_position": [
+      0.787045907585917,
+      -0.004482758343672386,
+      0.9074247053658875
+    ],
+    "apex_time": 3.3359999999997436,
+    "time_to_apex": 0.18599999999997952,
+    "ballistic_rise_prediction": 0.17110222652658091,
+    "ballistic_target_error": 0.7535175834159985,
+    "ballistic_com_crossing_prediction": [
+      1.2825199237389722,
+      -0.007733049411283339
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.16734954203220465,
+    "descending_entry_after_apex": true,
+    "collision_pairs": [],
+    "release_command_time": 3.149999999999764,
+    "grasp_translation_drift_max_m": null,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      1.3801305344674268,
+      -0.022109958655946223,
+      0.059892244579783815
+    ],
+    "flight_time": 0.5523734815936132,
+    "environment_contact_sample_count": 0
+  },
+  {
+    "requested_distance": 1.5,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        2.279613645313467,
+        -1.5101249835375452,
+        -0.11825472235490038,
+        0.03788683968495182,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.07838967814893943,
+        -2.068158359082034,
+        -2.068158359082034,
+        -1.3937777782539174,
+        -2.068158359082034,
+        -1.7051420765413756
+      ],
+      "ramp_time": 0.6144261316345914,
+      "brake_time": 0.6144261316345914,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        2.0949394572341276,
+        0.0016954844971364862,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "contact",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_1.5m_contact",
+    "success": false,
+    "release_mode": "contact",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        2.279613645313467,
+        -1.5101249835375452,
+        -0.11825472235490038,
+        0.03788683968495182,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.07838967814893943,
+        -2.068158359082034,
+        -2.068158359082034,
+        -1.3937777782539174,
+        -2.068158359082034,
+        -1.7051420765413756
+      ],
+      "ramp_time": 0.6144261316345914,
+      "brake_time": 0.6144261316345914,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "184d31cac14c1a3227a1b5d74f1db8755d1e33b2fbbf4a47581414ffd33e251c",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 3.112999999999768,
+      "position": [
+        0.5949394572341274,
+        0.0016954844971364862,
+        0.7445090583667598
+      ],
+      "com_position": [
+        0.5949394572341274,
+        0.0016954844971364862,
+        0.7445090583667598
+      ],
+      "linear_velocity": [
+        1.2823687612581698,
+        0.07579499178888051,
+        1.8521919112307805
+      ],
+      "angular_velocity": [
+        -2.0360383300779663,
+        -5.535073891491542,
+        2.385951991588609
+      ],
+      "quaternion": [
+        -0.32578188987694173,
+        -0.2375932117889082,
+        -0.6335546195481649,
+        0.6603212627117334
+      ]
+    },
+    "crossing": {
+      "time": 3.6704628992310284,
+      "position": [
+        1.3098124647688025,
+        0.043948380366979546,
+        0.25
+      ],
+      "com_position": [
+        1.3098124647688025,
+        0.043948380366979546,
+        0.25
+      ],
+      "quaternion": [
+        -0.6894959789870062,
+        -0.44413622616586307,
+        0.4669880190201788,
+        -0.3305457572855881
+      ],
+      "error_xy": [
+        -0.785126992465325,
+        0.04225289586984306
+      ],
+      "com_error_xy": [
+        -0.785126992465325,
+        0.04225289586984306
+      ],
+      "full_horizontal_envelope_inside": false
+    },
+    "com_crossing": {
+      "time": 3.6704628992310284,
+      "position": [
+        1.3098124647688025,
+        0.043948380366979546,
+        0.25
+      ],
+      "error_xy": [
+        -0.785126992465325,
+        0.04225289586984306
+      ]
+    },
+    "rim_contact": false,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": true,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "insufficient_apex_rise",
+      "release_not_upward"
+    ],
+    "failure_reason": "actual_acceleration_limit;insufficient_apex_rise;release_not_upward",
+    "tracking": {
+      "peak_velocity": [
+        0.08420587245751225,
+        2.488473206735742,
+        2.0595030909531484,
+        1.3877690336938355,
+        2.052754358784157,
+        1.6977544076078126
+      ],
+      "peak_acceleration": [
+        0.8154699052976833,
+        8.902730865100406,
+        5.24430866826453,
+        3.3171713379750445,
+        4.871682890128737,
+        3.3978152198092944
+      ],
+      "peak_torque": [
+        0.9666064350984307,
+        12.0,
+        5.931561366517201,
+        0.6635124481998975,
+        2.3176022488093864,
+        0.7970701287949922
+      ],
+      "peak_position_error": [
+        0.0016573924256924346,
+        0.09451292685372348,
+        0.011778706924472582,
+        0.010313729531349403,
+        0.019051125776211708,
+        0.011779798706255229
+      ],
+      "final_joint_velocity": [
+        1.2364034136730385e-10,
+        1.4229363872261628e-09,
+        -5.457585792382706e-08,
+        -1.469925198873836e-10,
+        5.562889997360626e-10,
+        -2.082225947359695e-10
+      ]
+    },
+    "airborne_environment_contacts": [],
+    "release_speed": 2.254069519038803,
+    "release_angle": 0.9644054041332276,
+    "release_angle_deg": 55.25635939644246,
+    "release_vertical_velocity": 1.8521919112307805,
+    "horizontal_range": 1.5,
+    "apex_height_above_release": 0.17392761931138623,
+    "apex_height_world": 0.9184366776781461,
+    "apex_geometry_height_world": 0.9184366776781461,
+    "apex_position": [
+      0.8360247843506693,
+      0.01594494295344605,
+      0.9184366776781461
+    ],
+    "apex_time": 3.3009999999997475,
+    "time_to_apex": 0.1879999999999793,
+    "ballistic_rise_prediction": 0.1748529498485592,
+    "ballistic_target_error": 0.7852986056487905,
+    "ballistic_com_crossing_prediction": [
+      1.3107814695784623,
+      0.04400565383917598
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.1607235514110279,
+    "descending_entry_after_apex": true,
+    "collision_pairs": [],
+    "release_command_time": 3.1079999999997687,
+    "grasp_translation_drift_max_m": 0.05257983195261856,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      1.381217044579426,
+      0.04033187024166145,
+      0.05989224457978372
+    ],
+    "flight_time": 0.5574628992312602,
+    "environment_contact_sample_count": 0
+  },
+  {
+    "requested_distance": 2.0,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.6432461463027588,
+        -2.2558329661180623,
+        0.37574776872539195,
+        -0.5766354569228377,
+        0.0
+      ],
+      "release_joint_velocity": [
+        -0.15564804537070553,
+        2.1852705275094295,
+        1.453935733973439,
+        2.1852705275094295,
+        2.1852705275094295,
+        -2.1852705274996
+      ],
+      "ramp_time": 0.5518359917953106,
+      "brake_time": 0.5518359917953106,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        1.3404299168553553,
+        -0.032689877883929304,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "ideal",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_2.0m_ideal",
+    "success": false,
+    "release_mode": "ideal",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.6432461463027588,
+        -2.2558329661180623,
+        0.37574776872539195,
+        -0.5766354569228377,
+        0.0
+      ],
+      "release_joint_velocity": [
+        -0.15564804537070553,
+        2.1852705275094295,
+        1.453935733973439,
+        2.1852705275094295,
+        2.1852705275094295,
+        -2.1852705274996
+      ],
+      "ramp_time": 0.5518359917953106,
+      "brake_time": 0.5518359917953106,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "3cc53fe721f2276e0715f395dc4a254f3f07e2361bd2c022169d71157a2f3dff",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 2.8719999999997947,
+      "position": [
+        -0.6595700831446447,
+        -0.032689877883929304,
+        1.1268666603806246
+      ],
+      "com_position": [
+        -0.6595700831446447,
+        -0.032689877883929304,
+        1.1268666603806246
+      ],
+      "linear_velocity": [
+        0.4452404334400863,
+        -0.0546089281672555,
+        0.8578354817636259
+      ],
+      "angular_velocity": [
+        0.19301680546834687,
+        3.1809530087198623,
+        0.6215089427271727
+      ],
+      "quaternion": [
+        -0.5428694575475334,
+        -0.5190889999990685,
+        0.3173068856302395,
+        -0.5789263359648202
+      ]
+    },
+    "crossing": null,
+    "com_crossing": null,
+    "rim_contact": false,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": false,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "actual_velocity_limit",
+      "contact_before_rim_crossing",
+      "insufficient_apex_rise",
+      "no_entry_after_apex",
+      "release_not_upward",
+      "tracking_error_limit"
+    ],
+    "failure_reason": "actual_acceleration_limit;actual_velocity_limit;contact_before_rim_crossing;insufficient_apex_rise;no_entry_after_apex;release_not_upward;tracking_error_limit",
+    "tracking": {
+      "peak_velocity": [
+        0.16958015142231309,
+        4.690456107057131,
+        1.375906137823591,
+        2.1731185005662765,
+        2.3310889504206966,
+        2.1641146106801346
+      ],
+      "peak_acceleration": [
+        1.7342987176730829,
+        43.84126188377646,
+        51.6148055968057,
+        6.813866324436188,
+        34.235319824249096,
+        4.693988344432534
+      ],
+      "peak_torque": [
+        1.5034775135338565,
+        12.0,
+        12.0,
+        1.2610267390015508,
+        3.0,
+        1.1954810444287958
+      ],
+      "peak_position_error": [
+        0.0024925151276955007,
+        0.9379834419638983,
+        0.024658689907545828,
+        0.014362663729965641,
+        0.0652574644221442,
+        0.014318861240319253
+      ],
+      "final_joint_velocity": [
+        -4.221286825047473e-09,
+        -1.309741885077846e-08,
+        5.479956556530884e-07,
+        1.161830704728698e-09,
+        -1.1773065002456925e-10,
+        7.77539854144412e-10
+      ]
+    },
+    "airborne_environment_contacts": [
+      {
+        "time": 3.2259999999997557,
+        "geom": "table_top",
+        "sample_count": 14534,
+        "last_time": 6.87200000000063
+      }
+    ],
+    "release_speed": 0.9680407493376115,
+    "release_angle": 1.088983576399643,
+    "release_angle_deg": 62.394162886761784,
+    "release_vertical_velocity": 0.8578354817636259,
+    "horizontal_range": 2.0,
+    "apex_height_above_release": 0.03707900691343635,
+    "apex_height_world": 1.163945667294061,
+    "apex_geometry_height_world": 1.163945667294061,
+    "apex_position": [
+      -0.6208341654353582,
+      -0.037440854634480575,
+      1.163945667294061
+    ],
+    "apex_time": 2.958999999999785,
+    "time_to_apex": 0.08699999999999042,
+    "ballistic_rise_prediction": 0.03750671324019531,
+    "ballistic_target_error": 1.7690562224358337,
+    "ballistic_com_crossing_prediction": [
+      -0.4283990779731063,
+      -0.06104309980096694
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.019367958854643263,
+    "descending_entry_after_apex": false,
+    "collision_pairs": [],
+    "release_command_time": 2.8719999999997947,
+    "grasp_translation_drift_max_m": null,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      -0.4806096250591438,
+      -0.03622458429492814,
+      0.7898922445797827
+    ],
+    "flight_time": null,
+    "environment_contact_sample_count": 14534
+  },
+  {
+    "requested_distance": 2.0,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.69250747163368,
+        -2.24815980260094,
+        -0.04909261432545652,
+        -0.7070327765164305,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.6442741097881085,
+        2.25031376717613,
+        1.4389168349015913,
+        -2.2503137667865603,
+        1.6646124929904857,
+        0.43569039268958865
+      ],
+      "ramp_time": 0.5682610523172047,
+      "brake_time": 0.5682610523172047,
+      "open_lead": 0.025,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        1.3022934503347159,
+        0.013272654605418068,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "contact",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_2.0m_contact",
+    "success": false,
+    "release_mode": "contact",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.69250747163368,
+        -2.24815980260094,
+        -0.04909261432545652,
+        -0.7070327765164305,
+        0.0
+      ],
+      "release_joint_velocity": [
+        0.6442741097881085,
+        2.25031376717613,
+        1.4389168349015913,
+        -2.2503137667865603,
+        1.6646124929904857,
+        0.43569039268958865
+      ],
+      "ramp_time": 0.5682610523172047,
+      "brake_time": 0.5682610523172047,
+      "open_lead": 0.025,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "f8b2faba847375c05d17659e17713e8eb64acffeaaa5e6a29b7551f300f82979",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 2.8669999999997953,
+      "position": [
+        -0.697706549665284,
+        0.013272654605418068,
+        1.1204168229189648
+      ],
+      "com_position": [
+        -0.697706549665284,
+        0.013272654605418068,
+        1.1204168229189648
+      ],
+      "linear_velocity": [
+        0.2887606876385845,
+        -0.13473670916988081,
+        0.7957602314930248
+      ],
+      "angular_velocity": [
+        1.145447304700092,
+        2.7407559054520663,
+        -0.9699053049690525
+      ],
+      "quaternion": [
+        -0.5146234827499282,
+        -0.5105637564891055,
+        0.4956243336854207,
+        -0.47837625507643233
+      ]
+    },
+    "crossing": null,
+    "com_crossing": null,
+    "rim_contact": false,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": true,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "actual_velocity_limit",
+      "contact_before_rim_crossing",
+      "insufficient_apex_rise",
+      "no_entry_after_apex",
+      "release_not_upward",
+      "tracking_error_limit"
+    ],
+    "failure_reason": "actual_acceleration_limit;actual_velocity_limit;contact_before_rim_crossing;insufficient_apex_rise;no_entry_after_apex;release_not_upward;tracking_error_limit",
+    "tracking": {
+      "peak_velocity": [
+        0.6434158834092739,
+        4.853135427542531,
+        1.3677883741110182,
+        2.237946530077278,
+        2.2120301438394128,
+        0.4395197175275513
+      ],
+      "peak_acceleration": [
+        1.9844324032871168,
+        41.4552753071562,
+        49.874638213718015,
+        13.296197237765538,
+        15.508996017548293,
+        3.9577620013168877
+      ],
+      "peak_torque": [
+        1.0890211320339769,
+        12.0,
+        12.0,
+        1.967624052890237,
+        2.8439358548092812,
+        0.5402140876268522
+      ],
+      "peak_position_error": [
+        0.002422193362151232,
+        0.9820857946496947,
+        0.025250069183697876,
+        0.015455494797280589,
+        0.024736744419092294,
+        0.006026427440977897
+      ],
+      "final_joint_velocity": [
+        3.343358250232749e-09,
+        -2.0302338080271705e-08,
+        8.186384690823794e-07,
+        3.9256996236419754e-11,
+        -1.2195614291738348e-09,
+        1.2800938447210163e-09
+      ]
+    },
+    "airborne_environment_contacts": [
+      {
+        "time": 3.2099999999997575,
+        "geom": "table_top",
+        "sample_count": 14670,
+        "last_time": 6.889000000000635
+      }
+    ],
+    "release_speed": 0.8571878799593876,
+    "release_angle": 1.1899171560081432,
+    "release_angle_deg": 68.17723100947656,
+    "release_vertical_velocity": 0.7957602314930248,
+    "horizontal_range": 2.0,
+    "apex_height_above_release": 0.03187756875093539,
+    "apex_height_world": 1.1522943916699002,
+    "apex_geometry_height_world": 1.1522943916699002,
+    "apex_position": [
+      -0.6743169339665565,
+      0.0023589811626577323,
+      1.1522943916699002
+    ],
+    "apex_time": 2.9479999999997863,
+    "time_to_apex": 0.08099999999999108,
+    "ballistic_rise_prediction": 0.032274941183783504,
+    "ballistic_target_error": 1.8539746337230627,
+    "ballistic_com_crossing_prediction": [
+      -0.550406754722452,
+      -0.05545792570416942
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.011694807849363775,
+    "descending_entry_after_apex": false,
+    "collision_pairs": [],
+    "release_command_time": 2.8639999999997956,
+    "grasp_translation_drift_max_m": 0.03281942667887341,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      -0.5706037906691673,
+      -0.0434331620272071,
+      0.7898922445797826
+    ],
+    "flight_time": null,
+    "environment_contact_sample_count": 14670
+  },
+  {
+    "requested_distance": 3.0,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.6565097274007494,
+        -2.0442212899969543,
+        -0.44894341751295713,
+        -0.5661989557392701,
+        0.0
+      ],
+      "release_joint_velocity": [
+        -0.43075310197874944,
+        2.2096050607327435,
+        2.1964139517379233,
+        -2.2096050607327413,
+        2.200078356506336,
+        2.2096050607326294
+      ],
+      "ramp_time": 0.5579810759426123,
+      "brake_time": 0.5579810759426123,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        2.3970378468467874,
+        0.04341387345792576,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "ideal",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_3.0m_ideal",
+    "success": false,
+    "release_mode": "ideal",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.6565097274007494,
+        -2.0442212899969543,
+        -0.44894341751295713,
+        -0.5661989557392701,
+        0.0
+      ],
+      "release_joint_velocity": [
+        -0.43075310197874944,
+        2.2096050607327435,
+        2.1964139517379233,
+        -2.2096050607327413,
+        2.200078356506336,
+        2.2096050607326294
+      ],
+      "ramp_time": 0.5579810759426123,
+      "brake_time": 0.5579810759426123,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "f8de512016b844398286042858b36ef0ca2edb4392b6c3488f46f3cbe54fddf1",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 2.877999999999794,
+      "position": [
+        -0.6029621531532126,
+        0.04341387345792576,
+        1.1980234768896891
+      ],
+      "com_position": [
+        -0.6029621531532126,
+        0.04341387345792576,
+        1.1980234768896891
+      ],
+      "linear_velocity": [
+        0.9227419129347438,
+        0.3740305942269714,
+        1.1327046965200196
+      ],
+      "angular_velocity": [
+        -0.12974482131227294,
+        4.535415068086431,
+        -1.0390504185236276
+      ],
+      "quaternion": [
+        -0.5687636945840158,
+        -0.5576596817535595,
+        0.5542267525794168,
+        -0.24157037441485607
+      ]
+    },
+    "crossing": null,
+    "com_crossing": null,
+    "rim_contact": false,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": false,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "actual_velocity_limit",
+      "contact_before_rim_crossing",
+      "insufficient_apex_rise",
+      "no_entry_after_apex",
+      "release_not_upward",
+      "tracking_error_limit"
+    ],
+    "failure_reason": "actual_acceleration_limit;actual_velocity_limit;contact_before_rim_crossing;insufficient_apex_rise;no_entry_after_apex;release_not_upward;tracking_error_limit",
+    "tracking": {
+      "peak_velocity": [
+        0.43339485801239525,
+        5.749735466461671,
+        2.1196576117513724,
+        2.174502664595741,
+        2.3624088786822024,
+        2.202582224055123
+      ],
+      "peak_acceleration": [
+        2.352815640400796,
+        49.066858698203596,
+        58.225861025932076,
+        5.126595599222683,
+        31.518272366934386,
+        6.068328995431527
+      ],
+      "peak_torque": [
+        1.5055553067531058,
+        12.0,
+        12.0,
+        1.443534185029172,
+        3.0,
+        0.8661880655478162
+      ],
+      "peak_position_error": [
+        0.0034007106349236843,
+        0.8479196774149681,
+        0.030174251294339927,
+        0.017291390759453407,
+        0.11108494168555705,
+        0.013767985088582582
+      ],
+      "final_joint_velocity": [
+        3.195560195235097e-09,
+        -1.662096172063881e-08,
+        7.088580954980383e-07,
+        2.0152356274528003e-10,
+        1.8843242407312382e-10,
+        2.1265391290371283e-10
+      ]
+    },
+    "airborne_environment_contacts": [
+      {
+        "time": 3.2939999999997482,
+        "geom": "table_top",
+        "sample_count": 14055,
+        "last_time": 6.878000000000632
+      }
+    ],
+    "release_speed": 1.5081019371457494,
+    "release_angle": 0.8496958919149213,
+    "release_angle_deg": 48.68398847632916,
+    "release_vertical_velocity": 1.1327046965200196,
+    "horizontal_range": 3.0,
+    "apex_height_above_release": 0.0648283400998022,
+    "apex_height_world": 1.2628518169894913,
+    "apex_geometry_height_world": 1.2628518169894913,
+    "apex_position": [
+      -0.4968468331657183,
+      0.08642739179402738,
+      1.2628518169894913
+    ],
+    "apex_time": 2.9929999999997814,
+    "time_to_apex": 0.11499999999998733,
+    "ballistic_rise_prediction": 0.06539347245252343,
+    "ballistic_target_error": 2.483200047567853,
+    "ballistic_com_crossing_prediction": [
+      -0.0769929193267539,
+      0.2566138834667134
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.035371773329164746,
+    "descending_entry_after_apex": false,
+    "collision_pairs": [],
+    "release_command_time": 2.877999999999794,
+    "grasp_translation_drift_max_m": null,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      -0.21855658991672017,
+      0.2653172944476261,
+      0.7748922445797827
+    ],
+    "flight_time": null,
+    "environment_contact_sample_count": 14055
+  },
+  {
+    "requested_distance": 3.0,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.6565097274007494,
+        -2.0442212899969543,
+        -0.44894341751295713,
+        -0.5661989557392701,
+        0.0
+      ],
+      "release_joint_velocity": [
+        -0.43075310197874944,
+        2.2096050607327435,
+        2.1964139517379233,
+        -2.2096050607327413,
+        2.200078356506336,
+        2.2096050607326294
+      ],
+      "ramp_time": 0.5579810759426123,
+      "brake_time": 0.5579810759426123,
+      "open_lead": 0.025,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        2.342766623784846,
+        0.046106395828173614,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "contact",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_3.0m_contact",
+    "success": false,
+    "release_mode": "contact",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.6565097274007494,
+        -2.0442212899969543,
+        -0.44894341751295713,
+        -0.5661989557392701,
+        0.0
+      ],
+      "release_joint_velocity": [
+        -0.43075310197874944,
+        2.2096050607327435,
+        2.1964139517379233,
+        -2.2096050607327413,
+        2.200078356506336,
+        2.2096050607326294
+      ],
+      "ramp_time": 0.5579810759426123,
+      "brake_time": 0.5579810759426123,
+      "open_lead": 0.025,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "1c16bbbb08d6d1d94028a08c0f4e6f6d8c4189f88affd5834f81054d3df5d3f5",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 2.8559999999997965,
+      "position": [
+        -0.6572333762151539,
+        0.046106395828173614,
+        1.1852264978662894
+      ],
+      "com_position": [
+        -0.6572333762151539,
+        0.046106395828173614,
+        1.1852264978662894
+      ],
+      "linear_velocity": [
+        0.804950952089999,
+        0.5121877523823837,
+        1.2687600041872933
+      ],
+      "angular_velocity": [
+        -0.3435737287950942,
+        4.311703020481819,
+        -1.3291232378569917
+      ],
+      "quaternion": [
+        -0.5360916434297949,
+        -0.5329104889009595,
+        0.5894285743655019,
+        -0.2849317749664549
+      ]
+    },
+    "crossing": null,
+    "com_crossing": null,
+    "rim_contact": false,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": true,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "actual_velocity_limit",
+      "contact_before_rim_crossing",
+      "insufficient_apex_rise",
+      "no_entry_after_apex",
+      "release_not_upward",
+      "tracking_error_limit"
+    ],
+    "failure_reason": "actual_acceleration_limit;actual_velocity_limit;contact_before_rim_crossing;insufficient_apex_rise;no_entry_after_apex;release_not_upward;tracking_error_limit",
+    "tracking": {
+      "peak_velocity": [
+        0.4378699400759492,
+        5.753948971470303,
+        2.1201083221650863,
+        2.175641564729287,
+        2.4038491164681415,
+        2.201965140320022
+      ],
+      "peak_acceleration": [
+        2.5327677784479086,
+        49.53730105236204,
+        54.57647856640768,
+        5.135108436975067,
+        32.49815599467176,
+        6.067029845175265
+      ],
+      "peak_torque": [
+        1.5263897570140692,
+        12.0,
+        12.0,
+        1.4662836645986772,
+        3.0,
+        0.8663511723941779
+      ],
+      "peak_position_error": [
+        0.0034564527031942377,
+        0.8482812258450322,
+        0.030169505651939987,
+        0.017388186844748743,
+        0.1266811061835436,
+        0.013758875335521656
+      ],
+      "final_joint_velocity": [
+        3.210864438094014e-09,
+        -1.6699507170008015e-08,
+        7.121943514110599e-07,
+        2.0243253303705038e-10,
+        1.992040643463357e-10,
+        2.1332222171955907e-10
+      ]
+    },
+    "airborne_environment_contacts": [
+      {
+        "time": 3.2899999999997487,
+        "geom": "table_top",
+        "sample_count": 14274,
+        "last_time": 6.878000000000632
+      }
+    ],
+    "release_speed": 1.5874615829009704,
+    "release_angle": 0.9260266931631643,
+    "release_angle_deg": 53.0574212347054,
+    "release_vertical_velocity": 1.2687600041872933,
+    "horizontal_range": 3.0,
+    "apex_height_above_release": 0.08141319054015983,
+    "apex_height_world": 1.2666396884064492,
+    "apex_geometry_height_world": 1.2666396884064492,
+    "apex_position": [
+      -0.5533947033955453,
+      0.11217861588550167,
+      1.2666396884064492
+    ],
+    "apex_time": 2.9849999999997823,
+    "time_to_apex": 0.1289999999999858,
+    "ballistic_rise_prediction": 0.0820464805415566,
+    "ballistic_target_error": 2.5469831053017784,
+    "ballistic_com_crossing_prediction": [
+      -0.1865464705179043,
+      0.3456029896006832
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.03461289093986952,
+    "descending_entry_after_apex": false,
+    "collision_pairs": [],
+    "release_command_time": 2.852999999999797,
+    "grasp_translation_drift_max_m": 0.038588906109671646,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      -0.30762448212381016,
+      0.308961695218255,
+      0.7748922445797826
+    ],
+    "flight_time": null,
+    "environment_contact_sample_count": 14274
+  },
+  {
+    "requested_distance": 4.0,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.677326732053708,
+        -2.02131945770574,
+        -0.4309733596145657,
+        -0.5438660933443625,
+        0.0
+      ],
+      "release_joint_velocity": [
+        -0.9982066486994198,
+        2.2440149025753398,
+        2.243563484891566,
+        -2.2440149025753398,
+        2.2440149025753398,
+        2.2440149025753398
+      ],
+      "ramp_time": 0.5666704299432677,
+      "brake_time": 0.5666704299432677,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        3.4043985945958535,
+        0.040978762868782076,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "ideal",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_4.0m_ideal",
+    "success": false,
+    "release_mode": "ideal",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.677326732053708,
+        -2.02131945770574,
+        -0.4309733596145657,
+        -0.5438660933443625,
+        0.0
+      ],
+      "release_joint_velocity": [
+        -0.9982066486994198,
+        2.2440149025753398,
+        2.243563484891566,
+        -2.2440149025753398,
+        2.2440149025753398,
+        2.2440149025753398
+      ],
+      "ramp_time": 0.5666704299432677,
+      "brake_time": 0.5666704299432677,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "0d279cdf8d5f8f814e5d8b0afb0a41e7ab7c9edd984aa889b895e5f436d3be7c",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 2.886999999999793,
+      "position": [
+        -0.5956014054041464,
+        0.040978762868782076,
+        1.2069284429626486
+      ],
+      "com_position": [
+        -0.5956014054041464,
+        0.040978762868782076,
+        1.2069284429626486
+      ],
+      "linear_velocity": [
+        0.9851928076111318,
+        0.7207895056140257,
+        1.1123499597376334
+      ],
+      "angular_velocity": [
+        -0.21331792160485752,
+        4.509807022619651,
+        -1.634616231104563
+      ],
+      "quaternion": [
+        -0.5775425505049285,
+        -0.5647859686122605,
+        0.5389425965916553,
+        -0.23875152270512834
+      ]
+    },
+    "crossing": null,
+    "com_crossing": null,
+    "rim_contact": false,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": false,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "actual_velocity_limit",
+      "contact_before_rim_crossing",
+      "insufficient_apex_rise",
+      "no_entry_after_apex",
+      "release_not_upward",
+      "tracking_error_limit"
+    ],
+    "failure_reason": "actual_acceleration_limit;actual_velocity_limit;contact_before_rim_crossing;insufficient_apex_rise;no_entry_after_apex;release_not_upward;tracking_error_limit",
+    "tracking": {
+      "peak_velocity": [
+        0.9987699204789175,
+        5.997787062878123,
+        2.1681645150320747,
+        2.210550889440952,
+        2.281107630039527,
+        2.236898571262562
+      ],
+      "peak_acceleration": [
+        4.003147095065995,
+        49.13785616272154,
+        58.45993353687135,
+        5.063544229351513,
+        33.73561432017802,
+        6.1252616633298285
+      ],
+      "peak_torque": [
+        2.2853276092046784,
+        12.0,
+        12.0,
+        1.458065821920286,
+        3.0,
+        0.8672205045562649
+      ],
+      "peak_position_error": [
+        0.0038287545669525025,
+        0.8704921192527499,
+        0.031119502098337692,
+        0.017517355827748715,
+        0.14067719920797767,
+        0.013952601227332613
+      ],
+      "final_joint_velocity": [
+        3.937349507339426e-09,
+        -2.052187007733528e-08,
+        8.511380797774121e-07,
+        3.02198756338352e-10,
+        9.196907908340712e-10,
+        8.742488072271469e-11
+      ]
+    },
+    "airborne_environment_contacts": [
+      {
+        "time": 3.303999999999747,
+        "geom": "table_top",
+        "sample_count": 17645,
+        "last_time": 6.887000000000635
+      }
+    ],
+    "release_speed": 1.6515038033563019,
+    "release_angle": 0.738984475655479,
+    "release_angle_deg": 42.34069158074708,
+    "release_vertical_velocity": 1.1123499597376334,
+    "horizontal_range": 4.0,
+    "apex_height_above_release": 0.06250933545035231,
+    "apex_height_world": 1.2694377784130009,
+    "apex_geometry_height_world": 1.2694377784130009,
+    "apex_position": [
+      -0.4842746181440907,
+      0.1224279770031666,
+      1.2694377784130009
+    ],
+    "apex_time": 2.9999999999997806,
+    "time_to_apex": 0.11299999999998755,
+    "ballistic_rise_prediction": 0.06306434418594875,
+    "ballistic_target_error": 3.4634306154856462,
+    "ballistic_com_crossing_prediction": [
+      -0.034628378199582754,
+      0.45139941131222905
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.027831696815013934,
+    "descending_entry_after_apex": false,
+    "collision_pairs": [],
+    "release_command_time": 2.886999999999793,
+    "grasp_translation_drift_max_m": null,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      -0.16561560191000874,
+      0.4108896182112122,
+      0.7749131231282399
+    ],
+    "flight_time": null,
+    "environment_contact_sample_count": 17645
+  },
+  {
+    "requested_distance": 4.0,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.677326732053708,
+        -2.02131945770574,
+        -0.4309733596145657,
+        -0.5438660933443625,
+        0.0
+      ],
+      "release_joint_velocity": [
+        -0.9982066486994198,
+        2.2440149025753398,
+        2.243563484891566,
+        -2.2440149025753398,
+        2.2440149025753398,
+        2.2440149025753398
+      ],
+      "ramp_time": 0.5666704299432677,
+      "brake_time": 0.5666704299432677,
+      "open_lead": 0.025,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        3.347646847238196,
+        0.0368044297896791,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "contact",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_4.0m_contact",
+    "success": false,
+    "release_mode": "contact",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.677326732053708,
+        -2.02131945770574,
+        -0.4309733596145657,
+        -0.5438660933443625,
+        0.0
+      ],
+      "release_joint_velocity": [
+        -0.9982066486994198,
+        2.2440149025753398,
+        2.243563484891566,
+        -2.2440149025753398,
+        2.2440149025753398,
+        2.2440149025753398
+      ],
+      "ramp_time": 0.5666704299432677,
+      "brake_time": 0.5666704299432677,
+      "open_lead": 0.025,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "eda9c8c4b3075936352f12eacad45ade7ffe3b5634b4891abcd578dded319616",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 2.8659999999997954,
+      "position": [
+        -0.6523531527618041,
+        0.0368044297896791,
+        1.196479964167442
+      ],
+      "com_position": [
+        -0.6523531527618041,
+        0.0368044297896791,
+        1.196479964167442
+      ],
+      "linear_velocity": [
+        0.8505188368021859,
+        0.9110665657710479,
+        1.2554050531193683
+      ],
+      "angular_velocity": [
+        -0.5031576448445205,
+        4.303417000362147,
+        -1.9161653661875877
+      ],
+      "quaternion": [
+        -0.5453978765990952,
+        -0.5431327958607728,
+        0.5705877458837415,
+        -0.28631721308536096
+      ]
+    },
+    "crossing": {
+      "time": 3.558229737339187,
+      "position": [
+        -0.27172092606879517,
+        0.822361349253927,
+        0.25
+      ],
+      "com_position": [
+        -0.27172092606879517,
+        0.822361349253927,
+        0.25
+      ],
+      "quaternion": [
+        -0.5047519653520038,
+        0.7358428055280198,
+        0.3659777961375905,
+        -0.2642367721575017
+      ],
+      "error_xy": [
+        -3.6193677733069913,
+        0.7855569194642479
+      ],
+      "com_error_xy": [
+        -3.6193677733069913,
+        0.7855569194642479
+      ],
+      "full_horizontal_envelope_inside": false
+    },
+    "com_crossing": {
+      "time": 3.558229737339187,
+      "position": [
+        -0.27172092606879517,
+        0.822361349253927,
+        0.25
+      ],
+      "error_xy": [
+        -3.6193677733069913,
+        0.7855569194642479
+      ]
+    },
+    "rim_contact": false,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": true,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "actual_velocity_limit",
+      "contact_before_rim_crossing",
+      "insufficient_apex_rise",
+      "release_not_upward",
+      "tracking_error_limit"
+    ],
+    "failure_reason": "actual_acceleration_limit;actual_velocity_limit;contact_before_rim_crossing;insufficient_apex_rise;release_not_upward;tracking_error_limit",
+    "tracking": {
+      "peak_velocity": [
+        1.0027186668262356,
+        6.0023330894693165,
+        2.168570215996816,
+        2.21156023853143,
+        2.314392678108128,
+        2.2363056817927993
+      ],
+      "peak_acceleration": [
+        4.139428109225629,
+        49.73961810636818,
+        54.97106827411374,
+        5.081069272027894,
+        34.61379811458309,
+        6.1297654379257605
+      ],
+      "peak_torque": [
+        2.312326328680534,
+        12.0,
+        12.0,
+        1.4845623963449697,
+        3.0,
+        0.8675981865142806
+      ],
+      "peak_position_error": [
+        0.003844904899867857,
+        0.8709067640232704,
+        0.031143982945003312,
+        0.01764461366818304,
+        0.15653341763154766,
+        0.013947480351318979
+      ],
+      "final_joint_velocity": [
+        3.972355261152158e-09,
+        -2.0689568497857045e-08,
+        8.577286840790116e-07,
+        3.050633729488822e-10,
+        9.485776712585007e-10,
+        8.725603651768993e-11
+      ]
+    },
+    "airborne_environment_contacts": [
+      {
+        "time": 3.3029999999997472,
+        "geom": "table_top",
+        "sample_count": 70,
+        "last_time": 3.3379999999997434
+      }
+    ],
+    "release_speed": 1.7690297980584833,
+    "release_angle": 0.7890117930376941,
+    "release_angle_deg": 45.20704572710946,
+    "release_vertical_velocity": 1.2554050531193683,
+    "horizontal_range": 4.0,
+    "apex_height_above_release": 0.07970076174615914,
+    "apex_height_world": 1.276180725913601,
+    "apex_geometry_height_world": 1.276180725913601,
+    "apex_position": [
+      -0.544337260487924,
+      0.1525098836426022,
+      1.276180725913601
+    ],
+    "apex_time": 2.9929999999997814,
+    "time_to_apex": 0.126999999999986,
+    "ballistic_rise_prediction": 0.08032833065227543,
+    "ballistic_target_error": 3.542408838447072,
+    "ballistic_com_crossing_prediction": [
+      -0.15436767589134315,
+      0.5702410787909638
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.027003973068470022,
+    "descending_entry_after_apex": true,
+    "collision_pairs": [],
+    "release_command_time": 2.861999999999796,
+    "grasp_translation_drift_max_m": 0.040568684065641424,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      -0.2938604418354916,
+      0.9718852853025792,
+      0.02489224457978378
+    ],
+    "flight_time": 0.6922297373393915,
+    "environment_contact_sample_count": 70
+  },
+  {
+    "requested_distance": 5.0,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.7178047725876331,
+        -1.983923431009151,
+        0.4487623930944409,
+        -0.5129561058985908,
+        0.0
+      ],
+      "release_joint_velocity": [
+        2.2366319271808233,
+        2.313481501665774,
+        2.30421830586033,
+        2.313481501665774,
+        2.2835659751241812,
+        -2.313481501665774
+      ],
+      "ramp_time": 0.5842125004206502,
+      "brake_time": 0.5842125004206502,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        4.416918232852329,
+        -0.038634599247741236,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "ideal",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_5.0m_ideal",
+    "success": false,
+    "release_mode": "ideal",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.7178047725876331,
+        -1.983923431009151,
+        0.4487623930944409,
+        -0.5129561058985908,
+        0.0
+      ],
+      "release_joint_velocity": [
+        2.2366319271808233,
+        2.313481501665774,
+        2.30421830586033,
+        2.313481501665774,
+        2.2835659751241812,
+        -2.313481501665774
+      ],
+      "ramp_time": 0.5842125004206502,
+      "brake_time": 0.5842125004206502,
+      "open_lead": 0.0,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "a0cebbcd2ec7e3208cddca0b19dec126a83b100584e0082509946acf8f42a744",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 2.904999999999791,
+      "position": [
+        -0.5830817671476707,
+        -0.038634599247741236,
+        1.2202453237932336
+      ],
+      "com_position": [
+        -0.5830817671476707,
+        -0.038634599247741236,
+        1.2202453237932336
+      ],
+      "linear_velocity": [
+        1.0660487684783353,
+        -1.4386498873514413,
+        1.030554285948857
+      ],
+      "angular_velocity": [
+        0.2538055076732648,
+        4.401857426968104,
+        2.8865441715535844
+      ],
+      "quaternion": [
+        -0.5720850424841821,
+        -0.5889455399329846,
+        0.21647201768272306,
+        -0.5282061346853971
+      ]
+    },
+    "crossing": {
+      "time": 3.4664301164379236,
+      "position": [
+        0.015430117067913592,
+        -0.8463359730172497,
+        0.25
+      ],
+      "com_position": [
+        0.015430117067913592,
+        -0.8463359730172497,
+        0.25
+      ],
+      "quaternion": [
+        -0.018428066201226934,
+        -0.779048953197258,
+        -0.4560360642317496,
+        0.42985374607923993
+      ],
+      "error_xy": [
+        -4.4014881157844155,
+        -0.8077013737695085
+      ],
+      "com_error_xy": [
+        -4.4014881157844155,
+        -0.8077013737695085
+      ],
+      "full_horizontal_envelope_inside": false
+    },
+    "com_crossing": {
+      "time": 3.4664301164379236,
+      "position": [
+        0.015430117067913592,
+        -0.8463359730172497,
+        0.25
+      ],
+      "error_xy": [
+        -4.4014881157844155,
+        -0.8077013737695085
+      ]
+    },
+    "rim_contact": false,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": false,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "actual_velocity_limit",
+      "insufficient_apex_rise",
+      "release_not_upward",
+      "tracking_error_limit"
+    ],
+    "failure_reason": "actual_acceleration_limit;actual_velocity_limit;insufficient_apex_rise;release_not_upward;tracking_error_limit",
+    "tracking": {
+      "peak_velocity": [
+        2.235997743109652,
+        6.366781489045716,
+        2.242881473348597,
+        2.296060859310567,
+        2.21154757491212,
+        2.293748157246077
+      ],
+      "peak_acceleration": [
+        7.198156048709214,
+        47.968470940144,
+        54.0798817173464,
+        7.312182360495953,
+        37.05205749242979,
+        4.835730383281112
+      ],
+      "peak_torque": [
+        4.146117560952703,
+        12.0,
+        12.0,
+        1.2507143904342257,
+        3.0,
+        1.187602651082873
+      ],
+      "peak_position_error": [
+        0.004737110992318938,
+        0.9515609350588896,
+        0.03313699085741861,
+        0.01578261935271119,
+        0.23433623531479192,
+        0.015069519529882253
+      ],
+      "final_joint_velocity": [
+        -8.437418372437808e-09,
+        -3.182683615241876e-08,
+        1.2541071037303417e-06,
+        5.300871558204178e-10,
+        3.919232989089117e-09,
+        1.3824274366419696e-09
+      ]
+    },
+    "airborne_environment_contacts": [],
+    "release_speed": 2.0659660237859794,
+    "release_angle": 0.5222418540018148,
+    "release_angle_deg": 29.922254119391308,
+    "release_vertical_velocity": 1.030554285948857,
+    "horizontal_range": 5.0,
+    "apex_height_above_release": 0.053615550024630254,
+    "apex_height_world": 1.2738608738178638,
+    "apex_geometry_height_world": 1.2738608738178638,
+    "apex_position": [
+      -0.47114664645744253,
+      -0.18969283741964207,
+      1.2738608738178638
+    ],
+    "apex_time": 3.0099999999997795,
+    "time_to_apex": 0.10499999999998844,
+    "ballistic_rise_prediction": 0.05413058798611409,
+    "ballistic_target_error": 4.474498696414177,
+    "ballistic_com_crossing_prediction": [
+      0.016085680133461455,
+      -0.8472206658739878
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.02238702413804563,
+    "descending_entry_after_apex": true,
+    "collision_pairs": [],
+    "release_command_time": 2.904999999999791,
+    "grasp_translation_drift_max_m": null,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      0.09075532050405216,
+      -1.0081677788815406,
+      0.03989224457978383
+    ],
+    "flight_time": 0.5614301164381326,
+    "environment_contact_sample_count": 0
+  },
+  {
+    "requested_distance": 5.0,
+    "params": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.7573196242608402,
+        -1.9049466699581918,
+        0.44241174632865243,
+        -0.5703638947237204,
+        0.0
+      ],
+      "release_joint_velocity": [
+        2.381210387939271,
+        2.381210387939271,
+        2.381210387939271,
+        2.381210387939271,
+        2.0276738159061276,
+        -2.381210387939271
+      ],
+      "ramp_time": 0.6013157545301191,
+      "brake_time": 0.6013157545301191,
+      "open_lead": 0.025,
+      "profile": "smooth_acceleration"
+    },
+    "scene": {
+      "grasp_offset": [
+        0.025,
+        0,
+        0.105
+      ],
+      "collision_penetration_tolerance": 0.0,
+      "base_position": [
+        0,
+        0,
+        0.75
+      ],
+      "table": {
+        "height": 0.75,
+        "center_x": -0.45,
+        "half_size": [
+          0.55,
+          0.45,
+          0.025
+        ]
+      },
+      "bucket_position": [
+        4.369692350448139,
+        -0.017261133061935805,
+        0.0
+      ],
+      "bucket_height": 0.25,
+      "bucket_radius": 0.14,
+      "release_mode": "contact",
+      "timestep": 0.001,
+      "integrator": "implicitfast",
+      "settle_time": 0.6,
+      "flight_settle_time": 4.0,
+      "position_limits": [
+        [
+          -2.6179,
+          2.6179
+        ],
+        [
+          0,
+          3.14
+        ],
+        [
+          -2.967,
+          0
+        ],
+        [
+          -1.745,
+          1.745
+        ],
+        [
+          -1.22,
+          1.22
+        ],
+        [
+          -2.09439,
+          2.09439
+        ]
+      ],
+      "velocity_limits": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "acceleration_limits": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "actual_velocity_tolerance": 0.0,
+      "actual_acceleration_tolerance": 0.0,
+      "torque_limits": [
+        12,
+        12,
+        12,
+        3,
+        3,
+        3
+      ],
+      "bounded_bias_compensation": true,
+      "acceleration_feedforward": true,
+      "nominal_payload_mass": 0.1,
+      "max_tracking_error": 0.15,
+      "final_brake_velocity_limit": 0.1,
+      "arc_profile": "smooth_acceleration",
+      "require_high_arc": true,
+      "min_apex_rise": 0.2,
+      "min_release_vertical_velocity": 1.98,
+      "min_release_forward_velocity": 0.1,
+      "perturb_contact": false
+    },
+    "trial": "results/basketball_throw/refined/audit/distance_5.0m_contact",
+    "success": false,
+    "release_mode": "contact",
+    "seed": 0,
+    "randomization": false,
+    "parameters": {
+      "family": "basketball",
+      "release_joints": [
+        0.0,
+        0.7573196242608402,
+        -1.9049466699581918,
+        0.44241174632865243,
+        -0.5703638947237204,
+        0.0
+      ],
+      "release_joint_velocity": [
+        2.381210387939271,
+        2.381210387939271,
+        2.381210387939271,
+        2.381210387939271,
+        2.0276738159061276,
+        -2.381210387939271
+      ],
+      "ramp_time": 0.6013157545301191,
+      "brake_time": 0.6013157545301191,
+      "open_lead": 0.025,
+      "profile": "smooth_acceleration"
+    },
+    "command_sha256": "6b23daee59a24d55705d37a59573bb7676c7bbaf8ca037357dc53b112ffbadb6",
+    "mass": 0.1,
+    "com_local": [
+      0,
+      0,
+      0
+    ],
+    "release": {
+      "time": 2.9009999999997915,
+      "position": [
+        -0.6303076495518615,
+        -0.017261133061935805,
+        1.2318664516847841
+      ],
+      "com_position": [
+        -0.6303076495518615,
+        -0.017261133061935805,
+        1.2318664516847841
+      ],
+      "linear_velocity": [
+        0.9286662978354544,
+        -1.869879965026621,
+        1.1910555581678985
+      ],
+      "angular_velocity": [
+        0.9055848613059259,
+        4.13199424541015,
+        3.4044808011957772
+      ],
+      "quaternion": [
+        -0.5579129152130465,
+        -0.5691635237235458,
+        0.27015978122195883,
+        -0.5401849265864238
+      ]
+    },
+    "crossing": {
+      "time": 3.4853735212035906,
+      "position": [
+        -0.08761965506239822,
+        -1.1099694724530988,
+        0.25
+      ],
+      "com_position": [
+        -0.08761965506239822,
+        -1.1099694724530988,
+        0.25
+      ],
+      "quaternion": [
+        0.18238489973067526,
+        -0.8130033464100794,
+        -0.37316358399569854,
+        0.408056670887426
+      ],
+      "error_xy": [
+        -4.457312005510537,
+        -1.092708339391163
+      ],
+      "com_error_xy": [
+        -4.457312005510537,
+        -1.092708339391163
+      ],
+      "full_horizontal_envelope_inside": false
+    },
+    "com_crossing": {
+      "time": 3.4853735212035906,
+      "position": [
+        -0.08761965506239822,
+        -1.1099694724530988,
+        0.25
+      ],
+      "error_xy": [
+        -4.457312005510537,
+        -1.092708339391163
+      ]
+    },
+    "rim_contact": false,
+    "stayed_in_bucket": false,
+    "perturbations": {
+      "release_delay_s": 0.0,
+      "actuator_gain_scale": 1.0
+    },
+    "slipped": true,
+    "post_release_robot_contact": false,
+    "violations": [
+      "actual_acceleration_limit",
+      "actual_velocity_limit",
+      "insufficient_apex_rise",
+      "release_not_upward",
+      "tracking_error_limit"
+    ],
+    "failure_reason": "actual_acceleration_limit;actual_velocity_limit;insufficient_apex_rise;release_not_upward;tracking_error_limit",
+    "tracking": {
+      "peak_velocity": [
+        2.3800643331889737,
+        6.79924622638529,
+        2.3190975996284564,
+        2.360878732035336,
+        2.352999219232671,
+        2.360565599297687
+      ],
+      "peak_acceleration": [
+        12.836565103681918,
+        43.757439880562075,
+        53.35548059319994,
+        8.674884865056923,
+        81.77851254933222,
+        4.832953664750561
+      ],
+      "peak_torque": [
+        4.203411146372289,
+        12.0,
+        12.0,
+        1.2574140614989062,
+        3.0,
+        1.211721791683381
+      ],
+      "peak_position_error": [
+        0.0055412606638512996,
+        0.9899317365121041,
+        0.03367496222794841,
+        0.01660217707340783,
+        0.22956377199857425,
+        0.015501058539827112
+      ],
+      "final_joint_velocity": [
+        -6.125182200803677e-09,
+        -3.4268463985935496e-08,
+        1.2555614561266137e-06,
+        4.531448945608977e-10,
+        2.3627922404990582e-09,
+        7.54563269258886e-10
+      ]
+    },
+    "airborne_environment_contacts": [],
+    "release_speed": 2.403640056037095,
+    "release_angle": 0.5184352344960049,
+    "release_angle_deg": 29.70415088749623,
+    "release_vertical_velocity": 1.1910555581678985,
+    "horizontal_range": 5.0,
+    "apex_height_above_release": 0.07171011253831505,
+    "apex_height_world": 1.3035765642230992,
+    "apex_geometry_height_world": 1.3035765642230992,
+    "apex_position": [
+      -0.5179390275137659,
+      -0.2435166088301576,
+      1.3035765642230992
+    ],
+    "apex_time": 3.021999999999778,
+    "time_to_apex": 0.12099999999998667,
+    "ballistic_rise_prediction": 0.07230445171471174,
+    "ballistic_target_error": 4.589008441250164,
+    "ballistic_com_crossing_prediction": [
+      -0.08703371428721018,
+      -1.1111492707496196
+    ],
+    "apex_between_release_and_bucket": true,
+    "apex_horizontal_fraction": 0.022473724407619123,
+    "descending_entry_after_apex": true,
+    "collision_pairs": [],
+    "release_command_time": 2.896999999999792,
+    "grasp_translation_drift_max_m": 0.04910580795838557,
+    "gross_slip_threshold_m": 0.02,
+    "final_position": [
+      -0.020209441259886114,
+      -1.2537356444951202,
+      0.03989224457978373
+    ],
+    "flight_time": 0.584373521203799,
+    "environment_contact_sample_count": 0
+  }
+]

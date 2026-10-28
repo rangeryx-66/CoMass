@@ -69,16 +69,19 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
     model.eq_data[weld, 3:6] = grasp
     model.eq_data[weld, 6:10] = relative_quat
     data.eq_active[weld] = release_mode != "contact"
+    arm_bodies = {model.body(n).id for n in ["base_link"]+[f"link{i}" for i in range(1,9)]}
     geom = model.geom("object_geom").id
     if release_mode != "contact":
         # Robot geoms=bit1; environment=bit2; object=bit4. Ideal release bypasses
         # jaw contact only. This is explicitly not a model of finger opening.
         for gi in range(model.ngeom):
-            if model.geom_bodyid[gi] not in {0,obj,model.body("bucket").id}:
+            if model.geom_bodyid[gi] in arm_bodies:
                 model.geom_contype[gi] = 1; model.geom_conaffinity[gi] = 3
             elif gi != geom:
                 model.geom_contype[gi] = 2; model.geom_conaffinity[gi] = 7
         model.geom_contype[geom] = 4; model.geom_conaffinity[geom] = 2
+    nominal_gains=model.actuator_gainprm[acts,0].copy()
+    nominal_velocity_gains=-model.actuator_biasprm[acts,2].copy()
     rng = np.random.default_rng(seed)
     delay, response = 0., 1.
     randomized = release_mode == "perturbed" or (release_mode == "contact" and scene.get("perturb_contact",False))
@@ -110,8 +113,23 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
     released = False; separation_candidate = None; collision_pairs = set()
     final_containment = []; release_command_time = None; grasp_drift_max=0.
     arm_bodies = {model.body(n).id for n in ["base_link"]+[f"link{i}" for i in range(1,9)]}
+    peak_velocity=np.zeros(6);peak_acceleration=np.zeros(6);peak_torque=np.zeros(6);peak_tracking=np.zeros(6)
+    airborne_environment_contacts=[]
     for k, t in enumerate(cmd["time"]):
         data.ctrl[acts] = cmd["q"][k]
+        if scene.get("bounded_bias_compensation",False):
+            feed=data.qfrc_bias[va]+nominal_velocity_gains*cmd["qd"][k]
+            if scene.get("acceleration_feedforward",False):
+                desired_acc=np.zeros(model.nv);desired_acc[va]=cmd["qdd"][k]
+                torque=np.zeros(model.nv);mujoco.mj_mulM(model,data,torque,desired_acc)
+                feed+=torque[va]
+                # Nominal measured total mass only. No hidden CoM/inertia read by the controller.
+                if t<release_at:
+                    J=np.zeros((3,model.nv));W=J.copy()
+                    point=data.xpos[ee]+data.xmat[ee].reshape(3,3)@grasp
+                    mujoco.mj_jac(model,data,J,W,point,ee);J=J[:,va]
+                    feed+=scene.get("nominal_payload_mass",.1)*(J.T@(J@cmd["qdd"][k]+np.array([0.,0.,9.81])))
+            data.ctrl[acts]+=feed/nominal_gains
         if t >= release_at:
             data.ctrl[model.actuator("gripper").id] = .035
             if release_command_time is None:
@@ -126,14 +144,18 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
             if obj in {b1,b2}:
                 other = g2 if b1 == obj else g1
                 name = model.geom(other).name or ""
+                if released and (b2 if b1==obj else b1) not in arm_bodies and result["crossing"] is None:
+                    airborne_environment_contacts.append(dict(time=float(data.time),geom=name))
+                if scene.get("require_high_arc",False) and not released and (b2 if b1==obj else b1) not in arm_bodies:
+                    violations.add("pre_release_object_scene_collision")
                 if name.startswith("bucket_wall_") and data.xpos[obj,2] > rim-.04:
                     result["rim_contact"] = True
                 if (b2 if b1==obj else b1) in arm_bodies:
                     touching = True
-            if con.dist < -.001 and b1 in arm_bodies and b2 in arm_bodies:
+            if con.dist < -scene.get("collision_penetration_tolerance",.001) and b1 in arm_bodies and b2 in arm_bodies:
                 pair = tuple(sorted([model.body(b1).name,model.body(b2).name]))
                 collision_pairs.add(pair)
-            if con.dist < -.001 and ((b1 in arm_bodies and b2 not in arm_bodies|{obj}) or (b2 in arm_bodies and b1 not in arm_bodies|{obj})):
+            if con.dist < -scene.get("collision_penetration_tolerance",.001) and ((b1 in arm_bodies and b2 not in arm_bodies|{obj}) or (b2 in arm_bodies and b1 not in arm_bodies|{obj})):
                 violations.add("robot_scene_collision")
         if release_mode == "contact":
             relative = data.xmat[ee].reshape(3,3).T @ (data.xpos[obj]-data.xpos[ee])
@@ -187,17 +209,36 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
         mujoco.mj_forward(model,data)  # current-time xpos/xipos/contact/velocity telemetry
         if not np.isfinite(data.qpos).all() or data.time < t-.01:
             violations.add("numerical_instability"); break
-        if ((data.qpos[qa]<limits[:,0]-.01)|(data.qpos[qa]>limits[:,1]+.01)).any(): violations.add("actual_joint_limit")
-        if (np.abs(data.qvel[va]) > vmax*1.05).any(): violations.add("actual_velocity_limit")
+        if ((data.qpos[qa]<limits[:,0]-scene.get("actual_position_tolerance",.01))|(data.qpos[qa]>limits[:,1]+scene.get("actual_position_tolerance",.01))).any(): violations.add("actual_joint_limit")
+        if (np.abs(data.qvel[va]) > vmax*(1+scene.get("actual_velocity_tolerance",.05))).any(): violations.add("actual_velocity_limit")
         acceleration = (data.qvel[va]-last_v)/model.opt.timestep
-        if (np.abs(acceleration) > amax*1.1).any(): violations.add("actual_acceleration_limit")
+        if (np.abs(acceleration) > amax*(1+scene.get("actual_acceleration_tolerance",.1))).any(): violations.add("actual_acceleration_limit")
+        peak_velocity=np.maximum(peak_velocity,np.abs(data.qvel[va]))
+        peak_acceleration=np.maximum(peak_acceleration,np.abs(acceleration))
+        peak_torque=np.maximum(peak_torque,np.abs(data.actuator_force[acts]))
+        peak_tracking=np.maximum(peak_tracking,np.abs(data.qpos[qa]-cmd["q"][min(k+1,len(cmd["q"])-1)]))
         last_v = data.qvel[va].copy()
+    if np.max(peak_tracking)>scene.get("max_tracking_error",np.inf):violations.add("tracking_error_limit")
+    if np.max(np.abs(data.qvel[va]))>scene.get("final_brake_velocity_limit",np.inf):violations.add("braking_not_settled")
     if collision_pairs: violations.add("robot_self_collision")
     if result["post_release_robot_contact"]: violations.add("post_release_robot_recontact")
     if result["release"]:
         rv=np.asarray(result["release"]["linear_velocity"])
         if rv[2]<scene.get("min_release_vertical_velocity",-np.inf):violations.add("release_not_upward")
         if rv[0]<scene.get("min_release_forward_velocity",-np.inf):violations.add("release_not_forward")
+    result["tracking"] = dict(peak_velocity=peak_velocity.tolist(),peak_acceleration=peak_acceleration.tolist(),
+                              peak_torque=peak_torque.tolist(),peak_position_error=peak_tracking.tolist(),
+                              final_joint_velocity=data.qvel[va].tolist())
+    result["airborne_environment_contacts"]=airborne_environment_contacts
+    from .basketball_metrics import flight_metrics
+    result.update(flight_metrics(result,np.asarray(rows),bucket,rim))
+    result["airborne_environment_contacts"]=airborne_environment_contacts
+    if scene.get("require_high_arc",False):
+        if not result["release"]:violations.add("no_free_release")
+        elif result.get("apex_height_above_release",0)<scene.get("min_apex_rise",.2):violations.add("insufficient_apex_rise")
+        if not result.get("apex_between_release_and_bucket",False):violations.add("apex_not_between_release_and_bucket")
+        if not result.get("descending_entry_after_apex",False):violations.add("no_entry_after_apex")
+        if any(not c["geom"].startswith("bucket_") or c["time"]<=result.get("apex_time",np.inf) for c in airborne_environment_contacts):violations.add("contact_before_rim_crossing")
     result["collision_pairs"] = sorted(collision_pairs)
     result["violations"] = sorted(violations)
     result["stayed_in_bucket"] = bool(final_containment and all(final_containment))

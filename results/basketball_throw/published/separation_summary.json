@@ -1,0 +1,20 @@
+[
+  {
+    "condition": "ideal",
+    "sample_crossings": 4,
+    "max_same_seed_cross_com_separation_m": 0.06668553380707869,
+    "max_all_sample_separation_m": 0.06668553380707869
+  },
+  {
+    "condition": "contact",
+    "sample_crossings": 4,
+    "max_same_seed_cross_com_separation_m": 0.11539852661376923,
+    "max_all_sample_separation_m": 0.11539852661376923
+  },
+  {
+    "condition": "perturbed_contact",
+    "sample_crossings": 80,
+    "max_same_seed_cross_com_separation_m": 0.1251573795017821,
+    "max_all_sample_separation_m": 0.14065297216250794
+  }
+]
