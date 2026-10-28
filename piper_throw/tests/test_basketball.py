@@ -81,3 +81,12 @@ def test_controller_does_not_read_unknown_randomized_gain(monkeypatch):
     for seed in [10,11]:run_throw(p,{'shape':'box'},scene,seed=seed)
     assert len(first_controls)==2
     assert np.array_equal(first_controls[0],first_controls[1])
+
+
+def test_configured_arc_rise_targets_are_respected():
+    from piper_throw.basketball import rise_bounds_from_search
+    assert rise_bounds_from_search({"rise_targets":[.24,.30,.40]})==pytest.approx((.24,.40))
+    assert rise_bounds_from_search({"rise_targets":[.25,.25]})[0]==pytest.approx(.25)
+    for invalid in ([],[-.1,.3],[float("nan"),.2]):
+        with pytest.raises(ValueError):
+            rise_bounds_from_search({"rise_targets":invalid})
