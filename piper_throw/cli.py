@@ -13,7 +13,7 @@ def load_config(path):
 
 def main(argv=None):
     parser=argparse.ArgumentParser(description="Simulation-only PiPER throwing benchmark (SI units)")
-    parser.add_argument("command",choices=["smoke","throw","optimize","sensitivity","compare-twins","plot","video","tool","hidden-mass","search-sensitive","basketball"])
+    parser.add_argument("command",choices=["smoke","throw","optimize","sensitivity","compare-twins","plot","video","tool","hidden-mass","search-sensitive","basketball","diagnose-sim"])
     parser.add_argument("--config",default="configs/default.yaml")
     parser.add_argument("--results",default="results")
     parser.add_argument("--output")
@@ -39,6 +39,11 @@ def main(argv=None):
         parser.error("basketball config requires planned params; run the basketball command to plan/search")
     out=Path(args.output or Path(args.results)/f"{args.command}_{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}")
     budget=args.budget or c.get("search",{}).get("budget",100)
+    if args.command=="diagnose-sim":
+        from .sim_diagnostics import run_diagnostics
+        result=run_diagnostics(c,out)
+        print(json.dumps(dict(output_dir=str(out.resolve()), result=result),indent=2))
+        return
     if args.command=="tool":
         from .hidden_mass import HiddenThrowService
         service=HiddenThrowService(scene,out)
