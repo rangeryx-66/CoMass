@@ -1,0 +1,32 @@
+[
+  {
+    "requested_distance": 0.5,
+    "planner_velocity_residual": 0.5663589666046946,
+    "trials": 0,
+    "successes": 0,
+    "best": null,
+    "status": "no_feasible_arc_under_robot_limits",
+    "failure_reason": "planner_rejected_all_candidates",
+    "caveat": "finite search budget; no global infeasibility proof"
+  },
+  {
+    "requested_distance": 0.8,
+    "planner_velocity_residual": 0.8719258808563581,
+    "trials": 0,
+    "successes": 0,
+    "best": null,
+    "status": "no_feasible_arc_under_robot_limits",
+    "failure_reason": "planner_rejected_all_candidates",
+    "caveat": "finite search budget; no global infeasibility proof"
+  },
+  {
+    "requested_distance": 1.0,
+    "planner_velocity_residual": 1.2115817423149806,
+    "trials": 0,
+    "successes": 0,
+    "best": null,
+    "status": "no_feasible_arc_under_robot_limits",
+    "failure_reason": "planner_rejected_all_candidates",
+    "caveat": "finite search budget; no global infeasibility proof"
+  }
+]

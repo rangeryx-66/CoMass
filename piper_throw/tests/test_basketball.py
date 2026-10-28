@@ -90,3 +90,18 @@ def test_configured_arc_rise_targets_are_respected():
     for invalid in ([],[-.1,.3],[float("nan"),.2]):
         with pytest.raises(ValueError):
             rise_bounds_from_search({"rise_targets":invalid})
+
+
+def test_rejected_short_arc_candidates_do_not_stop_distance_scan(tmp_path):
+    import json
+    from pathlib import Path
+    import yaml
+    from piper_throw.basketball import run_benchmark
+    config=yaml.safe_load(Path('configs/basketball_throw.yaml').read_text())
+    config['search'].update(distances=[.5,.8,1.0],rise_targets=[.24],planner_budget=30,simulation_budget=2)
+    result=run_benchmark(config,tmp_path,repeats=0)
+    records=json.loads((tmp_path/'scan.json').read_text())
+    assert [r['requested_distance'] for r in records]==[.5,.8,1.0]
+    assert result['distance_count']==3
+    assert any(r.get('failure_reason')=='planner_rejected_all_candidates' for r in records)
+    assert (tmp_path/'distance_scan.csv').exists()

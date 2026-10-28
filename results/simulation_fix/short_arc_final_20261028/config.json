@@ -1,0 +1,132 @@
+{
+  "object": {
+    "shape": "box",
+    "mass": 0.1,
+    "com": [
+      0,
+      0,
+      0
+    ]
+  },
+  "scene": {
+    "grasp_offset": [
+      0.025,
+      0,
+      0.115
+    ],
+    "ready_joints": [
+      0,
+      0.8,
+      -1.8,
+      0,
+      1.1,
+      0
+    ],
+    "collision_penetration_tolerance": 0.0,
+    "base_position": [
+      0,
+      0,
+      0.75
+    ],
+    "table": {
+      "height": 0.75,
+      "center_x": -0.45,
+      "half_size": [
+        0.55,
+        0.45,
+        0.025
+      ]
+    },
+    "bucket_position": [
+      1.2,
+      0,
+      0
+    ],
+    "bucket_height": 0.25,
+    "bucket_radius": 0.14,
+    "release_mode": "ideal",
+    "timestep": 0.001,
+    "integrator": "implicitfast",
+    "settle_time": 0.6,
+    "flight_settle_time": 4.0,
+    "position_limits": [
+      [
+        -2.6179,
+        2.6179
+      ],
+      [
+        0,
+        3.14
+      ],
+      [
+        -2.967,
+        0
+      ],
+      [
+        -1.745,
+        1.745
+      ],
+      [
+        -1.22,
+        1.22
+      ],
+      [
+        -2.09439,
+        2.09439
+      ]
+    ],
+    "velocity_limits": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "acceleration_limits": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "actual_position_tolerance": 0.0,
+    "actual_velocity_tolerance": 0.0,
+    "actual_acceleration_tolerance": 0.0,
+    "torque_limits": [
+      12,
+      12,
+      12,
+      3,
+      3,
+      3
+    ],
+    "bounded_bias_compensation": true,
+    "acceleration_feedforward": true,
+    "gripper_motion_time": 0.1,
+    "nominal_payload_mass": 0.1,
+    "max_tracking_error": 0.15,
+    "final_brake_velocity_limit": 0.1,
+    "arc_profile": "smooth_acceleration",
+    "require_high_arc": true,
+    "min_apex_rise": 0.2,
+    "min_release_vertical_velocity": 1.98,
+    "min_release_forward_velocity": 0.1
+  },
+  "search": {
+    "seed": 20261028,
+    "distances": [
+      0.5,
+      0.8,
+      1.0
+    ],
+    "planner_budget": 180,
+    "simulation_budget": 4,
+    "repeats": 20,
+    "rise_targets": [
+      0.24,
+      0.3
+    ]
+  }
+}

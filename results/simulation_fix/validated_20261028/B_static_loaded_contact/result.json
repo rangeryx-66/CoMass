@@ -1,0 +1,623 @@
+{
+  "success": false,
+  "release_mode": "contact",
+  "seed": 0,
+  "randomization": false,
+  "parameters": {
+    "family": "basketball",
+    "release_joints": [
+      0.0,
+      0.8,
+      -1.8,
+      0.0,
+      1.1,
+      0.0
+    ],
+    "release_joint_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "ramp_time": 1.2,
+    "brake_time": 1.2,
+    "open_lead": 0.0,
+    "profile": "smooth_acceleration"
+  },
+  "command_sha256": "1e9ce0572ab456a2b4c755b8ff989fa078e12de124f580f193d8879a1b64d3e4",
+  "mass": 0.1,
+  "com_local": [
+    0,
+    0,
+    0
+  ],
+  "release": {
+    "time": 3.151999999999764,
+    "position": [
+      0.12572460440202804,
+      0.00297980912079592,
+      1.2962273203447372
+    ],
+    "com_position": [
+      0.12572460440202804,
+      0.00297980912079592,
+      1.2962273203447372
+    ],
+    "linear_velocity": [
+      0.0009448093915483033,
+      -0.03439770484609013,
+      -0.08057785447847933
+    ],
+    "angular_velocity": [
+      0.07803391029679428,
+      0.021060608268174134,
+      0.01412296166082734
+    ],
+    "quaternion": [
+      -0.4952893598044942,
+      -0.49518734081920746,
+      -0.5043335268436152,
+      0.5050996349813944
+    ]
+  },
+  "crossing": {
+    "time": 3.7087421300091505,
+    "position": [
+      0.4208442056620146,
+      -0.008495391715907083,
+      0.25
+    ],
+    "com_position": [
+      0.4208442056620146,
+      -0.008495391715907083,
+      0.25
+    ],
+    "quaternion": [
+      -0.4418286489716603,
+      -0.45711545377488566,
+      -0.5550698374698841,
+      0.5364050544124425
+    ],
+    "error_xy": [
+      -0.7791557943379854,
+      -0.008495391715907083
+    ],
+    "com_error_xy": [
+      -0.7791557943379854,
+      -0.008495391715907083
+    ],
+    "full_horizontal_envelope_inside": false
+  },
+  "com_crossing": {
+    "time": 3.7087421300091505,
+    "position": [
+      0.4208442056620146,
+      -0.008495391715907083,
+      0.25
+    ],
+    "error_xy": [
+      -0.7791557943379854,
+      -0.008495391715907083
+    ]
+  },
+  "rim_contact": false,
+  "stayed_in_bucket": false,
+  "perturbations": {
+    "release_delay_s": 0.0,
+    "actuator_gain_scale": 1.0
+  },
+  "slipped": false,
+  "post_release_robot_contact": false,
+  "violations": [],
+  "failure_reason": "not_settled_inside_bucket",
+  "tracking": {
+    "peak_velocity": [
+      0.0010635139842773945,
+      0.0020116086854780565,
+      0.003519534581957964,
+      0.00280022283240848,
+      0.011880855291855242,
+      0.0005575895486003101
+    ],
+    "peak_acceleration": [
+      0.27833238955491857,
+      0.10254250688813851,
+      0.4273175347426399,
+      1.264897727349161,
+      1.3352735743249595,
+      0.0689406658680455
+    ],
+    "peak_torque": [
+      0.020147893826360515,
+      0.2883817621460878,
+      3.4900146582444904,
+      0.09272714544869592,
+      1.8521751944730767,
+      0.14683198194927066
+    ],
+    "peak_position_error": [
+      1.663444835868018e-05,
+      8.769927851526305e-05,
+      0.00014847503657411387,
+      3.5698212926663574e-05,
+      0.0005016588101620645,
+      2.853836573862218e-05
+    ],
+    "final_joint_velocity": [
+      -5.33200915629342e-13,
+      1.1744389962236157e-11,
+      -1.0862035584993409e-09,
+      -1.4650768390183002e-12,
+      -7.837824083305529e-12,
+      1.9076619511853895e-13
+    ],
+    "phase_peak_acceleration": {
+      "initial_settle": [
+        0.27833238955491857,
+        0.10254250688813851,
+        0.4273175347426399,
+        1.264897727349161,
+        1.3352735743249595,
+        0.0689406658680455
+      ],
+      "pre_release": [
+        0.0017668676013153516,
+        0.00011095805130111725,
+        2.488949234063556e-05,
+        0.009045637881516884,
+        4.105107274103089e-05,
+        0.0010211470381139547
+      ],
+      "release_window": [
+        0.09792721533316286,
+        0.07707195031884635,
+        0.4068655756157389,
+        0.35011617443394355,
+        1.2541902186888498,
+        0.03171095501369321
+      ],
+      "post_release": [
+        0.0028972099251378157,
+        0.001735979502584127,
+        0.0011602032975906716,
+        0.017983387436989615,
+        0.010482446514111735,
+        0.0015304943139086333
+      ]
+    },
+    "acceleration_exceedance_samples": 0,
+    "first_acceleration_exceedance": null,
+    "top_acceleration_exceedances": [],
+    "actuator_saturation_steps": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "integration_steps": 7100
+  },
+  "airborne_environment_contacts": [
+    {
+      "time": 3.45899999999973,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.45899999999973,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.45899999999973,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.45899999999973,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.45999999999973,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.45999999999973,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.45999999999973,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.45999999999973,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.46099999999973,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.46099999999973,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.46099999999973,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.46099999999973,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4619999999997297,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4619999999997297,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4619999999997297,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4619999999997297,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4629999999997296,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4629999999997296,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4629999999997296,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4629999999997296,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4639999999997295,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4639999999997295,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4639999999997295,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4639999999997295,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4649999999997294,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4649999999997294,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4649999999997294,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4649999999997294,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4659999999997293,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4659999999997293,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4659999999997293,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4659999999997293,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.466999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.466999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.466999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.466999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.467999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.467999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.467999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.467999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.468999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.468999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.468999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.468999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.469999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.469999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.469999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.469999999999729,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4709999999997287,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4709999999997287,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4709999999997287,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4709999999997287,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4719999999997286,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4719999999997286,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4719999999997286,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4719999999997286,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4729999999997285,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4729999999997285,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4729999999997285,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4729999999997285,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4739999999997284,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4739999999997284,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4739999999997284,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4739999999997284,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4749999999997283,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4749999999997283,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4749999999997283,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4749999999997283,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.475999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.475999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.475999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.475999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.476999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.476999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.476999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.476999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.477999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.477999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.477999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.477999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.478999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.478999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.478999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.478999999999728,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4799999999997278,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4799999999997278,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4799999999997278,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4799999999997278,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4809999999997276,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4809999999997276,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4819999999997275,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4819999999997275,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4829999999997274,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4829999999997274,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4839999999997273,
+      "geom": "table_top"
+    },
+    {
+      "time": 3.4839999999997273,
+      "geom": "table_top"
+    }
+  ],
+  "release_speed": 0.08761783720122338,
+  "release_angle": -1.1671915871659222,
+  "release_angle_deg": -66.87515182778328,
+  "release_vertical_velocity": -0.08057785447847933,
+  "horizontal_range": 1.0742795282651416,
+  "apex_height_above_release": 0.0,
+  "apex_height_world": 1.2962273203447372,
+  "apex_geometry_height_world": 1.2962273203447372,
+  "apex_position": [
+    0.12572460440202804,
+    0.00297980912079592,
+    1.2962273203447372
+  ],
+  "apex_time": 3.151999999999764,
+  "time_to_apex": 0.0,
+  "ballistic_rise_prediction": 0.0,
+  "ballistic_target_error": 1.0739209639146043,
+  "ballistic_com_crossing_prediction": [
+    0.12615326564236895,
+    -0.012626473962443423
+  ],
+  "apex_between_release_and_bucket": false,
+  "apex_horizontal_fraction": 0.0,
+  "descending_entry_after_apex": false,
+  "collision_pairs": [],
+  "release_command_time": 3.0999999999997696,
+  "grasp_translation_drift_max_m": 0.004863326490249957,
+  "gross_slip_threshold_m": 0.02,
+  "final_position": [
+    0.4810129308735248,
+    -0.00624054462702938,
+    0.059892244579783746
+  ],
+  "flight_time": 0.5567421300093867
+}

@@ -57,6 +57,9 @@ def main(argv=None):
     if args.command=="basketball":
         from .basketball import run_benchmark
         result=run_benchmark(c,out,simulation_budget=args.budget,repeats=args.repeats)
+        if result['selected_trial'] is None:
+            print(json.dumps(dict(output_dir=str(out.resolve()),result=result),indent=2))
+            return
         from .basketball_analysis import audit_experiment,make_plots,write_report,numerical_checks
         audit=audit_experiment(out,repeats=args.repeats);make_plots(out);numerical_checks(out);write_report(out)
         if args.video:

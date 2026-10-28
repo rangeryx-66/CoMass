@@ -20,10 +20,29 @@ def rise_bounds_from_search(search):
     if values.ndim!=1 or len(values)==0 or not np.isfinite(values).all() or np.any(values<=0):
         raise ValueError("rise_targets must be a nonempty list of finite positive heights")
     low,high=float(np.min(values)),float(np.max(values))
-    if high==low:
-        # A narrow nonzero interval keeps SciPy's differential evolution well-defined.
-        return (low,low+1e-6)
     return (low,high)
+
+
+def estimate_peak_torque(model,data,params,scene):
+    """50 ms command samples, with nominal point payload and joint friction."""
+    ids=[model.joint(f'joint{i}').id for i in range(1,7)]
+    va=model.jnt_dofadr[ids]
+    cmd=make_arc_commands(params,dict(scene,timestep=.05))
+    peak=np.zeros(6)
+    for k,t in enumerate(cmd['time']):
+        data.qvel[:]=0;data.qvel[va]=cmd['qd'][k]
+        point,J,_=kinematic_release(model,data,cmd['q'][k],scene)
+        acc=np.zeros(model.nv);acc[va]=cmd['qdd'][k]
+        force=np.zeros(model.nv);mujoco.mj_mulM(model,data,force,acc)
+        demand=force[va]+data.qfrc_bias[va]-data.qfrc_passive[va]
+        demand+=model.dof_frictionloss[va]*np.sign(cmd['qd'][k])
+        if t<cmd['release_time']:
+            Jdot=np.zeros((3,model.nv))
+            mujoco.mj_jacDot(model,data,Jdot,None,point,model.body('link6').id)
+            acceleration=J@cmd['qdd'][k]+Jdot@data.qvel+[0,0,9.81]
+            demand+=scene.get('nominal_payload_mass',.1)*(J.T@acceleration)
+        peak=np.maximum(peak,np.abs(demand))
+    return peak
 
 
 def plan_candidates(obj,scene,distance,*,seed=0,budget=1000,count=12,target_world=None,rise_bounds=None):
@@ -53,7 +72,7 @@ def plan_candidates(obj,scene,distance,*,seed=0,budget=1000,count=12,target_worl
         # prepare, acceleration and braking separately without generating 7000 time samples.
         poses=np.vstack([a+(b-a)*f for a,b in [(ready,q0),(q0,q),(q,qstop)] for f in np.linspace(0,1,17)])
         # Sample the complete prepare/swing/braking command, rather than checking release alone.
-        bad=0.;min_clearance=0.
+        bad=0.
         oq=model.joint('object_free').qposadr[0];hand=model.body('link6').id;object_id=model.body('object').id
         for pose in poses:
             data.qpos[qa]=pose;mujoco.mj_forward(model,data)
@@ -72,8 +91,17 @@ def plan_candidates(obj,scene,distance,*,seed=0,budget=1000,count=12,target_worl
             bad+=max(0.,.085-point[2])
         endpoints=np.array([q0,qstop,ready])
         joint_excess=np.maximum(endpoints-limits[:,1],0).sum()+np.maximum(limits[:,0]-endpoints,0).sum()
-        cost=residual+100*bad+10*joint_excess+3*max(.8-p[2],0)+max(.15-p[0],0)
+        peak=estimate_peak_torque(model,data,params,scene)
+        torque_excess=np.maximum(peak/np.asarray(scene['torque_limits'])-1,0).sum()
+        velocity=J@v
+        required_vz=max(scene.get('min_release_vertical_velocity',0.),
+                        np.sqrt(2*9.81*scene.get('min_apex_rise',.2)))
+        cost=(residual+100*bad+10*joint_excess+3*max(.8-p[2],0)+max(.15-p[0],0)
+              +5*torque_excess+3*max(required_vz-velocity[2],0))
         row=dict(cost=float(cost),velocity_residual=float(residual),collision_penalty=float(bad),
+                 estimated_peak_torque=peak.tolist(),nominal_torque_feasible=bool(torque_excess==0),
+                 kinematic_feasible=bool(velocity[2]>=required_vz and velocity[0]>=scene.get('min_release_forward_velocity',.1)
+                                        and joint_excess==0 and bad==0),
                  params=params,planned_release=plan,bucket_position=np.r_[target[:2],target[2]-scene.get('bucket_height',.25)].tolist())
         key=tuple(np.round(x,5))
         if key not in seen:
@@ -89,7 +117,6 @@ def plan_candidates(obj,scene,distance,*,seed=0,budget=1000,count=12,target_worl
         if not candidates or all(np.linalg.norm(np.asarray(row['params']['release_joints'])-np.asarray(z['params']['release_joints']))>.06 for z in candidates):
             candidates.append(row)
         if len(candidates)>=count:break
-    # Always retain the best even if every candidate is kinematically infeasible.
     return dict(evaluations=evaluations,best=tested[0],candidates=candidates)
 
 
@@ -123,8 +150,8 @@ def run_benchmark(config,output,*,planner_budget=None,simulation_budget=None,rep
             row=dict(directory=str(target_dir/label),requested_distance=distance,objective=score(r),**serial(r))
             trials.append(row)
             return r,sc
-        # All distances get genuine physical trials, even if the planner reports a residual.
-        for k,candidate in enumerate(candidates[:max(1,min(len(candidates),budget//2))]):
+        eligible=[c for c in candidates if c['nominal_torque_feasible'] and c['kinematic_feasible']]
+        for k,candidate in enumerate(eligible[:max(1,budget//2)]):
             p=candidate['params'];bucket=candidate['bucket_position']
             r,sc=evaluate(p,bucket,'ideal',f'ideal_{k:03d}')
             rc,scc=evaluate({**p,'open_lead':.025},bucket,'contact',f'contact_{k:03d}')
@@ -133,6 +160,14 @@ def run_benchmark(config,output,*,planner_budget=None,simulation_budget=None,rep
                 if best is None or item['objective']<best['objective']:best=item
                 all_candidates.append(item)
             if len(trials)>=budget:break
+        if best is None:
+            rec=dict(requested_distance=distance,planner_velocity_residual=plan['best']['velocity_residual'],
+                     trials=0,successes=0,best=None,status='no_feasible_arc_under_robot_limits',
+                     failure_reason='planner_rejected_all_candidates',
+                     caveat='finite search budget; no global infeasibility proof')
+            records.append(rec);write(target_dir/'trials.json',trials);write(out/'scan.json',records)
+            print(json.dumps(rec),flush=True)
+            continue
         # Physical result feedback: adjust bounded joint speed/time and gripper lead, never object velocity.
         remaining=budget-len(trials)
         reference=best
@@ -153,6 +188,10 @@ def run_benchmark(config,output,*,planner_budget=None,simulation_budget=None,rep
         records.append(rec);write(out/'scan.json',records)
         print(json.dumps(dict(distance=distance,status=rec['status'],trials=rec['trials'],best_rise=best['result'].get('apex_height_above_release'),violations=best['result']['violations'])),flush=True)
     # Prefer contact success; otherwise choose the best measured diagnostic, never relabel it feasible.
+    if not all_candidates:
+        make_tables(out,records,[])
+        return dict(selected_trial=None,maximum_nominal_feasible_distance_m=None,
+                    status='no_feasible_arc_under_robot_limits',distance_count=len(records))
     ordered=sorted(all_candidates,key=lambda x:(not(x['result']['success'] and x['scene']['release_mode']=='contact'),not x['result']['success'],x['objective']))
     selected=ordered[0];write(out/'selected.json',selected)
     observed_arcs=[x for x in all_candidates if x['result'].get('apex_height_above_release',0)>=.20 and x['result'].get('descending_entry_after_apex',False)]
@@ -173,7 +212,8 @@ def make_tables(out,records,repeats):
         with (out/'distance_scan.csv').open('w') as f:
             w=csv.writer(f);w.writerow(['requested_distance_m','actual_best_range_m','status','physical_trials','hits','release_speed_m_s','release_vz_m_s','rise_m','angle_deg','planner_velocity_residual_m_s','violations'])
             for x in records:
-                r=x['best']['result'];w.writerow([x['requested_distance'],r.get('horizontal_range'),x['status'],x['trials'],x['successes'],r.get('release_speed'),r.get('release_vertical_velocity'),r.get('apex_height_above_release'),r.get('release_angle_deg'),x['planner_velocity_residual'],';'.join(r['violations'])])
+                r=x['best']['result'] if x['best'] else {}
+                w.writerow([x['requested_distance'],r.get('horizontal_range'),x['status'],x['trials'],x['successes'],r.get('release_speed'),r.get('release_vertical_velocity'),r.get('apex_height_above_release'),r.get('release_angle_deg'),x['planner_velocity_residual'],';'.join(r.get('violations',[x.get('failure_reason','')]))])
     if not repeats:return
     with (out/'com_repeats.csv').open('w') as f:
         w=csv.writer(f);w.writerow(['condition','object_id','seed','com_x','com_y','com_z','success','stayed_in_bucket','slipped','post_release_recontact','range_m','rise_m','release_speed','release_vz','flight_time','cross_x','cross_y','quaternion','release_position','release_velocity','angular_velocity','violations','command_sha256'])

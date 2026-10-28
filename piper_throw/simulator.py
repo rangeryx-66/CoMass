@@ -66,9 +66,12 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
             raise ValueError("invalid grasp quaternion (wxyz)")
         relative_quat=relative_quat/np.linalg.norm(relative_quat)
     mujoco.mju_mulQuat(data.qpos[oq+3:oq+7],data.xquat[ee],relative_quat)
+    attached = scene.get("grasp_object", True)
+    if not attached:
+        data.qpos[oq:oq+3] = [-2., 0., .1]
     model.eq_data[weld, 3:6] = grasp
     model.eq_data[weld, 6:10] = relative_quat
-    data.eq_active[weld] = release_mode != "contact"
+    data.eq_active[weld] = attached and release_mode != "contact"
     arm_bodies = {model.body(n).id for n in ["base_link"]+[f"link{i}" for i in range(1,9)]}
     geom = model.geom("object_geom").id
     if release_mode != "contact":
@@ -80,6 +83,9 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
             elif gi != geom:
                 model.geom_contype[gi] = 2; model.geom_conaffinity[gi] = 7
         model.geom_contype[geom] = 4; model.geom_conaffinity[geom] = 2
+    if not attached:
+        model.geom_contype[geom] = 0
+        model.geom_conaffinity[geom] = 0
     nominal_gains=model.actuator_gainprm[acts,0].copy()
     nominal_velocity_gains=-model.actuator_biasprm[acts,2].copy()
     rng = np.random.default_rng(seed)
@@ -117,29 +123,47 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
     # Keep real time-step acceleration checks. Diagnose the actual joint, phase,
     # load and contact state instead of weakening limits to make throws "pass".
     accel_events=[]; saturation_steps=np.zeros(6,dtype=int); phase_peaks={}
-    airborne_environment_contacts=[]
+    airborne_environment_contacts=[]; control_rows=[]; integration_steps=0
+    jaw_start = float(data.qpos[6])
+    jaw_closed = scene.get("gripper_closed", .015)
+    jaw_motion_time = scene.get("gripper_motion_time", 0.)
     for k, t in enumerate(cmd["time"]):
         data.ctrl[acts] = cmd["q"][k]
         if scene.get("bounded_bias_compensation",False):
-            feed=data.qfrc_bias[va]+nominal_velocity_gains*cmd["qd"][k]
+            feed=nominal_velocity_gains*cmd["qd"][k]
+            if scene.get("bias_compensation", True):
+                feed += data.qfrc_bias[va]
             if scene.get("acceleration_feedforward",False):
                 desired_acc=np.zeros(model.nv);desired_acc[va]=cmd["qdd"][k]
                 torque=np.zeros(model.nv);mujoco.mj_mulM(model,data,torque,desired_acc)
-                feed+=torque[va]
-                # Nominal measured total mass only. No hidden CoM/inertia read by the controller.
-                if t<release_at:
-                    J=np.zeros((3,model.nv));W=J.copy()
-                    point=data.xpos[ee]+data.xmat[ee].reshape(3,3)@grasp
-                    mujoco.mj_jac(model,data,J,W,point,ee);J=J[:,va]
-                    feed+=scene.get("nominal_payload_mass",.1)*(J.T@(J@cmd["qdd"][k]+np.array([0.,0.,9.81])))
+                feed+=torque[va]-data.qfrc_passive[va]
+            # Nominal point payload; hidden CoM/inertia are not controller inputs.
+            if attached and t<release_at and scene.get("bias_compensation", True):
+                J=np.zeros((3,model.nv));W=J.copy()
+                point=data.xpos[ee]+data.xmat[ee].reshape(3,3)@grasp
+                mujoco.mj_jac(model,data,J,W,point,ee);J=J[:,va]
+                load_acc=np.array([0.,0.,9.81])
+                if scene.get("acceleration_feedforward",False):
+                    Jdot=np.zeros((3,model.nv))
+                    mujoco.mj_jacDot(model,data,Jdot,None,point,ee)
+                    load_acc += J@cmd["qdd"][k]+Jdot@data.qvel
+                feed+=scene.get("nominal_payload_mass",.1)*(J.T@load_acc)
             data.ctrl[acts]+=feed/nominal_gains
+        if jaw_motion_time:
+            # Finite jaw setpoint motion avoids the old 20 N step excitation.
+            u = np.clip(t/jaw_motion_time, 0, 1)
+            jaw_target = jaw_start + (jaw_closed-jaw_start)*u*u*(3-2*u)
+        else:
+            jaw_target = jaw_closed
         if t >= release_at:
-            data.ctrl[model.actuator("gripper").id] = .035
+            u = np.clip((t-release_at)/jaw_motion_time, 0, 1) if jaw_motion_time else 1.
+            jaw_target = jaw_closed + (.035-jaw_closed)*u*u*(3-2*u)
             if release_command_time is None:
                 release_command_time = float(data.time)
             if release_mode != "contact" and not released:
                 data.eq_active[weld] = 0
                 released = True
+        data.ctrl[model.actuator("gripper").id] = jaw_target
         touching = False
         for con in data.contact:
             g1,g2 = int(con.geom1),int(con.geom2)
@@ -162,7 +186,7 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
                 violations.add("robot_scene_collision")
         if release_mode == "contact":
             relative = data.xmat[ee].reshape(3,3).T @ (data.xpos[obj]-data.xpos[ee])
-            if t < release_at:
+            if attached and t < release_at:
                 grasp_drift_max=max(grasp_drift_max,float(np.linalg.norm(relative-grasp)))
                 if np.linalg.norm(relative-grasp) > .02:result["slipped"] = True
             if t >= release_at and not released:
@@ -208,7 +232,22 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
         rows.append(np.r_[data.time,p,c,data.xquat[obj],v,data.qpos[qa],data.qvel[va],cmd["q"][k],float(released)])
         states.append(data.qpos.copy())
         old = (p,c,float(data.time))
+        if k == len(cmd["time"])-1:
+            break
+        contact_count = data.ncon
         mujoco.mj_step(model,data)
+        integration_steps += 1
+        normal_force = 0.
+        for index, contact in enumerate(data.contact):
+            bodies = {int(model.geom_bodyid[contact.geom1]), int(model.geom_bodyid[contact.geom2])}
+            if obj in bodies and bodies & arm_bodies:
+                contact_force=np.zeros(6)
+                mujoco.mj_contactForce(model,data,index,contact_force)
+                normal_force += contact_force[0]
+        forces = data.actuator_force[acts].copy()
+        constraint = data.qfrc_constraint[va].copy()
+        bias = data.qfrc_bias[va].copy()
+        passive = data.qfrc_passive[va].copy()
         mujoco.mj_forward(model,data)  # current-time xpos/xipos/contact/velocity telemetry
         if not np.isfinite(data.qpos).all() or data.time < t-.01:
             violations.add("numerical_instability"); break
@@ -227,7 +266,6 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
                else "pre_release" if at<release_at
                else "release_window" if at<release_at+.15 else "post_release")
         phase_peaks[phase]=np.maximum(phase_peaks.get(phase,np.zeros(6)),np.abs(acceleration))
-        forces=np.asarray(data.actuator_force[acts],dtype=float)
         ranges=model.actuator_forcerange[acts]
         bounded=model.actuator_forcelimited[acts].astype(bool)
         saturation_steps+=np.asarray(bounded & (np.abs(forces)>=.99*np.maximum(np.abs(ranges[:,0]),np.abs(ranges[:,1]))),dtype=int)
@@ -250,6 +288,10 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
         peak_acceleration=np.maximum(peak_acceleration,np.abs(acceleration))
         peak_torque=np.maximum(peak_torque,np.abs(forces))
         peak_tracking=np.maximum(peak_tracking,np.abs(data.qpos[qa]-cmd["q"][min(k+1,len(cmd["q"])-1)]))
+        if output_dir:
+            control_rows.append(np.r_[data.time,cmd["time"][k],data.qpos[qa],data.qvel[va],acceleration,
+                                     cmd["q"][min(k+1,len(cmd["q"])-1)],cmd["q"][k],cmd["qd"][k],cmd["qdd"][k],
+                                     forces,bias,passive,constraint,data.ctrl,contact_count,touching,normal_force,data.qpos[6:8]])
         last_v = data.qvel[va].copy()
     if np.max(peak_tracking)>scene.get("max_tracking_error",np.inf):violations.add("tracking_error_limit")
     if np.max(np.abs(data.qvel[va]))>scene.get("final_brake_velocity_limit",np.inf):violations.add("braking_not_settled")
@@ -268,7 +310,7 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
                               first_acceleration_exceedance=accel_events[0] if accel_events else None,
                               top_acceleration_exceedances=top_events,
                               actuator_saturation_steps=saturation_steps.tolist(),
-                              integration_steps=k+1)
+                              integration_steps=integration_steps)
     result["airborne_environment_contacts"]=airborne_environment_contacts
     from .basketball_metrics import flight_metrics
     result.update(flight_metrics(result,np.asarray(rows),bucket,rim))
@@ -302,6 +344,11 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
         header += [f"{p}_{i}" for p in ["q","qd","command"] for i in range(1,7)] + ["released"]
         with (out/"trajectory.csv").open("w") as f:
             w=csv.writer(f);w.writerow(header);w.writerows(rows)
+        control_header = ["time", "command_time"]
+        control_header += [f"{prefix}_{j}" for prefix in ["q","qd","qdd","target_q","applied_q","target_qd","target_qdd","torque","bias","passive","constraint","ctrl"] for j in range(1,7)]
+        control_header += ["gripper_ctrl", "contact_count", "object_robot_contact", "object_normal_force", "gripper_q_7", "gripper_q_8"]
+        with (out/"control.csv").open("w") as f:
+            writer=csv.writer(f);writer.writerow(control_header);writer.writerows(control_rows)
         np.savez_compressed(out/"replay.npz",qpos=states,time=np.asarray(rows)[:,0],commands=cmd["q"],
                             release_time=cmd["release_time"], parameters=json.dumps(cmd["parameters"]))
     result["trajectory"] = np.asarray(rows)
