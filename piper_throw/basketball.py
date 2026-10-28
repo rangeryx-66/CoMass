@@ -14,7 +14,19 @@ def serial(result):return {k:v for k,v in result.items() if k!='trajectory'}
 def write(path,value):Path(path).write_text(json.dumps(value,indent=2,allow_nan=False)+'\n')
 
 
-def plan_candidates(obj,scene,distance,*,seed=0,budget=1000,count=12,target_world=None):
+def rise_bounds_from_search(search):
+    """The configured rise_targets were previously ignored by the planner."""
+    values=np.asarray(search.get("rise_targets",[.215,.36]),dtype=float)
+    if values.ndim!=1 or len(values)==0 or not np.isfinite(values).all() or np.any(values<=0):
+        raise ValueError("rise_targets must be a nonempty list of finite positive heights")
+    low,high=float(np.min(values)),float(np.max(values))
+    if high==low:
+        # A narrow nonzero interval keeps SciPy's differential evolution well-defined.
+        return (low,low+1e-6)
+    return (low,high)
+
+
+def plan_candidates(obj,scene,distance,*,seed=0,budget=1000,count=12,target_world=None,rise_bounds=None):
     """Numerical IK/trajectory optimization; finite budget is not an impossibility proof."""
     model,_=build_model(obj,scene);data=mujoco.MjData(model)
     ids=[model.joint(f'joint{i}').id for i in range(1,7)]
@@ -67,7 +79,7 @@ def plan_candidates(obj,scene,distance,*,seed=0,budget=1000,count=12,target_worl
         if key not in seen:
             tested.append(row);seen.add(key)
         return cost
-    bounds=[(.45,2.5),(-2.55,-.15),(-.45,.45),(-.95,.95),(.55,1.5),(.215,.36)]
+    bounds=[(.45,2.5),(-2.55,-.15),(-.45,.45),(-.95,.95),(.55,1.5),rise_bounds if rise_bounds is not None else (.215,.36)]
     popsize=5;iters=max(1,budget//(popsize*len(bounds))-1)
     de=differential_evolution(evaluate,bounds,seed=seed,popsize=popsize,maxiter=iters,polish=False,workers=1,tol=0,atol=0)
     minimize(evaluate,de.x,method='Nelder-Mead',bounds=bounds,options={'maxfev':max(40,budget//5),'xatol':1e-4,'fatol':1e-5})
@@ -99,7 +111,7 @@ def run_benchmark(config,output,*,planner_budget=None,simulation_budget=None,rep
     obj=config['object'];scene=config['scene'];search=config['search'];records=[];all_candidates=[]
     for j,distance in enumerate(search['distances']):
         target_dir=out/f'distance_{distance:.1f}m';target_dir.mkdir(exist_ok=True)
-        plan=plan_candidates(obj,scene,distance,seed=search.get('seed',0)+j,budget=planner_budget or search.get('planner_budget',1000),count=10)
+        plan=plan_candidates(obj,scene,distance,seed=search.get('seed',0)+j,budget=planner_budget or search.get('planner_budget',1000),count=10,rise_bounds=rise_bounds_from_search(search))
         write(target_dir/'planner.json',plan)
         best=None
         budget=simulation_budget or search.get('simulation_budget',40)
