@@ -1,0 +1,485 @@
+{
+  "success": false,
+  "release_mode": "contact",
+  "seed": 0,
+  "randomization": false,
+  "parameters": {
+    "family": "trebuchet",
+    "windup": [
+      2.6179,
+      1.8876333232138922,
+      -1.7205403254539378,
+      0.7816515866183571,
+      0.640731336748263,
+      0.49867642331672046
+    ],
+    "swing_end": [
+      -0.13773979950193294,
+      1.4319054204280441,
+      -0.6702820472996294,
+      0.959343891854818,
+      -1.165733627243265,
+      -1.2942472497709012
+    ],
+    "swing_velocity": [
+      0.45499817221229055,
+      -0.23343003615288097,
+      0.18955261930970882,
+      -0.08261180647069154,
+      -0.030289172255711688,
+      -0.15747011614080247
+    ],
+    "brake_end": [
+      1.2517476372876737,
+      0.2999020896907992,
+      -0.6356713231145572,
+      -0.8676018997114181,
+      -1.0793892265895677,
+      -0.17186118822121044
+    ],
+    "prepare_s": 2.958817413590991,
+    "swing_s": 1.9710277969683774,
+    "brake_s": 3.0626109433198985,
+    "release_phase": 0.4454899358475892
+  },
+  "command_sha256": "9970c160f4003ec3d82339b42d7e871f9ba26b8daea77be3457d1480ad4f41cb",
+  "mass": 0.1,
+  "com_local": [
+    0,
+    0,
+    0
+  ],
+  "release": {
+    "time": 4.491249999999743,
+    "position": [
+      0.20649173612887692,
+      0.5154284390159726,
+      1.0295434779800527
+    ],
+    "com_position": [
+      0.20649173612887692,
+      0.5154284390159726,
+      1.0295434779800527
+    ],
+    "linear_velocity": [
+      1.7647848290214994,
+      -0.7028743292634476,
+      -0.13665263033633496
+    ],
+    "angular_velocity": [
+      -1.335135779007763,
+      -1.3055466177249997,
+      -3.793192434020678
+    ],
+    "quaternion": [
+      -0.42917211544651124,
+      -0.1311881339091701,
+      -0.8681603195387895,
+      0.21189296454319342
+    ],
+    "commanded_tcp_velocity": [
+      1.5845361349479836,
+      -0.7367721900151479,
+      -0.011559331090946529
+    ],
+    "end_effector_velocity": [
+      1.5842707609978453,
+      -0.7362915441271376,
+      -0.016077762646872946
+    ],
+    "end_effector_position": [
+      0.1861679261193417,
+      0.48551759530819183,
+      1.0277823104957193
+    ],
+    "downward_swing": true,
+    "swing_height_drop_m": 0.008185830248008452,
+    "before_open_command": false,
+    "during_swing": true
+  },
+  "crossing": null,
+  "com_crossing": null,
+  "rim_contact": false,
+  "stayed_in_bucket": false,
+  "perturbations": {
+    "release_delay_s": 0.0,
+    "actuator_gain_scale": 1.0
+  },
+  "slipped": true,
+  "post_release_robot_contact": false,
+  "violations": [
+    "actual_acceleration_limit"
+  ],
+  "failure_reason": "actual_acceleration_limit",
+  "tracking": {
+    "peak_velocity": [
+      2.827221723372288,
+      0.5991620272192301,
+      0.9170920792975691,
+      1.0828505661203018,
+      1.7090923714275068,
+      1.6379882374630677
+    ],
+    "peak_acceleration": [
+      5.010348763967443,
+      0.7462074891628756,
+      1.383554701448686,
+      1.629798238823999,
+      2.6828402101986004,
+      2.525843614769041
+    ],
+    "peak_torque": [
+      2.731382786001859,
+      9.558192571520067,
+      6.1162074109253695,
+      1.3820588301202719,
+      1.9905235503688417,
+      0.8558532029086621
+    ],
+    "peak_position_error": [
+      0.0014143501311534301,
+      0.0016319829202022795,
+      0.0012727555588798456,
+      0.0037997086177605777,
+      0.004256405153363146,
+      0.003824173897101213
+    ],
+    "final_joint_velocity": [
+      0.00021472174246220342,
+      -0.00020071018770010445,
+      -0.00038140708492815766,
+      -0.00037948487278342504,
+      9.412967704342362e-05,
+      0.00027235856124434695
+    ],
+    "phase_peak_acceleration": {
+      "initial_settle": [
+        0.6981230265660079,
+        0.38214795814572616,
+        0.4010440021920939,
+        1.629798238823999,
+        1.2617694957595857,
+        0.1863267710663499
+      ],
+      "pre_release": [
+        4.5318204939510665,
+        0.45911200215198456,
+        1.383554701448686,
+        0.5648359645256396,
+        2.6613136622941624,
+        2.525843614769041
+      ],
+      "release_window": [
+        0.9623938190443937,
+        0.7462074891628756,
+        0.5875124680687627,
+        0.4665685467819536,
+        1.2999767717722932,
+        0.7919663660089782
+      ],
+      "post_release": [
+        5.010348763967443,
+        0.5560109156914628,
+        1.2021628297715914,
+        1.073685467628982,
+        2.6828402101986004,
+        2.3559888635809045
+      ]
+    },
+    "acceleration_exceedance_samples": 62,
+    "first_acceleration_exceedance": {
+      "time_s": 5.105250000000494,
+      "phase": "post_release",
+      "joint": 1,
+      "actual_acceleration_rad_s2": 5.00084783934529,
+      "commanded_acceleration_rad_s2": 4.994272145537394,
+      "limit_rad_s2": 5.0,
+      "actuator_force_Nm": 0.5014774980392716,
+      "contact_geoms": [
+        "floor",
+        "object_geom"
+      ],
+      "tracking_error_rad": 0.0011546296549201224
+    },
+    "top_acceleration_exceedances": [
+      {
+        "time_s": 5.111000000000501,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.010348763967443,
+        "commanded_acceleration_rad_s2": 4.993335365084263,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.5002640995368353,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.0011547203748956958
+      },
+      {
+        "time_s": 5.1107500000005,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.010336851824171,
+        "commanded_acceleration_rad_s2": 4.993406676234166,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.5003382562306697,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.001154705806496209
+      },
+      {
+        "time_s": 5.111250000000501,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.010336472663912,
+        "commanded_acceleration_rad_s2": 4.993261264098621,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.5001890571590764,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.0011547360105094856
+      },
+      {
+        "time_s": 5.111500000000501,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.0103010859743335,
+        "commanded_acceleration_rad_s2": 4.993184372065613,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.5001132237034156,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.0011547527159327386
+      },
+      {
+        "time_s": 5.1105000000005,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.010299577961508,
+        "commanded_acceleration_rad_s2": 4.993475198760052,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.5004114277654637,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.0011546923014509464
+      },
+      {
+        "time_s": 5.111750000000502,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.010243664286929,
+        "commanded_acceleration_rad_s2": 4.993104687773545,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.5000366891135783,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.0011547704925574942
+      },
+      {
+        "time_s": 5.1102500000005,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.01023573108883,
+        "commanded_acceleration_rad_s2": 4.9935409338735965,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.5004835095727174,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.0011546798545549602
+      },
+      {
+        "time_s": 5.112000000000502,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.010165222713248,
+        "commanded_acceleration_rad_s2": 4.99302221001075,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.4999595388711313,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.0011547893406325949
+      },
+      {
+        "time_s": 5.1100000000004995,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.010144043831932,
+        "commanded_acceleration_rad_s2": 4.993603882786488,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.5005543917592234,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.0011546684591993844
+      },
+      {
+        "time_s": 5.112250000000502,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.01006673322113,
+        "commanded_acceleration_rad_s2": 4.992936937565489,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.49988185418514774,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.0011548092593359621
+      },
+      {
+        "time_s": 5.109750000000499,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.010023189303325,
+        "commanded_acceleration_rad_s2": 4.9936640467103715,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.5006239588550656,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.0011546581072806317
+      },
+      {
+        "time_s": 5.1125000000005025,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.009949126652646,
+        "commanded_acceleration_rad_s2": 4.992848869226151,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.4998037121685712,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.001154830246817673
+      },
+      {
+        "time_s": 5.109500000000499,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.0098717773883195,
+        "commanded_acceleration_rad_s2": 4.993721426856936,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.500692089549112,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.001154648789135404
+      },
+      {
+        "time_s": 5.112750000000503,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.009813294595933,
+        "commanded_acceleration_rad_s2": 4.99275800378102,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.4997251860131513,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.001154852300274345
+      },
+      {
+        "time_s": 5.109250000000499,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.009688350569252,
+        "commanded_acceleration_rad_s2": 4.993776024437878,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.5007586564080029,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.0011546404934524163
+      },
+      {
+        "time_s": 5.113000000000503,
+        "phase": "post_release",
+        "joint": 1,
+        "actual_acceleration_rad_s2": 5.009660091092716,
+        "commanded_acceleration_rad_s2": 4.992664340018457,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.499646345147994,
+        "contact_geoms": [
+          "floor",
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.0011548754159758506
+      }
+    ],
+    "actuator_saturation_steps": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "integration_steps": 36770
+  },
+  "airborne_environment_contacts": [],
+  "collision_pairs": [],
+  "release_command_time": 4.436999999999677,
+  "grasp_translation_drift_max_m": 0.032604278844808716,
+  "gross_slip_threshold_m": 0.02,
+  "final_position": [
+    0.9883866871020046,
+    0.22013602656392123,
+    0.059892244579783434
+  ],
+  "flight_time": 0.42925000000025726,
+  "measurement": "release_to_first_floor_contact",
+  "first_floor_contact": {
+    "time": 4.9205000000000005,
+    "contact_position": [
+      0.9865157628185399,
+      0.18435484075884004,
+      -8.730153729011314e-05
+    ],
+    "contact_points": [
+      [
+        0.9865157628185399,
+        0.18435484075884004,
+        -8.730153729011314e-05
+      ]
+    ],
+    "geometry_position": [
+      0.964025623986327,
+      0.21371963317964715,
+      0.0665854345331886
+    ],
+    "com_position": [
+      0.964025623986327,
+      0.21371963317964715,
+      0.0665854345331886
+    ]
+  },
+  "first_flight_obstacle": null,
+  "range_m": 0.8473766634006871,
+  "center_range_m": 0.8154052947900235,
+  "controlled_downswing": true,
+  "release_height_m": 1.0295434779800527,
+  "release_speed": 1.904513522362029,
+  "scheduled_release_command_time": 4.436890460416249,
+  "release_delay_s": 0.0542500000000663
+}

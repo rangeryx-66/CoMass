@@ -138,16 +138,17 @@ def build_model(object_config, scene_config):
         ET.SubElement(root.find("contact"),"exclude",body1="base_link",body2="table") # fixed mounting interface
     else:
         ET.SubElement(wb, "geom", name="pedestal", type="cylinder", size=".085 .175", pos="0 0 .175", rgba=".3 .3 .3 1")
-    bucket = scene_config.get("bucket_position", [.8, 0, .0])
-    radius = scene_config.get("bucket_radius", .14)
-    height = scene_config.get("bucket_height", .22)
-    b = ET.SubElement(wb, "body", name="bucket", pos=vec(bucket))
-    ET.SubElement(b, "geom", name="bucket_bottom", type="cylinder", size=f"{radius+.012} .01", pos="0 0 .01", rgba=".2 .5 .65 1")
-    for i, th in enumerate(np.linspace(0, 2*np.pi, 48, endpoint=False)):
-        ET.SubElement(b, "geom", name=f"bucket_wall_{i}", type="box",
-                      pos=vec([(radius+.008)*np.cos(th), (radius+.008)*np.sin(th), height/2]),
-                      size=vec([.01, (radius+.008)*np.tan(np.pi/48)*1.05, height/2]),
-                      euler=f"0 0 {th}", rgba=".2 .55 .7 .65")
+    if scene_config.get("include_bucket", True):
+        bucket = scene_config.get("bucket_position", [.8, 0, .0])
+        radius = scene_config.get("bucket_radius", .14)
+        height = scene_config.get("bucket_height", .22)
+        b = ET.SubElement(wb, "body", name="bucket", pos=vec(bucket))
+        ET.SubElement(b, "geom", name="bucket_bottom", type="cylinder", size=f"{radius+.012} .01", pos="0 0 .01", rgba=".2 .5 .65 1")
+        for i, th in enumerate(np.linspace(0, 2*np.pi, 48, endpoint=False)):
+            ET.SubElement(b, "geom", name=f"bucket_wall_{i}", type="box",
+                          pos=vec([(radius+.008)*np.cos(th), (radius+.008)*np.sin(th), height/2]),
+                          size=vec([.01, (radius+.008)*np.tan(np.pi/48)*1.05, height/2]),
+                          euler=f"0 0 {th}", rgba=".2 .55 .7 .65")
     obj = ET.SubElement(wb, "body", name="object", pos="0 0 1")
     ET.SubElement(obj, "freejoint", name="object_free")
     c, I = mass_properties(object_config)

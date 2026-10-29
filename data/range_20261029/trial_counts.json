@@ -1,0 +1,122 @@
+{
+  "ablations/free_j1": {
+    "evaluations": 96,
+    "raw_successes": 21
+  },
+  "ablations/free_margin": {
+    "evaluations": 96,
+    "raw_successes": 41
+  },
+  "ablations/free_orientation": {
+    "evaluations": 96,
+    "raw_successes": 3
+  },
+  "ablations/free_pitch": {
+    "evaluations": 96,
+    "raw_successes": 34
+  },
+  "ablations/free_reserve": {
+    "evaluations": 96,
+    "raw_successes": 37
+  },
+  "ablations/free_symmetric": {
+    "evaluations": 96,
+    "raw_successes": 48
+  },
+  "ablations/free_timing_paths": {
+    "evaluations": 96,
+    "raw_successes": 11
+  },
+  "ablations/free_wrist": {
+    "evaluations": 96,
+    "raw_successes": 0
+  },
+  "ablations/restricted": {
+    "evaluations": 96,
+    "raw_successes": 38
+  },
+  "capabilities/accel2": {
+    "evaluations": 128,
+    "raw_successes": 32
+  },
+  "capabilities/accel4": {
+    "evaluations": 128,
+    "raw_successes": 32
+  },
+  "capabilities/all2": {
+    "evaluations": 128,
+    "raw_successes": 34
+  },
+  "capabilities/all4": {
+    "evaluations": 128,
+    "raw_successes": 27
+  },
+  "capabilities/baseline": {
+    "evaluations": 128,
+    "raw_successes": 26
+  },
+  "capabilities/speed2": {
+    "evaluations": 128,
+    "raw_successes": 27
+  },
+  "capabilities/speed4": {
+    "evaluations": 128,
+    "raw_successes": 27
+  },
+  "capabilities/torque2": {
+    "evaluations": 128,
+    "raw_successes": 26
+  },
+  "capabilities/torque4": {
+    "evaluations": 128,
+    "raw_successes": 26
+  },
+  "extended_search": {
+    "evaluations": 1024,
+    "raw_successes": 117
+  },
+  "final_search": {
+    "evaluations": 512,
+    "raw_successes": 105
+  },
+  "free_seed11": {
+    "evaluations": 256,
+    "raw_successes": 15
+  },
+  "free_seed22": {
+    "evaluations": 256,
+    "raw_successes": 0
+  },
+  "full_release_scan": {
+    "evaluations": 50,
+    "raw_successes": 10
+  },
+  "paired_timing": {
+    "evaluations": 99,
+    "raw_successes": 27
+  },
+  "pilot": {
+    "evaluations": 64,
+    "raw_successes": 1
+  },
+  "release_scan": {
+    "evaluations": 17,
+    "raw_successes": 17
+  },
+  "tempo_search": {
+    "evaluations": 256,
+    "raw_successes": 56
+  },
+  "time_search": {
+    "evaluations": 128,
+    "raw_successes": 0
+  },
+  "upper_start_refined": {
+    "evaluations": 73,
+    "raw_successes": 38
+  },
+  "upper_start_search": {
+    "evaluations": 1,
+    "raw_successes": 0
+  }
+}

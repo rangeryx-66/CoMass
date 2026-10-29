@@ -35,6 +35,7 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
     """
     object_config = dict(object_config or {})
     scene = dict(scene_config or {})
+    measure_range = scene.get("measure_range", False)
     release_mode = scene.get("release_mode", "ideal")
     if release_mode not in {"ideal", "contact", "perturbed"}:
         raise ValueError("unknown release mode")
@@ -105,8 +106,8 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
     amax = np.asarray(scene.get("acceleration_limits", [40,40,40,60,60,60]))
     violations = set()
     if ((cmd["q"] < limits[:,0]) | (cmd["q"] > limits[:,1])).any(): violations.add("command_joint_limit")
-    if (np.abs(cmd["qd"]) > vmax).any(): violations.add("command_velocity_limit")
-    if (np.abs(cmd["qdd"]) > amax).any(): violations.add("command_acceleration_limit")
+    if (np.abs(cmd["qd"]) > vmax+1e-9).any(): violations.add("command_velocity_limit")
+    if (np.abs(cmd["qdd"]) > amax+1e-9).any(): violations.add("command_acceleration_limit")
     result = dict(success=False, release_mode=release_mode, seed=seed, randomization=bool(randomized),
                   parameters=cmd["parameters"], command_sha256=cmd["command_sha256"],
                   mass=object_config.get("mass",.1), com_local=object_config.get("com",[0,0,0]),
@@ -125,6 +126,8 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
     # load and contact state instead of weakening limits to make throws "pass".
     accel_events=[]; saturation_steps=np.zeros(6,dtype=int); phase_peaks={}
     airborne_environment_contacts=[]; control_rows=[]; integration_steps=0
+    had_grasp_contact=False; impact=None; first_obstacle=None; tcp_rows=[]
+    swing_high=-np.inf
     gripper=gripper_commands(cmd["time"],release_at,scene)
     payload_support=payload_support_fraction(cmd["time"],release_at,scene)
     for k, t in enumerate(cmd["time"]):
@@ -156,16 +159,18 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
                 data.eq_active[weld] = 0
                 released = True
         data.ctrl[model.actuator("gripper").id] = gripper[k]
-        touching = False
+        touching = False; object_contacts=[]
         for con in data.contact:
             g1,g2 = int(con.geom1),int(con.geom2)
             b1,b2 = int(model.geom_bodyid[g1]),int(model.geom_bodyid[g2])
             if obj in {b1,b2}:
                 other = g2 if b1 == obj else g1
                 name = model.geom(other).name or ""
-                if released and (b2 if b1==obj else b1) not in arm_bodies and result["crossing"] is None:
+                if measure_range and con.dist <= 0:
+                    object_contacts.append((name, other, con.pos.copy(), (b2 if b1==obj else b1) in arm_bodies))
+                if not measure_range and released and (b2 if b1==obj else b1) not in arm_bodies and result["crossing"] is None:
                     airborne_environment_contacts.append(dict(time=float(data.time),geom=name))
-                if scene.get("require_high_arc",False) and not released and (b2 if b1==obj else b1) not in arm_bodies:
+                if (scene.get("require_high_arc",False) or measure_range) and not released and (b2 if b1==obj else b1) not in arm_bodies:
                     violations.add("pre_release_object_scene_collision")
                 if name.startswith("bucket_wall_") and data.xpos[obj,2] > rim-.04:
                     result["rim_contact"] = True
@@ -181,7 +186,11 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
             if attached and t < release_at:
                 grasp_drift_max=max(grasp_drift_max,float(np.linalg.norm(relative-grasp)))
                 if np.linalg.norm(relative-grasp) > .02:result["slipped"] = True
-            if t >= release_at and not released:
+            if measure_range:
+                had_grasp_contact |= touching and t >= scene.get("settle_time", .6)
+                if had_grasp_contact and not touching and not released:
+                    released=True
+            if not measure_range and t >= release_at and not released:
                 if touching:
                     separation_candidate=None
                 elif separation_candidate is None:
@@ -200,31 +209,58 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
                                      angular_velocity=v[:3].tolist(), quaternion=data.xquat[obj].tolist())
         p, c = data.xpos[obj].copy(), data.xipos[obj].copy()
         v = _velocity(model,data,obj,True)
-        if old is not None and released and result["com_crossing"] is None and old[1][2] > rim >= c[2]:
-            fcom=(old[1][2]-rim)/(old[1][2]-c[2])
-            cp=old[1]+fcom*(c-old[1])
-            result["com_crossing"]=dict(time=float(old[2]+fcom*(data.time-old[2])),position=cp.tolist(),error_xy=(cp[:2]-bucket[:2]).tolist())
-        if old is not None and released and result["crossing"] is None and old[0][2] > rim >= p[2]:
-            f = (old[0][2]-rim)/(old[0][2]-p[2])
-            pc = old[0] + f*(p-old[0]); cc = old[1]+f*(c-old[1])
-            quat = data.xquat[obj].copy()  # nearest integration-step orientation
+        if measure_range:
+            tcp=data.xpos[ee]+data.xmat[ee].reshape(3,3)@grasp
+            ev=_velocity(model,data,ee)
+            tcp_v=ev[3:]+np.cross(ev[:3],tcp-data.xpos[ee])
+            tcp_rows.append(np.r_[data.time,tcp,tcp_v,float(touching)])
+            if cmd["swing_start_time"] <= t and not released:
+                swing_high=max(swing_high,float(tcp[2]))
+            if released and "end_effector_velocity" not in result["release"]:
+                rel=result["release"]
+                jtcp=np.zeros((3,model.nv));mujoco.mj_jac(model,data,jtcp,None,tcp,ee)
+                command_tcp_v=jtcp[:,va]@cmd["qd"][k]
+                rel.update(commanded_tcp_velocity=command_tcp_v.tolist(),end_effector_velocity=tcp_v.tolist(),end_effector_position=tcp.tolist(),
+                           downward_swing=bool(tcp_v[2]<0 and np.any(cmd["qd"][k]!=0) and tcp[2]<swing_high),
+                           swing_height_drop_m=float(max(0,swing_high-tcp[2])),
+                           before_open_command=bool(t<release_at),
+                           during_swing=bool(cmd["swing_start_time"]<=t<=cmd["swing_end_time"]))
+            if released and impact is None and first_obstacle is None:
+                obstacles=[c0 for c0 in object_contacts if c0[0]!="floor"]
+                floors=[c0 for c0 in object_contacts if c0[0]=="floor"]
+                if obstacles:
+                    first_obstacle=dict(time=float(t),geoms=sorted(set(c0[0] for c0 in obstacles)),
+                                        bodies=sorted({model.body(int(model.geom_bodyid[c0[1]])).name for c0 in obstacles}))
+                elif floors:
+                    impact=dict(time=float(t),contact_position=np.mean([c0[2] for c0 in floors],axis=0).tolist(),
+                                contact_points=[c0[2].tolist() for c0 in floors],
+                                geometry_position=p.tolist(),com_position=c.tolist())
+        else:
+            if old is not None and released and result["com_crossing"] is None and old[1][2] > rim >= c[2]:
+                fcom=(old[1][2]-rim)/(old[1][2]-c[2])
+                cp=old[1]+fcom*(c-old[1])
+                result["com_crossing"]=dict(time=float(old[2]+fcom*(data.time-old[2])),position=cp.tolist(),error_xy=(cp[:2]-bucket[:2]).tolist())
+            if old is not None and released and result["crossing"] is None and old[0][2] > rim >= p[2]:
+                f = (old[0][2]-rim)/(old[0][2]-p[2])
+                pc = old[0] + f*(p-old[0]); cc = old[1]+f*(c-old[1])
+                quat = data.xquat[obj].copy()  # nearest integration-step orientation
+                extent = _extent(data,obj,shape)
+                margin = 0 if shape=="box" else .025
+                fits = bool(np.max(np.linalg.norm(extent[:,:2]-bucket[:2],axis=1))+margin < radius)
+                result["crossing"] = dict(time=float(old[2]+f*(data.time-old[2])), position=pc.tolist(),
+                                          com_position=cc.tolist(), quaternion=quat.tolist(),
+                                          error_xy=(pc[:2]-bucket[:2]).tolist(), com_error_xy=(cc[:2]-bucket[:2]).tolist(),
+                                          full_horizontal_envelope_inside=fits)
             extent = _extent(data,obj,shape)
             margin = 0 if shape=="box" else .025
-            fits = bool(np.max(np.linalg.norm(extent[:,:2]-bucket[:2],axis=1))+margin < radius)
-            result["crossing"] = dict(time=float(old[2]+f*(data.time-old[2])), position=pc.tolist(),
-                                      com_position=cc.tolist(), quaternion=quat.tolist(),
-                                      error_xy=(pc[:2]-bucket[:2]).tolist(), com_error_xy=(cc[:2]-bucket[:2]).tolist(),
-                                      full_horizontal_envelope_inside=fits)
-        extent = _extent(data,obj,shape)
-        margin = 0 if shape=="box" else .025
-        contained = (np.max(np.linalg.norm(extent[:,:2]-bucket[:2],axis=1))+margin < radius and
-                     np.max(extent[:,2])+margin < rim and np.min(extent[:,2])-margin >= bucket[2]+.005)
-        if t > cmd["time"][-1]-.3:
-            final_containment.append(bool(contained and np.linalg.norm(v[3:])<.08 and np.linalg.norm(v[:3])<.8))
+            contained = (np.max(np.linalg.norm(extent[:,:2]-bucket[:2],axis=1))+margin < radius and
+                         np.max(extent[:,2])+margin < rim and np.min(extent[:,2])-margin >= bucket[2]+.005)
+            if t > cmd["time"][-1]-.3:
+                final_containment.append(bool(contained and np.linalg.norm(v[3:])<.08 and np.linalg.norm(v[:3])<.8))
         rows.append(np.r_[data.time,p,c,data.xquat[obj],v,data.qpos[qa],data.qvel[va],cmd["q"][k],float(released)])
         states.append(data.qpos.copy())
         old = (p,c,float(data.time))
-        if k == len(cmd["time"])-1:
+        if k == len(cmd["time"])-1 or (measure_range and (impact is not None or first_obstacle is not None) and t>=cmd["brake_end_time"]+scene.get("settle_time",.6)):
             break
         contact_count = data.ncon
         mujoco.mj_step(model,data)
@@ -257,6 +293,11 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
         phase=("initial_settle" if at<scene.get("settle_time",.3)
                else "pre_release" if at<release_at
                else "release_window" if at<release_at+.15 else "post_release")
+        if measure_range:
+            phase=("initial_settle" if at<scene.get("settle_time",.6) else
+                   "prepare" if at<cmd["swing_start_time"] else
+                   "swing" if at<cmd["swing_end_time"] else
+                   "brake" if at<cmd["brake_end_time"] else "final_hold")
         phase_peaks[phase]=np.maximum(phase_peaks.get(phase,np.zeros(6)),np.abs(acceleration))
         ranges=model.actuator_forcerange[acts]
         bounded=model.actuator_forcelimited[acts].astype(bool)
@@ -288,7 +329,7 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
     if np.max(peak_tracking)>scene.get("max_tracking_error",np.inf):violations.add("tracking_error_limit")
     if np.max(np.abs(data.qvel[va]))>scene.get("final_brake_velocity_limit",np.inf):violations.add("braking_not_settled")
     if collision_pairs: violations.add("robot_self_collision")
-    if result["post_release_robot_contact"]: violations.add("post_release_robot_recontact")
+    if result["post_release_robot_contact"] and not measure_range: violations.add("post_release_robot_recontact")
     if result["release"]:
         rv=np.asarray(result["release"]["linear_velocity"])
         if rv[2]<scene.get("min_release_vertical_velocity",-np.inf):violations.add("release_not_upward")
@@ -305,8 +346,9 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
                               actuator_saturation_steps=saturation_steps.tolist(),
                               integration_steps=integration_steps)
     result["airborne_environment_contacts"]=airborne_environment_contacts
-    from .basketball_metrics import flight_metrics
-    result.update(flight_metrics(result,np.asarray(rows),bucket,rim))
+    if not measure_range:
+        from .basketball_metrics import flight_metrics
+        result.update(flight_metrics(result,np.asarray(rows),bucket,rim))
     result["airborne_environment_contacts"]=airborne_environment_contacts
     if scene.get("require_high_arc",False):
         if not result["release"]:violations.add("no_free_release")
@@ -327,6 +369,25 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
                                     "pre_release_slip" if result["slipped"] else "invalid_release" if not released else
                                     "no_descending_crossing" if not result["crossing"] else "not_settled_inside_bucket")
     result["flight_time"] = (result["crossing"]["time"]-result["release"]["time"] if result["crossing"] and result["release"] else None)
+    if measure_range:
+        rel=result["release"]
+        controlled=bool(rel and rel["downward_swing"] and rel["during_swing"] and not rel["before_open_command"])
+        distance=(float(np.linalg.norm(np.array(impact["contact_position"])[:2]-np.array(rel["position"])[:2])) if impact and rel else None)
+        result.update(measurement="release_to_first_floor_contact",first_floor_contact=impact,
+                      first_flight_obstacle=first_obstacle,range_m=distance,
+                      center_range_m=(float(np.linalg.norm(np.array(impact["geometry_position"])[:2]-np.array(rel["position"])[:2])) if impact and rel else None),
+                      controlled_downswing=controlled,
+                      release_height_m=rel["position"][2] if rel else None,
+                      release_speed=float(np.linalg.norm(rel["linear_velocity"])) if rel else None,
+                      scheduled_release_command_time=release_at,
+                      release_delay_s=rel["time"]-release_command_time if rel and release_command_time is not None else None,
+                      flight_time=impact["time"]-rel["time"] if impact and rel else None)
+        result["success"]=bool(controlled and impact and not first_obstacle and not violations)
+        result["failure_reason"] = None
+        if not result["success"]:
+            result["failure_reason"] = (";".join(sorted(violations)) or
+                                        ("flight_obstacle" if first_obstacle else
+                                         "not_controlled_downswing" if not controlled else "no_floor_contact"))
     if output_dir:
         out = Path(output_dir); out.mkdir(parents=True,exist_ok=True)
         (out/"result.json").write_text(json.dumps(result,indent=2,allow_nan=False))
@@ -342,6 +403,9 @@ def run_throw(params, object_config=None, scene_config=None, *, output_dir=None,
         control_header += ["gripper_ctrl", "contact_count", "object_robot_contact", "object_normal_force", "gripper_q_7", "gripper_q_8"]
         with (out/"control.csv").open("w") as f:
             writer=csv.writer(f);writer.writerow(control_header);writer.writerows(control_rows)
+        if measure_range:
+            with (out/"end_effector.csv").open("w") as f:
+                w=csv.writer(f);w.writerow(["time","x","y","z","vx","vy","vz","object_robot_contact"]);w.writerows(tcp_rows)
         np.savez_compressed(out/"replay.npz",qpos=states,time=np.asarray(rows)[:,0],commands=cmd["q"],
                             release_time=cmd["release_time"], parameters=json.dumps(cmd["parameters"]))
     result["trajectory"] = np.asarray(rows)
