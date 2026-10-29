@@ -1,0 +1,825 @@
+{
+  "scene_limits": {
+    "velocity_limits": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "acceleration_limits": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "torque_limits": [
+      12,
+      12,
+      12,
+      3,
+      3,
+      3
+    ]
+  },
+  "randomization": false,
+  "results": [
+    {
+      "case": "A_static_empty_ideal",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": null,
+      "peak_acceleration": 0.11142908050841538,
+      "peak_position_error": 6.409003118950155e-05,
+      "peak_torque": 2.901262965974354,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.0999999999997696,
+        "position": [
+          -2.0,
+          0.0,
+          -47.05225550000142
+        ],
+        "com_position": [
+          -2.0,
+          0.0,
+          -47.05225550000142
+        ],
+        "linear_velocity": [
+          0.0,
+          0.0,
+          -30.411000000002257
+        ],
+        "angular_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion": [
+          -0.6233134963400605,
+          -0.6233102849856896,
+          -0.33388735347065585,
+          0.33389191230658616
+        ]
+      },
+      "first_acceleration_exceedance": null
+    },
+    {
+      "case": "A_static_empty_contact",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": 0.0,
+      "peak_acceleration": 0.11142908050841538,
+      "peak_position_error": 6.409003118950155e-05,
+      "peak_torque": 2.901262965974354,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.0999999999997696,
+        "position": [
+          -2.0,
+          0.0,
+          -47.05225550000142
+        ],
+        "com_position": [
+          -2.0,
+          0.0,
+          -47.05225550000142
+        ],
+        "linear_velocity": [
+          0.0,
+          0.0,
+          -30.411000000002257
+        ],
+        "angular_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion": [
+          -0.6233134963400605,
+          -0.6233102849856896,
+          -0.33388735347065585,
+          0.33389191230658616
+        ]
+      },
+      "first_acceleration_exceedance": null
+    },
+    {
+      "case": "B_static_loaded_ideal",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": null,
+      "peak_acceleration": 0.11142908050820158,
+      "peak_position_error": 6.409003118241824e-05,
+      "peak_torque": 3.1700409973286128,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.0999999999997696,
+        "position": [
+          0.09716246130127057,
+          0.0014185870773044489,
+          1.4164359293505628
+        ],
+        "com_position": [
+          0.09716246130127057,
+          0.0014185870773044489,
+          1.4164359293505628
+        ],
+        "linear_velocity": [
+          6.683570845632001e-12,
+          1.1174917100375949e-12,
+          -5.827630736689874e-12
+        ],
+        "angular_velocity": [
+          1.3677370812062011e-12,
+          2.114598656717763e-11,
+          1.0343764908578314e-11
+        ],
+        "quaternion": [
+          -0.6233134963408595,
+          -0.6233102849870034,
+          -0.33388735346801324,
+          0.3338919123052846
+        ]
+      },
+      "first_acceleration_exceedance": null
+    },
+    {
+      "case": "B_static_loaded_contact",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": 0.004178805030995046,
+      "peak_acceleration": 1.1896453345916265,
+      "peak_position_error": 0.00047729721881772935,
+      "peak_torque": 3.189379456351105,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.18899999999976,
+        "position": [
+          0.1007034384733862,
+          0.003570755276732241,
+          1.4062825836466104
+        ],
+        "com_position": [
+          0.1007034384733862,
+          0.003570755276732241,
+          1.4062825836466104
+        ],
+        "linear_velocity": [
+          0.04433421431399041,
+          -0.0002786804287623215,
+          -0.32957684580889696
+        ],
+        "angular_velocity": [
+          0.04654807653278404,
+          6.698397957958967,
+          0.006544769654454356
+        ],
+        "quaternion": [
+          -0.5813001745490611,
+          -0.5827961547920163,
+          -0.4023071033442611,
+          0.40073400607837134
+        ]
+      },
+      "first_acceleration_exceedance": null
+    },
+    {
+      "case": "C_single_empty_ideal",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": null,
+      "peak_acceleration": 0.587351992577978,
+      "peak_position_error": 0.00146383376500403,
+      "peak_torque": 3.3136196405084206,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.0999999999997696,
+        "position": [
+          -2.0,
+          0.0,
+          -47.05225550000142
+        ],
+        "com_position": [
+          -2.0,
+          0.0,
+          -47.05225550000142
+        ],
+        "linear_velocity": [
+          0.0,
+          0.0,
+          -30.411000000002257
+        ],
+        "angular_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion": [
+          -0.6233134963400605,
+          -0.6233102849856896,
+          -0.33388735347065585,
+          0.33389191230658616
+        ]
+      },
+      "first_acceleration_exceedance": null
+    },
+    {
+      "case": "C_single_empty_contact",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": 0.0,
+      "peak_acceleration": 0.587351992577978,
+      "peak_position_error": 0.00146383376500403,
+      "peak_torque": 3.3136196405084206,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.0999999999997696,
+        "position": [
+          -2.0,
+          0.0,
+          -47.05225550000142
+        ],
+        "com_position": [
+          -2.0,
+          0.0,
+          -47.05225550000142
+        ],
+        "linear_velocity": [
+          0.0,
+          0.0,
+          -30.411000000002257
+        ],
+        "angular_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion": [
+          -0.6233134963400605,
+          -0.6233102849856896,
+          -0.33388735347065585,
+          0.33389191230658616
+        ]
+      },
+      "first_acceleration_exceedance": null
+    },
+    {
+      "case": "D_single_loaded_ideal",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": null,
+      "peak_acceleration": 0.5878878923547339,
+      "peak_position_error": 0.0014639130437332781,
+      "peak_torque": 3.3136146743483437,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.0999999999997696,
+        "position": [
+          0.09640093843800193,
+          0.0014184019702977281,
+          1.4165611510970075
+        ],
+        "com_position": [
+          0.09640093843800193,
+          0.0014184019702977281,
+          1.4165611510970075
+        ],
+        "linear_velocity": [
+          0.08143999356981087,
+          7.410827452633552e-08,
+          -0.014409377901153356
+        ],
+        "angular_velocity": [
+          -5.371818129642761e-06,
+          0.1498298650067248,
+          5.307223099267979e-06
+        ],
+        "quaternion": [
+          -0.6235455787814738,
+          -0.6235435983965872,
+          -0.3334523987044175,
+          0.33345732842296544
+        ]
+      },
+      "first_acceleration_exceedance": null
+    },
+    {
+      "case": "D_single_loaded_contact",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": 0.004118081799586765,
+      "peak_acceleration": 1.1896453345916265,
+      "peak_position_error": 0.0014721132799599967,
+      "peak_torque": 3.3148618154920086,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.18599999999976,
+        "position": [
+          0.10678807062421887,
+          0.0034979838975509486,
+          1.4061142552728083
+        ],
+        "com_position": [
+          0.10678807062421887,
+          0.0034979838975509486,
+          1.4061142552728083
+        ],
+        "linear_velocity": [
+          0.12249372747387756,
+          -0.0020874498821492325,
+          -0.3238539723065202
+        ],
+        "angular_velocity": [
+          0.21988654182144646,
+          6.3684647890669295,
+          -0.14151819700303728
+        ],
+        "quaternion": [
+          -0.5837094123250933,
+          -0.5835522324565473,
+          -0.399035297971303,
+          0.399400732261506
+        ]
+      },
+      "first_acceleration_exceedance": null
+    },
+    {
+      "case": "E_swing_loaded_ideal",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": null,
+      "peak_acceleration": 0.5648275264279675,
+      "peak_position_error": 0.0014638007172530498,
+      "peak_torque": 3.513068553933067,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.0999999999997696,
+        "position": [
+          0.09681665603889758,
+          0.0014186250342626563,
+          1.4162112578549997
+        ],
+        "com_position": [
+          0.09681665603889758,
+          0.0014186250342626563,
+          1.4162112578549997
+        ],
+        "linear_velocity": [
+          0.043093147207699,
+          -6.480158418443203e-07,
+          0.018285450164084213
+        ],
+        "angular_velocity": [
+          -2.7806762708226577e-05,
+          0.03042895031275884,
+          -1.0879944995573003e-05
+        ],
+        "quaternion": [
+          -0.623335792255306,
+          -0.6233351823118263,
+          -0.3338446892834865,
+          0.3338464677407041
+        ]
+      },
+      "first_acceleration_exceedance": null
+    },
+    {
+      "case": "E_swing_loaded_contact",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": 0.004132245846290716,
+      "peak_acceleration": 1.7869436799732712,
+      "peak_position_error": 0.0018089831513714572,
+      "peak_torque": 3.515443544996799,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.18799999999976,
+        "position": [
+          0.104243839794977,
+          0.0035248851849916897,
+          1.4078916352055246
+        ],
+        "com_position": [
+          0.104243839794977,
+          0.0035248851849916897,
+          1.4078916352055246
+        ],
+        "linear_velocity": [
+          0.08842126874135063,
+          -0.001542245991007499,
+          -0.30610677956965876
+        ],
+        "angular_velocity": [
+          0.17833352590428816,
+          6.572934113597047,
+          -0.08038903119729113
+        ],
+        "quaternion": [
+          -0.5821627689785084,
+          -0.5830550194740408,
+          -0.40090520430988424,
+          0.4005101394954339
+        ]
+      },
+      "first_acceleration_exceedance": null
+    },
+    {
+      "case": "F_throw_loaded_ideal",
+      "violations": [
+        "actual_acceleration_limit",
+        "tracking_error_limit"
+      ],
+      "slipped": false,
+      "grasp_drift_m": null,
+      "peak_acceleration": 12.974422855498435,
+      "peak_position_error": 0.17268114571481497,
+      "peak_torque": 12.0,
+      "saturation_steps": [
+        0,
+        450,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.177999999999761,
+        "position": [
+          0.5558273154889738,
+          -0.001065324519742228,
+          0.7504156829716636
+        ],
+        "com_position": [
+          0.5558273154889738,
+          -0.001065324519742228,
+          0.7504156829716636
+        ],
+        "linear_velocity": [
+          1.164784114745827,
+          -0.00398605676983305,
+          1.8906553503968822
+        ],
+        "angular_velocity": [
+          -0.4078005936171213,
+          -5.795575053451707,
+          -0.29191686812136497
+        ],
+        "quaternion": [
+          -0.20200457984984985,
+          -0.421370963823899,
+          -0.6592422763955242,
+          0.58910124900449
+        ]
+      },
+      "first_acceleration_exceedance": {
+        "time_s": 3.0179999999997786,
+        "phase": "pre_release",
+        "joint": 3,
+        "actual_acceleration_rad_s2": -5.027040242639114,
+        "commanded_acceleration_rad_s2": -4.274999999999999,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": -3.7074324782284407,
+        "contact_geoms": [],
+        "tracking_error_rad": 0.0038233451803435514
+      }
+    },
+    {
+      "case": "F_throw_loaded_contact",
+      "violations": [
+        "actual_acceleration_limit",
+        "tracking_error_limit"
+      ],
+      "slipped": true,
+      "grasp_drift_m": 0.06006804373711738,
+      "peak_acceleration": 13.88320593086223,
+      "peak_position_error": 0.19381964110470973,
+      "peak_torque": 12.0,
+      "saturation_steps": [
+        0,
+        472,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.2299999999997553,
+        "position": [
+          0.6682750645456742,
+          -0.009993478457664727,
+          0.8465167327827332
+        ],
+        "com_position": [
+          0.6682750645456742,
+          -0.009993478457664727,
+          0.8465167327827332
+        ],
+        "linear_velocity": [
+          0.8686592762729576,
+          -0.026799093039411418,
+          2.247381304628632
+        ],
+        "angular_velocity": [
+          -0.08657751987707951,
+          -4.986172823141683,
+          -0.3823994621928737
+        ],
+        "quaternion": [
+          -0.27977013683586516,
+          -0.48553295602427965,
+          -0.6267260345270784,
+          0.5414802829236989
+        ]
+      },
+      "first_acceleration_exceedance": {
+        "time_s": 3.015999999999779,
+        "phase": "pre_release",
+        "joint": 3,
+        "actual_acceleration_rad_s2": -5.033674024018442,
+        "commanded_acceleration_rad_s2": -4.274999999999999,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": -3.7373885980635464,
+        "contact_geoms": [
+          "object_geom"
+        ],
+        "tracking_error_rad": 0.004049985602974759
+      }
+    },
+    {
+      "case": "E_pd",
+      "violations": [
+        "actual_acceleration_limit"
+      ],
+      "slipped": false,
+      "grasp_drift_m": 0.003566963956808886,
+      "peak_acceleration": 25.580521839468943,
+      "peak_position_error": 0.019740282061791903,
+      "peak_torque": 3.594015704000128,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.18599999999976,
+        "position": [
+          0.10840215102938403,
+          0.0033447730643336774,
+          1.4027560286555072
+        ],
+        "com_position": [
+          0.10840215102938403,
+          0.0033447730643336774,
+          1.4027560286555072
+        ],
+        "linear_velocity": [
+          0.08363161546516493,
+          -0.0020969898788937603,
+          -0.28799424461989853
+        ],
+        "angular_velocity": [
+          0.2338381252257978,
+          6.248262761208852,
+          -0.1370521443473343
+        ],
+        "quaternion": [
+          -0.584182491722174,
+          -0.5834805248827725,
+          -0.39790427836522757,
+          0.3999418441554268
+        ]
+      },
+      "first_acceleration_exceedance": {
+        "time_s": 0.001,
+        "phase": "initial_settle",
+        "joint": 3,
+        "actual_acceleration_rad_s2": 25.580521839468943,
+        "commanded_acceleration_rad_s2": 0.0,
+        "limit_rad_s2": 5.0,
+        "actuator_force_Nm": 0.0,
+        "contact_geoms": [
+          "object_geom"
+        ],
+        "tracking_error_rad": 2.5580521839430048e-05
+      }
+    },
+    {
+      "case": "E_gravity",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": 0.00413162049893153,
+      "peak_acceleration": 1.7890040960970992,
+      "peak_position_error": 0.0019275239557305923,
+      "peak_torque": 3.514289711721233,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.18799999999976,
+        "position": [
+          0.1042480298057182,
+          0.0035249779039352616,
+          1.4078922613326077
+        ],
+        "com_position": [
+          0.1042480298057182,
+          0.0035249779039352616,
+          1.4078922613326077
+        ],
+        "linear_velocity": [
+          0.08907475782938544,
+          -0.0015511791553614136,
+          -0.3063115297033115
+        ],
+        "angular_velocity": [
+          0.1782739918991357,
+          6.57467472365495,
+          -0.08050318145730659
+        ],
+        "quaternion": [
+          -0.5821598414277118,
+          -0.583052926926121,
+          -0.40090885536851845,
+          0.40051378642794505
+        ]
+      },
+      "first_acceleration_exceedance": null
+    },
+    {
+      "case": "E_repeat_1",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": 0.004132245846290716,
+      "peak_acceleration": 1.7869436799732712,
+      "peak_position_error": 0.0018089831513714572,
+      "peak_torque": 3.515443544996799,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.18799999999976,
+        "position": [
+          0.104243839794977,
+          0.0035248851849916897,
+          1.4078916352055246
+        ],
+        "com_position": [
+          0.104243839794977,
+          0.0035248851849916897,
+          1.4078916352055246
+        ],
+        "linear_velocity": [
+          0.08842126874135063,
+          -0.001542245991007499,
+          -0.30610677956965876
+        ],
+        "angular_velocity": [
+          0.17833352590428816,
+          6.572934113597047,
+          -0.08038903119729113
+        ],
+        "quaternion": [
+          -0.5821627689785084,
+          -0.5830550194740408,
+          -0.40090520430988424,
+          0.4005101394954339
+        ]
+      },
+      "first_acceleration_exceedance": null
+    },
+    {
+      "case": "E_repeat_2",
+      "violations": [],
+      "slipped": false,
+      "grasp_drift_m": 0.004132245846290716,
+      "peak_acceleration": 1.7869436799732712,
+      "peak_position_error": 0.0018089831513714572,
+      "peak_torque": 3.515443544996799,
+      "saturation_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "release": {
+        "time": 3.18799999999976,
+        "position": [
+          0.104243839794977,
+          0.0035248851849916897,
+          1.4078916352055246
+        ],
+        "com_position": [
+          0.104243839794977,
+          0.0035248851849916897,
+          1.4078916352055246
+        ],
+        "linear_velocity": [
+          0.08842126874135063,
+          -0.001542245991007499,
+          -0.30610677956965876
+        ],
+        "angular_velocity": [
+          0.17833352590428816,
+          6.572934113597047,
+          -0.08038903119729113
+        ],
+        "quaternion": [
+          -0.5821627689785084,
+          -0.5830550194740408,
+          -0.40090520430988424,
+          0.4005101394954339
+        ]
+      },
+      "first_acceleration_exceedance": null
+    }
+  ]
+}

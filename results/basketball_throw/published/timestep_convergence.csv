@@ -1,0 +1,13 @@
+object_id,timestep_s,success,retained,slipped,rise_m,crossing_shift_vs_finest_m,max_actual_acceleration,violations
+object_0,0.001,False,True,True,0.22487450497916728,0.01063580994568429,13.448870377485989,actual_acceleration_limit;tracking_error_limit
+object_1,0.001,False,True,True,0.25935710379921295,0.0075348434890749934,13.602168634241574,actual_acceleration_limit;tracking_error_limit
+object_2,0.001,False,True,True,0.19340656182188887,0.005654229926005575,13.297637975705712,actual_acceleration_limit;insufficient_apex_rise;release_not_upward;tracking_error_limit
+object_3,0.001,False,True,True,0.2194061151141098,0.004873115647759471,13.461275317331323,actual_acceleration_limit;tracking_error_limit
+object_0,0.0005,False,True,True,0.2267197183188362,0.0038845678888907408,13.471712789434598,actual_acceleration_limit;tracking_error_limit
+object_1,0.0005,False,True,True,0.2600330093511243,0.0030585662202075137,13.623608112760532,actual_acceleration_limit;tracking_error_limit
+object_2,0.0005,False,True,True,0.19472136696347364,0.001688201063559222,13.321566597150447,actual_acceleration_limit;insufficient_apex_rise;release_not_upward;tracking_error_limit
+object_3,0.0005,False,True,True,0.22053892134129827,0.0020122006472583377,13.483865494543057,actual_acceleration_limit;tracking_error_limit
+object_0,0.00025,False,True,True,0.22725174332790876,0.0,13.479697450189398,actual_acceleration_limit;tracking_error_limit
+object_1,0.00025,False,True,True,0.2605505816446675,0.0,13.630407123516264,actual_acceleration_limit;tracking_error_limit
+object_2,0.00025,False,True,True,0.1948970720948684,0.0,13.328956220495236,actual_acceleration_limit;insufficient_apex_rise;release_not_upward;tracking_error_limit
+object_3,0.00025,False,True,True,0.2207524199623211,0.0,13.492078217227643,actual_acceleration_limit;tracking_error_limit

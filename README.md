@@ -7,6 +7,21 @@ PiPER 六轴机械臂 MuJoCo 投掷、自动参数搜索、三维质心敏感性
 - [上游代码审计与固定提交](piper_throw/UPSTREAM_AUDIT.md)
 - [固定依赖](piper_throw/requirements.lock) / [第三方许可证](piper_throw/THIRD_PARTY_NOTICES.md)
 
+
+## Basketball-Style Long-Arc Throwing
+
+新增弹道反算、多关节 Jacobian/轨迹搜索、0.75 m 实体桌面、官方SDK速度上限及0.8–5.0 m扫描。原有报告和实验保留。
+
+[高弧线实验报告](BASKETBALL_REPORT.md) · [硬件限制来源与假设](piper_throw/HARDWARE_LIMITS.md) · [全景视频](results/basketball_throw/published/diagnostic_arc/panorama.mp4) · [侧面视频](results/basketball_throw/published/diagnostic_arc/side.mp4)
+
+当前状态为 `no_feasible_arc_under_robot_limits`。真实接触释放诊断动作可上升22.5 cm，80次扰动全部最终留桶，但全部存在滑动/安全门限失败，合规成功为0/80；不能称为稳定、安全的远距离投篮。
+
+```bash
+python -m piper_throw.cli basketball --config configs/basketball_throw.yaml --output results/basketball_throw/new_run --budget 28 --repeats 20 --video
+```
+
+此命令进行数值规划、真实试投、实际释放点距离审计、固定动作CoM复核、步长检查和视频输出。严格参数与重现本次600次规划预算的方法见[精简证据说明](results/basketball_throw/published/README.md)。
+
 ## 已测结果
 
 核心测试 9/9、OpenArm 原始投掷测试 5/5。严格前向上抛的盒体动作在 20 次扰动中 19 次最终留桶；45 个可实现 CoM 配置在冻结动作下最大桶口落点分离 54.07 mm。一般摆臂的同一高敏感动作在夹爪接触释放测试中 80/80 留桶，四种内部配重的最大平均落点分离 62.55 mm。

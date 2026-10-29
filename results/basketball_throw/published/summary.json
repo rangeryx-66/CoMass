@@ -1,0 +1,13 @@
+{
+  "status": "no_feasible_arc_under_robot_limits",
+  "maximum_nominal_feasible_range_m": null,
+  "stable_contact_maximum_range_m": null,
+  "diagnostic_action": true,
+  "selected_trial": "results/basketball_throw/refined/audit/diagnostic_arc",
+  "range_audited_trials": 14,
+  "optimization_trials": 196,
+  "com_trials": 88,
+  "timestep_trials": 12,
+  "command_sha256": "6e9c4b6ba46bb9163829d80960abb2d597a91242879c189fef8ca12d4afc7bf5",
+  "fixed_action_repeats": 20
+}

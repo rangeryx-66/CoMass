@@ -13,8 +13,8 @@ def load_config(path):
 
 def main(argv=None):
     parser=argparse.ArgumentParser(description="Simulation-only PiPER throwing benchmark (SI units)")
-    parser.add_argument("command",choices=["smoke","throw","optimize","sensitivity","compare-twins","plot","video","tool","hidden-mass","search-sensitive"])
-    parser.add_argument("--config",default="configs/default.yaml")
+    parser.add_argument("command",choices=["smoke","throw","target-throw","optimize","sensitivity","compare-twins","plot","video","tool","hidden-mass","search-sensitive","basketball","diagnose-sim"])
+    parser.add_argument("--config")
     parser.add_argument("--results",default="results")
     parser.add_argument("--output")
     parser.add_argument("--trial")
@@ -31,12 +31,27 @@ def main(argv=None):
         if not args.trial:parser.error("video requires --trial")
         from .visualize import render_video
         print(render_video(args.trial,args.output));return
-    c=load_config(args.config);obj=c.get("object",{});scene=c.get("scene",{})
+    c=load_config(args.config or ("configs/parametric_throw.yaml" if args.command=="target-throw" else "configs/default.yaml"));obj=c.get("object",{});scene=c.get("scene",{})
     params=c.get("params",{})
     if c.get("params_file") and args.command in {"throw","sensitivity"}:
         params=json.loads(Path(c["params_file"]).read_text())
+    if args.command=="throw" and scene.get("require_high_arc") and not params:
+        parser.error("basketball config requires planned params; run the basketball command to plan/search")
     out=Path(args.output or Path(args.results)/f"{args.command}_{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}")
     budget=args.budget or c.get("search",{}).get("budget",100)
+    if args.command=="target-throw":
+        from .basketball import throw
+        result=throw(params,obj,scene,output_dir=out)
+        if args.video and result.get('selected_trial'):
+            from .visualize import render_video
+            render_video(result['selected_trial'],out/'throw.mp4',view='side',annotate=True)
+        print(json.dumps(dict(output_dir=str(out.resolve()),result=result),indent=2))
+        return
+    if args.command=="diagnose-sim":
+        from .sim_diagnostics import run_diagnostics
+        result=run_diagnostics(c,out)
+        print(json.dumps(dict(output_dir=str(out.resolve()), result=result),indent=2))
+        return
     if args.command=="tool":
         from .hidden_mass import HiddenThrowService
         service=HiddenThrowService(scene,out)
@@ -47,7 +62,21 @@ def main(argv=None):
                 print(json.dumps(service.run_throw(req["object_id"],req["params"])),flush=True)
             except (ValueError,KeyError,TypeError) as e:print(json.dumps({"error":str(e)}),flush=True)
         return
-    if args.command in {"smoke","throw"}:
+    if args.command=="basketball":
+        from .basketball import run_benchmark
+        result=run_benchmark(c,out,simulation_budget=args.budget,repeats=args.repeats)
+        if result['selected_trial'] is None:
+            print(json.dumps(dict(output_dir=str(out.resolve()),result=result),indent=2))
+            return
+        from .basketball_analysis import audit_experiment,make_plots,write_report,numerical_checks
+        audit=audit_experiment(out,repeats=args.repeats);make_plots(out);numerical_checks(out);write_report(out)
+        if args.video:
+            from .visualize import render_video,plot_arc_trajectory,render_trajectory_video
+            trial=Path(audit['selected_trial']);plot_arc_trajectory(trial)
+            for view in ['panorama','side']:render_video(trial,trial/f'{view}.mp4',view=view,annotate=True)
+            render_trajectory_video(trial)
+        result={**result,'audit':audit}
+    elif args.command in {"smoke","throw"}:
         from .simulator import run_throw
         if args.command=="smoke":
             upward=scene.get("min_release_vertical_velocity",-1)>0
@@ -56,7 +85,7 @@ def main(argv=None):
         result.pop("trajectory",None)
         if args.video:
             from .visualize import render_video
-            result["video"]=render_video(out)
+            result["video"]=render_video(out,view="panorama" if scene.get("require_high_arc") else None,annotate=scene.get("require_high_arc",False))
     elif args.command=="optimize":
         from .optimizer import optimize
         result=optimize(obj,scene,out,budget=budget,seed=c.get("search",{}).get("seed",0))

@@ -19,6 +19,12 @@ class ThrowParams:
 
 
 def make_commands(params, scene_config):
+    if isinstance(params,dict) and params.get("family")=="trebuchet":
+        from .range_throw import make_range_commands
+        return make_range_commands(params,scene_config)
+    if isinstance(params,dict) and params.get("family")=="basketball":
+        from .basketball_controller import make_arc_commands
+        return make_arc_commands(params,scene_config)
     p = params if isinstance(params, ThrowParams) else ThrowParams(**params)
     vals = [p.speed_scale, p.release_phase, p.swing_amplitude, p.direction_offset, p.wrist_pitch_offset]
     if not np.isfinite(vals).all() or p.speed_scale <= 0 or not 0 < p.release_phase < 1 or p.swing_amplitude <= 0:

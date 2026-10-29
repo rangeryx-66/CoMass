@@ -1,0 +1,147 @@
+{
+  "object": {
+    "shape": "box",
+    "mass": 0.1,
+    "com": [
+      0,
+      0,
+      0
+    ]
+  },
+  "scene": {
+    "release_mode": "contact",
+    "measure_range": true,
+    "include_bucket": false,
+    "grasp_offset": [
+      0,
+      0,
+      0.115
+    ],
+    "ready_joints": [
+      0,
+      1.2,
+      -1.6,
+      0,
+      1.1,
+      0
+    ],
+    "base_position": [
+      0,
+      0,
+      0.75
+    ],
+    "table": {
+      "height": 0.75,
+      "center_x": -0.45,
+      "half_size": [
+        0.55,
+        0.45,
+        0.025
+      ]
+    },
+    "bucket_height": 0.25,
+    "bucket_radius": 0.14,
+    "timestep": 0.00025,
+    "integrator": "implicitfast",
+    "settle_time": 0.6,
+    "flight_settle_time": 6.0,
+    "position_limits": [
+      [
+        -2.6179,
+        2.6179
+      ],
+      [
+        0,
+        3.14
+      ],
+      [
+        -2.967,
+        0
+      ],
+      [
+        -1.745,
+        1.745
+      ],
+      [
+        -1.22,
+        1.22
+      ],
+      [
+        -2.09439,
+        2.09439
+      ]
+    ],
+    "velocity_limits": [
+      12,
+      12,
+      12,
+      12,
+      12,
+      12
+    ],
+    "acceleration_limits": [
+      20,
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "torque_limits": [
+      48,
+      48,
+      48,
+      12,
+      12,
+      12
+    ],
+    "actual_position_tolerance": 0.0,
+    "actual_velocity_tolerance": 0.0,
+    "actual_acceleration_tolerance": 0.0,
+    "collision_penetration_tolerance": 0.0,
+    "bounded_bias_compensation": true,
+    "acceleration_feedforward": true,
+    "gripper_motion_time": 0.1,
+    "nominal_payload_mass": 0.1,
+    "release_lead_s": 0.052
+  },
+  "params": {
+    "family": "trebuchet",
+    "windup": [
+      2.6179,
+      1.867980601899748,
+      -1.7977363742266181,
+      0.8798603286364859,
+      0.5222907869214928,
+      0.8021943755874745
+    ],
+    "swing_end": [
+      -0.22506156335874783,
+      1.4470356109049125,
+      -0.6704334577259674,
+      1.203209448650754,
+      -1.1133276633729257,
+      -1.2269465122944716
+    ],
+    "swing_velocity": [
+      0.5609353207542523,
+      -0.39836521160667204,
+      0.5091205489225336,
+      -0.23806834357605897,
+      0.01352866702801967,
+      -0.23175976340137575
+    ],
+    "brake_end": [
+      1.1893983795083432,
+      0.2175916191136901,
+      -0.3805876354000093,
+      -0.8309951380291724,
+      -1.1622000591220991,
+      -0.2279402283668004
+    ],
+    "prepare_s": 3.446202554188368,
+    "swing_s": 1.0792041960060497,
+    "brake_s": 1.7147578623699105,
+    "release_phase": 0.4673050513352588
+  }
+}

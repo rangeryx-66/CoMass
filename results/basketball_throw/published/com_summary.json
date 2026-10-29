@@ -1,0 +1,182 @@
+[
+  {
+    "condition": "contact",
+    "objects": [
+      {
+        "object_id": "object_0",
+        "hits": 0,
+        "retained": 1,
+        "slip_count": 1,
+        "trials": 1,
+        "valid_releases": 0,
+        "mean_crossing": [
+          1.4176526102876101,
+          -0.027716196184474004
+        ],
+        "rms": 0.0
+      },
+      {
+        "object_id": "object_1",
+        "hits": 0,
+        "retained": 1,
+        "slip_count": 1,
+        "trials": 1,
+        "valid_releases": 0,
+        "mean_crossing": [
+          1.4730729909102964,
+          -0.04878345640230905
+        ],
+        "rms": 0.0
+      },
+      {
+        "object_id": "object_2",
+        "hits": 0,
+        "retained": 1,
+        "slip_count": 1,
+        "trials": 1,
+        "valid_releases": 0,
+        "mean_crossing": [
+          1.3707977798167583,
+          -0.007276231116640755
+        ],
+        "rms": 0.0
+      },
+      {
+        "object_id": "object_3",
+        "hits": 0,
+        "retained": 1,
+        "slip_count": 1,
+        "trials": 1,
+        "valid_releases": 0,
+        "mean_crossing": [
+          1.4834784669494696,
+          -0.032173674598429
+        ],
+        "rms": 0.0
+      }
+    ],
+    "max_mean_separation_m": 0.11539852661376923,
+    "deterministic": true,
+    "claim_is_feasible_high_arc": false
+  },
+  {
+    "condition": "ideal",
+    "objects": [
+      {
+        "object_id": "object_0",
+        "hits": 0,
+        "retained": 0,
+        "slip_count": 0,
+        "trials": 1,
+        "valid_releases": 0,
+        "mean_crossing": [
+          1.2138204560175665,
+          -0.0033411030069847077
+        ],
+        "rms": 0.0
+      },
+      {
+        "object_id": "object_1",
+        "hits": 0,
+        "retained": 0,
+        "slip_count": 0,
+        "trials": 1,
+        "valid_releases": 0,
+        "mean_crossing": [
+          1.1736741978069893,
+          -0.01680451199250497
+        ],
+        "rms": 0.0
+      },
+      {
+        "object_id": "object_2",
+        "hits": 0,
+        "retained": 0,
+        "slip_count": 0,
+        "trials": 1,
+        "valid_releases": 0,
+        "mean_crossing": [
+          1.1670070354737323,
+          0.017098445729401
+        ],
+        "rms": 0.0
+      },
+      {
+        "object_id": "object_3",
+        "hits": 0,
+        "retained": 0,
+        "slip_count": 0,
+        "trials": 1,
+        "valid_releases": 0,
+        "mean_crossing": [
+          1.2160741554565688,
+          0.03466590679779534
+        ],
+        "rms": 0.0
+      }
+    ],
+    "max_mean_separation_m": 0.06668553380707869,
+    "deterministic": true,
+    "claim_is_feasible_high_arc": false
+  },
+  {
+    "condition": "perturbed_contact",
+    "objects": [
+      {
+        "object_id": "object_0",
+        "hits": 0,
+        "retained": 20,
+        "slip_count": 20,
+        "trials": 20,
+        "valid_releases": 0,
+        "mean_crossing": [
+          1.4180677196399576,
+          -0.027867196465721424
+        ],
+        "rms": 0.009355221872655112
+      },
+      {
+        "object_id": "object_1",
+        "hits": 0,
+        "retained": 20,
+        "slip_count": 20,
+        "trials": 20,
+        "valid_releases": 0,
+        "mean_crossing": [
+          1.4740182772428887,
+          -0.04871863584549847
+        ],
+        "rms": 0.014725658793082238
+      },
+      {
+        "object_id": "object_2",
+        "hits": 0,
+        "retained": 20,
+        "slip_count": 20,
+        "trials": 20,
+        "valid_releases": 0,
+        "mean_crossing": [
+          1.3712540829493371,
+          -0.00745782814076437
+        ],
+        "rms": 0.004279094494239479
+      },
+      {
+        "object_id": "object_3",
+        "hits": 0,
+        "retained": 20,
+        "slip_count": 20,
+        "trials": 20,
+        "valid_releases": 0,
+        "mean_crossing": [
+          1.4827509300549169,
+          -0.03224639588777763
+        ],
+        "rms": 0.0042563390444921925
+      }
+    ],
+    "max_mean_separation_m": 0.11421917529659058,
+    "deterministic": false,
+    "claim_is_feasible_high_arc": false
+  }
+]

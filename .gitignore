@@ -5,3 +5,17 @@ __pycache__/
 piper_throw/upstream
 *.tar.gz
 *.tar.zst
+
+.venv-piper
+# Basketball raw trial data stays local; publish selected evidence explicitly.
+results/basketball_throw/**/trajectory.csv
+results/basketball_throw/**/replay.npz
+results/basketball_throw/**/scene.xml
+results/basketball_throw/**/inputs.json
+results/basketball_throw/**/result.json
+results/basketball_throw/**/trials.json
+results/basketball_throw/**/planner.json
+results/basketball_throw/**/com_results.json
+
+results/basketball_throw/*
+!results/basketball_throw/published/

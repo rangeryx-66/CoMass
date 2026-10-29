@@ -1,0 +1,16 @@
+{
+  "base_commit": "e607c8363c8901edb217235c47b4f5ba6c97295e",
+  "python": "3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 15:12:24) [GCC 11.2.0]",
+  "mujoco": "3.8.1",
+  "numpy": "2.3.4",
+  "scipy": "1.16.3",
+  "source_sha256": {
+    "piper_throw/range_throw.py": "16714a4539c89dc10deafaa0ff9b021feb616cc3ef70c1d2154101a0abe4993e",
+    "piper_throw/simulator.py": "f14bc873137835c2526e6678346a9359225ea4dd5187513f0b084fa5d394f789",
+    "piper_throw/throw_controller.py": "2d2315f731fe529d78fff6c5c8421049a085af62734b65a0760374ff0ebb00f6",
+    "piper_throw/scene/build.py": "738d639b3dad381a0e6faaeca51d16764aab840b0c6b60bb6a44fbc0ccb34c03",
+    "piper_throw/visualize.py": "e4ac808464ca5414c74fa630ebb81b64a2df2e941cfbe63cd3352d5143acdbbc",
+    "piper_throw/tests/test_range_throw.py": "ebdba7eb4b73a1cdf068359136700dc11e6daddae4ef58e09cca31f0e557c07e",
+    "configs/range_throw.yaml": "9c0c96dba70488855ce54d1c866addef0bc93a585400fa8f2bfd12d0113f5e60"
+  }
+}

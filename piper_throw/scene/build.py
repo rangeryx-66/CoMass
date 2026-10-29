@@ -99,6 +99,7 @@ def build_model(object_config, scene_config):
     # Use each original collision STL also as the visible surface. Original
     # transforms, inertial properties, joint axes, limits, finger pads remain.
     for body in root.findall(".//worldbody//body"):
+        if scene_config.get("bounded_bias_compensation",False):body.set("gravcomp","0")
         for geom in list(body.findall("geom")):
             if geom.get("class") == "visual":
                 body.remove(geom)
@@ -108,29 +109,46 @@ def build_model(object_config, scene_config):
         for j in body.findall("joint"):
             if j.get("class") != "finger":
                 j.set("damping", ".4")
+    for i,limits in enumerate(scene_config.get("position_limits",[]),1):
+        joint=root.find(f".//joint[@name='joint{i}']")
+        old=np.fromstring(joint.get("range"),sep=" ")
+        joint.set("range",vec([max(old[0],limits[0]),min(old[1],limits[1])]))
     root.find("worldbody/body").set("pos", vec(scene_config.get("base_position", [0, 0, .35])))
     root.find("worldbody/body").set("quat", vec(scene_config.get("base_quaternion", [1,0,0,0])))
     for i, a in enumerate(root.find("actuator")):
         if i < 6:
             a.set("kp", "250" if i < 3 else "80")
             a.set("kv", "18" if i < 3 else "7")
+            if "torque_limits" in scene_config:
+                limit=scene_config["torque_limits"][i]
+                a.set("forcerange",f"{-limit} {limit}")
         else:
             a.set("kp", str(scene_config.get("gripper_kp", 1000)))
             a.set("kv", "10")
             a.set("forcerange", "-20 20")
     wb = root.find("worldbody")
     ET.SubElement(wb, "geom", name="floor", type="plane", size="4 4 .1", rgba=".22 .27 .3 1")
-    ET.SubElement(wb, "geom", name="pedestal", type="cylinder", size=".085 .175", pos="0 0 .175", rgba=".3 .3 .3 1")
-    bucket = scene_config.get("bucket_position", [.8, 0, .0])
-    radius = scene_config.get("bucket_radius", .14)
-    height = scene_config.get("bucket_height", .22)
-    b = ET.SubElement(wb, "body", name="bucket", pos=vec(bucket))
-    ET.SubElement(b, "geom", name="bucket_bottom", type="cylinder", size=f"{radius+.012} .01", pos="0 0 .01", rgba=".2 .5 .65 1")
-    for i, th in enumerate(np.linspace(0, 2*np.pi, 48, endpoint=False)):
-        ET.SubElement(b, "geom", name=f"bucket_wall_{i}", type="box",
-                      pos=vec([(radius+.008)*np.cos(th), (radius+.008)*np.sin(th), height/2]),
-                      size=vec([.01, (radius+.008)*np.tan(np.pi/48)*1.05, height/2]),
-                      euler=f"0 0 {th}", rgba=".2 .55 .7 .65")
+    if scene_config.get("table"):
+        cfg=scene_config["table"];h=cfg.get("height",.75);cx=cfg.get("center_x",-.30)
+        half=np.asarray(cfg.get("half_size",[.55,.45,.025]))
+        table=ET.SubElement(wb,"body",name="table")
+        ET.SubElement(table,"geom",name="table_top",type="box",size=vec(half),pos=vec([cx,0,h-half[2]]),rgba=".43 .29 .17 1")
+        for i,(x,y) in enumerate([(cx+sx*(half[0]-.06),sy*(half[1]-.06)) for sx in [-1,1] for sy in [-1,1]]):
+            ET.SubElement(table,"geom",name=f"table_leg_{i}",type="box",size=vec([.035,.035,(h-2*half[2])/2]),pos=vec([x,y,(h-2*half[2])/2]),rgba=".3 .3 .3 1")
+        ET.SubElement(root.find("contact"),"exclude",body1="base_link",body2="table") # fixed mounting interface
+    else:
+        ET.SubElement(wb, "geom", name="pedestal", type="cylinder", size=".085 .175", pos="0 0 .175", rgba=".3 .3 .3 1")
+    if scene_config.get("include_bucket", True):
+        bucket = scene_config.get("bucket_position", [.8, 0, .0])
+        radius = scene_config.get("bucket_radius", .14)
+        height = scene_config.get("bucket_height", .22)
+        b = ET.SubElement(wb, "body", name="bucket", pos=vec(bucket))
+        ET.SubElement(b, "geom", name="bucket_bottom", type="cylinder", size=f"{radius+.012} .01", pos="0 0 .01", rgba=".2 .5 .65 1")
+        for i, th in enumerate(np.linspace(0, 2*np.pi, 48, endpoint=False)):
+            ET.SubElement(b, "geom", name=f"bucket_wall_{i}", type="box",
+                          pos=vec([(radius+.008)*np.cos(th), (radius+.008)*np.sin(th), height/2]),
+                          size=vec([.01, (radius+.008)*np.tan(np.pi/48)*1.05, height/2]),
+                          euler=f"0 0 {th}", rgba=".2 .55 .7 .65")
     obj = ET.SubElement(wb, "body", name="object", pos="0 0 1")
     ET.SubElement(obj, "freejoint", name="object_free")
     c, I = mass_properties(object_config)

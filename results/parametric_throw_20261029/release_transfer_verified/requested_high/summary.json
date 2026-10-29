@@ -1,0 +1,20 @@
+{
+  "status": "infeasible",
+  "success": false,
+  "failure_reason": "no_executable_release_within_search_budget",
+  "parameters": {
+    "target_position_m": [
+      0.8,
+      0.0,
+      -0.5
+    ],
+    "apex_height_m": 0.2,
+    "speed_scale": 1.0,
+    "release_phase": 0.5
+  },
+  "target_world_m": [
+    0.8,
+    0.0,
+    0.25
+  ]
+}

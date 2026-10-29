@@ -1,0 +1,4 @@
+requested_distance_m,actual_best_range_m,status,physical_trials,hits,release_speed_m_s,release_vz_m_s,rise_m,angle_deg,planner_velocity_residual_m_s,violations
+0.5,,no_feasible_arc_under_robot_limits,0,0,,,,,0.5663589666046946,planner_rejected_all_candidates
+0.8,,no_feasible_arc_under_robot_limits,0,0,,,,,0.8719258808563581,planner_rejected_all_candidates
+1.0,,no_feasible_arc_under_robot_limits,0,0,,,,,1.2115817423149806,planner_rejected_all_candidates

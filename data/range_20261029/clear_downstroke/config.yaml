@@ -1,0 +1,82 @@
+object:
+  shape: box
+  mass: 0.1
+  com:
+  - 0
+  - 0
+  - 0
+scene:
+  release_mode: contact
+  measure_range: true
+  include_bucket: false
+  grasp_offset:
+  - 0
+  - 0
+  - 0.115
+  ready_joints:
+  - 0
+  - 1.2
+  - -1.6
+  - 0
+  - 1.1
+  - 0
+  base_position:
+  - 0
+  - 0
+  - 0.75
+  table:
+    height: 0.75
+    center_x: -0.45
+    half_size:
+    - 0.55
+    - 0.45
+    - 0.025
+  bucket_height: 0.25
+  bucket_radius: 0.14
+  timestep: 0.001
+  integrator: implicitfast
+  settle_time: 0.6
+  flight_settle_time: 6.0
+  position_limits:
+  - - -2.6179
+    - 2.6179
+  - - 0
+    - 3.14
+  - - -2.967
+    - 0
+  - - -1.745
+    - 1.745
+  - - -1.22
+    - 1.22
+  - - -2.09439
+    - 2.09439
+  velocity_limits:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  acceleration_limits:
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  torque_limits:
+  - 12
+  - 12
+  - 12
+  - 3
+  - 3
+  - 3
+  actual_position_tolerance: 0.0
+  actual_velocity_tolerance: 0.0
+  actual_acceleration_tolerance: 0.0
+  collision_penetration_tolerance: 0.0
+  bounded_bias_compensation: true
+  acceleration_feedforward: true
+  gripper_motion_time: 0.1
+  nominal_payload_mass: 0.1
+  release_lead_s: 0.052
