@@ -1,0 +1,12 @@
+# Local CPU training and evaluation runtime, macOS arm64 / Python 3.13.5
+numpy==2.5.4
+scipy==1.18.1
+mujoco==3.17.0
+gymnasium==1.4.0
+torch==2.15.0
+PyOpenGL==3.1.10
+PyYAML==6.0.3
+trimesh==5.2.0
+imageio==2.38.1
+imageio-ffmpeg==0.7.0
+Pillow==13.0.0

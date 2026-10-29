@@ -56,6 +56,8 @@ randomization:
 
 可直接使用 `xarm7_rl/configs/conditioned.yaml` 启动联合随机化训练。
 
+`conditioned_robust.yaml` 将分布扩展到五类几何、60–150 g、CoM 三轴各 ±3 mm、目标 x∈[0.8,1.4] / y∈[−0.25,0.25] m，并在每回合随机选择 1 / 2 ms 物理步长，策略始终为 50 Hz。`conditioned_refine.yaml` 使用相同分布和较低学习率继续精修。`far.yaml` / `far_refine.yaml` 为 2 m 固定目标远投训练配置。各配置的成功半径均为 10 cm，动作和原生执行器范围相同。
+
 每回合更新真实质量、质心和惯量。未提供 `inertia` 时使用凸体均匀质量加内部点配重模型实现指定 CoM；提供时为物体系下关于 CoM 的 `[Ixx,Iyy,Izz,Ixy,Ixz,Iyz]`。物理参数必须能描述合法刚体。采样范围由用户指定，代码不把目标限制在预设工作区，也不按目标距离提前拒绝回合。
 
 ## 动作和观测
@@ -83,5 +85,20 @@ python -m pytest xarm7_rl/tests -q
 评估默认使用 checkpoint 中的配置。指定 `--config` 和 `--set` 可评估新目标或物体，但分布外命中能力需实际测量。输出逐回合成功、落点误差、释放状态、实际自由飞行距离/时间、轨迹 NPZ，以及可选首回合连续视频。
 
 checkpoint 保存模型、归一化统计、Adam、步数和 RNG 状态。恢复训练会重新初始化仿真回合，不声称跨进程逐物理步续接。训练不调用渲染；评估回合数有明确上限，退出后关闭环境进程与渲染资源。
+
+切换任务分布后可用 `--reset-best` 重置模型选择记录；恢复时采用当前配置中的学习率并保留 Adam 动量。`best.pt` 按最近 200 个随机训练回合选择，不等于独立评估最优；应另用固定验证种子选择，并在未参与选择的测试种子上报告成绩。
+
+```bash
+# 每份 checkpoint 冻结后，在同一批物体/目标上分别评估 2 / 1 ms
+python -m xarm7_rl.benchmark --config xarm7_rl/configs/conditioned_robust.yaml \
+  --checkpoint candidate:runs/my_training/best.pt \
+  --episodes 200 --seed 5000 --output runs/paired_test
+
+# 分离闭环动作、共同初始状态和物理步长的影响
+python -m xarm7_rl.diagnose_steps --config xarm7_rl/configs/default.yaml \
+  --checkpoint xarm7_rl/verification/default/best.pt --output runs/step_diagnosis
+```
+
+释放记录在任何机械臂/夹爪再接触后重置，保留最终连续自由飞行段；一次性释放奖励不会因再接触重复发放。`flight_horizontal_distance` 是最终释放的物体原点至首次地面接触点的水平距离，`flight_com_horizontal_distance` 是同一时段 CoM 的实际水平位移。命中始终按首次地面接触点评价。
 
 算法与资产来源见 THIRD_PARTY.md。本模块仅仿真，不含硬件控制接口。训练预算、目标范围和物体分布是配置项；是否达到所需精度由独立评估结果判断。

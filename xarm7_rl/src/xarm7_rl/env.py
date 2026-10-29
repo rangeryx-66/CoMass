@@ -24,6 +24,7 @@ class ThrowEnv(gym.Env):
 
     def __init__(self, config, render_mode=None):
         self.config = deepcopy(config)
+        self.policy_period = config["timestep"] * config["substeps"]
         self.render_mode = render_mode
         self.renderer = None
         self.action_space = spaces.Box(-1, 1, (8,), np.float32)
@@ -128,6 +129,10 @@ class ThrowEnv(gym.Env):
         target = cfg["target"]
         self.target = self.np_random.uniform(target["low"], target["high"]) if target.get("low") is not None else np.array(target["position"], dtype=float)
         spec = self._sample_spec()
+        timesteps = cfg.get("randomization", {}).get("timesteps")
+        if timesteps:
+            cfg["timestep"] = float(self.np_random.choice(timesteps))
+            cfg["substeps"] = round(self.policy_period / cfg["timestep"])
         self.object_spec = spec
         signature = repr(spec)
         if self.model is None or signature != self.active_object or self.target[2] != self.model.geom_pos[self.floor_geom, 2]:
@@ -138,6 +143,7 @@ class ThrowEnv(gym.Env):
             self.active_object = signature
         else:
             mujoco.mj_resetData(self.model, self.data)
+        self.model.opt.timestep = cfg["timestep"]
         self.model.site_pos[self.model.site("target").id] = self.target + [0, 0, .002]
         self.data.qpos[self.qadr] = cfg["initial_joint_positions"]
         self.arm_target = self.data.qpos[self.qadr].copy()
@@ -184,6 +190,8 @@ class ThrowEnv(gym.Env):
         self.released = False
         self.release_candidate = None
         self.release = None
+        self.release_bonus_given = False
+        self.recontacts = 0
         self.landing = None
         self.ever_contact = bool(hand)
         self.no_contact_steps = 0
@@ -234,11 +242,14 @@ class ThrowEnv(gym.Env):
         reward, terminated = 0.0, False
         outcome = "running"
         for _ in range(cfg["substeps"]):
-            mujoco.mj_step(self.model, self.data)
-            mujoco.mj_forward(self.model, self.data)
-            _, hand, floor, _ = self._contacts()
+            self._physics_step()
+            _, hand, floor, robot = self._contacts()
             self.ever_contact |= bool(hand)
-            if hand:
+            if robot:
+                if self.released:
+                    self.recontacts += 1
+                    self.released = False
+                    self.release = None
                 self.no_contact_steps = 0
                 self.release_candidate = None
             elif self.ever_contact and not self.released:
@@ -250,12 +261,17 @@ class ThrowEnv(gym.Env):
                 if self.no_contact_steps * cfg["timestep"] >= cfg["release_confirm_seconds"] or floor:
                     self.released = True
                     self.release = self.release_candidate
-                    reward += cfg["reward"]["release"]
+                    if not self.release_bonus_given:
+                        reward += cfg["reward"]["release"]
+                        self.release_bonus_given = True
             if floor:
                 contact_position = np.mean(floor, axis=0)
                 error = float(np.linalg.norm(contact_position[:2] - self.target[:2]))
                 success = bool(self.released and error <= cfg["target"]["success_radius"])
-                self.landing = {"position": contact_position.tolist(), "error": error, "success": success}
+                self.landing = {"position": contact_position.tolist(),
+                                "com_position": self.data.xipos[self.object_body].tolist(),
+                                "object_position": self.data.xpos[self.object_body].tolist(),
+                                "error": error, "success": success}
                 reward += cfg["reward"]["landing"] * np.exp(-error ** 2 / (2 * cfg["reward"]["distance_scale"] ** 2)) if self.released else 0.0
                 reward += cfg["reward"]["hit"] if success else 0.0
                 terminated = True
@@ -271,17 +287,31 @@ class ThrowEnv(gym.Env):
         truncated = bool(not terminated and self.data.time - self.start_time >= cfg["episode_seconds"])
         if truncated:
             outcome = "timeout"
-        info = {"outcome": outcome, "success": bool(self.landing and self.landing["success"]), "released": self.released, "landing_error": self.landing["error"] if self.landing else np.nan, "target": self.target.copy(), "initialization": self.last_initialization}
+        info = {"outcome": outcome, "success": bool(self.landing and self.landing["success"]), "released": self.released, "recontacts": self.recontacts, "landing_error": self.landing["error"] if self.landing else np.nan, "target": self.target.copy(), "initialization": self.last_initialization}
         return self._observation(), float(reward), terminated, truncated, info
+
+    def _physics_step(self):
+        mujoco.mj_step(self.model, self.data)
+        mujoco.mj_forward(self.model, self.data)
 
     def render(self):
         if self.renderer is None:
-            self.renderer = mujoco.Renderer(self.model, height=480, width=640)
+            height, width = self.config.get("render_height", 480), self.config.get("render_width", 640)
+            self.model.vis.global_.offwidth = max(self.model.vis.global_.offwidth, width)
+            self.model.vis.global_.offheight = max(self.model.vis.global_.offheight, height)
+            self.model.vis.headlight.ambient[:] = .4
+            self.model.vis.headlight.diffuse[:] = .8
+            self.renderer = mujoco.Renderer(self.model, height=height, width=width)
         camera = mujoco.MjvCamera()
         camera.lookat[:] = (self.data.xpos[self.object_body] + np.r_[self.target[:2], .5]) / 2
         camera.distance = max(2.0, np.linalg.norm(self.target[:2]) + 1)
         camera.azimuth = 125
         camera.elevation = -20
+        for key, value in self.config.get("render_camera", {}).items():
+            if key == "lookat":
+                camera.lookat[:] = value
+            else:
+                setattr(camera, key, value)
         self.renderer.update_scene(self.data, camera=camera)
         return self.renderer.render()
 

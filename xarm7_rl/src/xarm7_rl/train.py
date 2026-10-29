@@ -71,13 +71,17 @@ class PPO:
         }, temporary)
         temporary.replace(path)
 
-    def restore(self, path):
+    def restore(self, path, reset_best=False):
         state = torch.load(path, map_location=self.device, weights_only=False)
         self.model.load_state_dict(state["model"])
         self.normalizer.load_state_dict(state["normalizer"])
         self.optimizer.load_state_dict(state["optimizer"])
+        for group in self.optimizer.param_groups:
+            group["lr"] = self.config["ppo"]["learning_rate"]
         self.steps, self.update = state["steps"], state["update"]
         self.best_success, self.best_error = state["best_success"], state["best_error"]
+        if reset_best:
+            self.best_success, self.best_error = -1.0, float("inf")
         torch.set_rng_state(state["torch_rng"].cpu())
         if torch.cuda.is_available() and state.get("cuda_rng") is not None:
             torch.cuda.set_rng_state_all([rng.cpu() for rng in state["cuda_rng"]])
@@ -101,6 +105,8 @@ class PPO:
 
     def train(self):
         cfg = self.config["ppo"]
+        run_start_steps = self.steps
+        self.start_time = time.monotonic()
         obs, _ = self.env.reset(seed=self.config["seed"])
         horizon, actors = cfg["horizon"], self.config["num_envs"]
         try:
@@ -162,7 +168,7 @@ class PPO:
                 self.update += 1
                 success = float(np.mean(self.successes)) if self.successes else 0.0
                 error = float(np.mean(self.errors)) if self.errors else None
-                record = {"steps": self.steps, "update": self.update, "episodes_in_window": len(self.successes), "success_rate": success, "landing_error_m": error, "release_rate": float(np.mean(self.release_flags)) if self.release_flags else 0.0, "initial_bilateral_rate": float(np.mean(self.initialized)) if self.initialized else 0.0, "return": float(np.mean(self.returns)) if self.returns else 0.0, "loss": last_loss, "kl": last_kl, "fps": self.steps / (time.monotonic() - self.start_time)}
+                record = {"steps": self.steps, "update": self.update, "episodes_in_window": len(self.successes), "success_rate": success, "landing_error_m": error, "release_rate": float(np.mean(self.release_flags)) if self.release_flags else 0.0, "initial_bilateral_rate": float(np.mean(self.initialized)) if self.initialized else 0.0, "return": float(np.mean(self.returns)) if self.returns else 0.0, "loss": last_loss, "kl": last_kl, "fps": (self.steps - run_start_steps) / (time.monotonic() - self.start_time)}
                 print(json.dumps(record), flush=True)
                 with (self.output / "metrics.jsonl").open("a") as stream:
                     stream.write(json.dumps(record) + "\n")
@@ -173,20 +179,24 @@ class PPO:
                     self.save(self.output / "best.pt")
                 if self.update % cfg["save_every"] == 0:
                     self.save(self.output / f"step_{self.steps}.pt")
+        except KeyboardInterrupt:
+            self.save(self.output / "last.pt")
+            raise
         finally:
-            self.env.close()
+            self.env.close(timeout=5)
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True)
     parser.add_argument("--resume")
+    parser.add_argument("--reset-best", action="store_true", help="Start checkpoint selection afresh after changing the task distribution")
     parser.add_argument("--set", action="append", default=[])
     args = parser.parse_args()
     config = load_config(args.config, args.set)
     trainer = PPO(config)
     if args.resume:
-        trainer.restore(args.resume)
+        trainer.restore(args.resume, reset_best=args.reset_best)
     trainer.train()
 
 

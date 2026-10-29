@@ -53,6 +53,8 @@ def evaluate(checkpoint, config, episodes=20, output="evaluation", video=False, 
                 release = np.array(result["release"]["position"])
                 landing = np.array(result["landing"]["position"])
                 result["flight_horizontal_distance"] = float(np.linalg.norm(landing[:2] - release[:2]))
+                result["flight_com_horizontal_distance"] = float(np.linalg.norm(
+                    np.asarray(result["landing"]["com_position"])[:2] - np.asarray(result["release"]["com_position"])[:2]))
                 result["flight_time"] = float(env.data.time - env.start_time - result["release"]["time"])
             results.append(result)
             np.savez_compressed(out / f"episode_{episode:03d}.npz", trajectory=np.asarray(trajectory), nq=env.model.nq, nv=env.model.nv, nu=env.model.nu)

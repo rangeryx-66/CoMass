@@ -1,0 +1,76 @@
+[
+  {
+    "label": "refined",
+    "checkpoint_steps": 911872,
+    "timestep": 0.002,
+    "episodes": 80,
+    "seed": 3000,
+    "success_radius": 0.1,
+    "hits": 54,
+    "success_rate": 0.675,
+    "mean_landing_error_m": 0.10068211834950724,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.08476849101287709,
+    "recontact_rate": 0.475,
+    "by_geometry": {
+      "box": {
+        "episodes": 16,
+        "hits": 7
+      },
+      "capsule": {
+        "episodes": 13,
+        "hits": 11
+      },
+      "cylinder": {
+        "episodes": 17,
+        "hits": 13
+      },
+      "ellipsoid": {
+        "episodes": 17,
+        "hits": 13
+      },
+      "sphere": {
+        "episodes": 17,
+        "hits": 10
+      }
+    }
+  },
+  {
+    "label": "refined",
+    "checkpoint_steps": 911872,
+    "timestep": 0.001,
+    "episodes": 80,
+    "seed": 3000,
+    "success_radius": 0.1,
+    "hits": 56,
+    "success_rate": 0.7,
+    "mean_landing_error_m": 0.0913166887676459,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.07549569899678499,
+    "recontact_rate": 0.45,
+    "by_geometry": {
+      "box": {
+        "episodes": 16,
+        "hits": 8
+      },
+      "capsule": {
+        "episodes": 13,
+        "hits": 11
+      },
+      "cylinder": {
+        "episodes": 17,
+        "hits": 13
+      },
+      "ellipsoid": {
+        "episodes": 17,
+        "hits": 14
+      },
+      "sphere": {
+        "episodes": 17,
+        "hits": 10
+      }
+    }
+  }
+]

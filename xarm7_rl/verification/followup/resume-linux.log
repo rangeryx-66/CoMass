@@ -1,0 +1,7 @@
+/data1/home/rangeryx/.conda/envs/robotics/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/data1/home/rangeryx/.conda/envs/robotics/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/data1/home/rangeryx/.conda/envs/robotics/lib/python3.10/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+{"steps": 1071632, "update": 1307, "episodes_in_window": 0, "success_rate": 0.0, "landing_error_m": null, "release_rate": 0.0, "initial_bilateral_rate": 0.0, "return": 0.0, "loss": 0.3522181510925293, "kl": 0.0, "fps": 56.12491539851882}

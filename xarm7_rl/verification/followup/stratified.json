@@ -1,0 +1,66 @@
+{
+  "0.002": {
+    "mass_60_105g": {
+      "episodes": 104,
+      "hits": 75,
+      "mean_error_m": 0.08771444838563612
+    },
+    "mass_105_150g": {
+      "episodes": 96,
+      "hits": 75,
+      "mean_error_m": 0.07918993629026928
+    },
+    "com_norm_le_3mm": {
+      "episodes": 123,
+      "hits": 97,
+      "mean_error_m": 0.08046196604521054
+    },
+    "com_norm_gt_3mm": {
+      "episodes": 77,
+      "hits": 53,
+      "mean_error_m": 0.08867161938196252
+    },
+    "target_x_0.8_1.1m": {
+      "episodes": 104,
+      "hits": 92,
+      "mean_error_m": 0.06457644465855172
+    },
+    "target_x_1.1_1.4m": {
+      "episodes": 96,
+      "hits": 58,
+      "mean_error_m": 0.10425610699461074
+    }
+  },
+  "0.001": {
+    "mass_60_105g": {
+      "episodes": 104,
+      "hits": 72,
+      "mean_error_m": 0.08489767666247242
+    },
+    "mass_105_150g": {
+      "episodes": 96,
+      "hits": 69,
+      "mean_error_m": 0.07841603310670682
+    },
+    "com_norm_le_3mm": {
+      "episodes": 123,
+      "hits": 90,
+      "mean_error_m": 0.08087659003035774
+    },
+    "com_norm_gt_3mm": {
+      "episodes": 77,
+      "hits": 51,
+      "mean_error_m": 0.08323996074554522
+    },
+    "target_x_0.8_1.1m": {
+      "episodes": 104,
+      "hits": 85,
+      "mean_error_m": 0.06349480589854754
+    },
+    "target_x_1.1_1.4m": {
+      "episodes": 96,
+      "hits": 56,
+      "mean_error_m": 0.1016024764342921
+    }
+  }
+}

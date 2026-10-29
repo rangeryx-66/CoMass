@@ -1,0 +1,52 @@
+[
+  {
+    "label": "conditioned",
+    "checkpoint_steps": 1071616,
+    "timestep": 0.002,
+    "episodes": 200,
+    "seed": 5000,
+    "success_radius": 0.1,
+    "hits": 169,
+    "success_rate": 0.845,
+    "mean_landing_error_m": 0.06399762164990092,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.05948370695579454,
+    "recontact_rate": 0.76,
+    "by_geometry": {
+      "box": {
+        "episodes": 103,
+        "hits": 75
+      },
+      "cylinder": {
+        "episodes": 97,
+        "hits": 94
+      }
+    }
+  },
+  {
+    "label": "conditioned",
+    "checkpoint_steps": 1071616,
+    "timestep": 0.001,
+    "episodes": 200,
+    "seed": 5000,
+    "success_radius": 0.1,
+    "hits": 173,
+    "success_rate": 0.865,
+    "mean_landing_error_m": 0.06241601190416882,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.05342590224537032,
+    "recontact_rate": 0.69,
+    "by_geometry": {
+      "box": {
+        "episodes": 103,
+        "hits": 85
+      },
+      "cylinder": {
+        "episodes": 97,
+        "hits": 88
+      }
+    }
+  }
+]

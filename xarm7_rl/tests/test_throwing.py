@@ -152,3 +152,41 @@ def test_tanh_policy_log_probability_and_gradients():
     loss = -new_logprob.mean() + new_value.square().mean() - .001 * entropy.mean()
     loss.backward()
     assert all(p.grad is not None and torch.isfinite(p.grad).all() for p in model.parameters())
+
+
+def test_recontact_updates_final_release_without_repeating_bonus(config):
+    cfg = deepcopy(config["env"])
+    cfg["reward"].update(prediction_progress=0, landing=0, hit=0, action_cost=0)
+    saved = np.load(ROOT / "verification/default/trajectory.npz")
+    offset = 1 + int(saved["nq"]) + int(saved["nv"])
+    actions = saved["trajectory"][:, offset:offset + 8]
+    env = ThrowEnv(cfg)
+    try:
+        env.reset(seed=1000)
+        total = 0.0
+        for action in actions:
+            _, reward, terminated, truncated, info = env.step(action)
+            total += reward
+            if terminated or truncated:
+                break
+        assert env.recontacts > 0
+        assert env.release["time"] > .55
+        assert env.landing["error"] == pytest.approx(.08888328, abs=1e-5)
+        assert total == pytest.approx(cfg["reward"]["release"])
+    finally:
+        env.close()
+
+
+def test_step_randomization_preserves_control_period(config):
+    cfg = deepcopy(config["env"])
+    cfg["randomization"]["timesteps"] = [.001, .002]
+    env = ThrowEnv(cfg)
+    try:
+        observed = set()
+        for seed in range(6):
+            env.reset(seed=seed)
+            observed.add(env.model.opt.timestep)
+            assert env.model.opt.timestep * env.config["substeps"] == pytest.approx(.02)
+        assert observed == {.001, .002}
+    finally:
+        env.close()
