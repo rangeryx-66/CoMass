@@ -1,0 +1,155 @@
+{
+  "episodes": 2,
+  "success_rate": 0.0,
+  "mean_landing_error_m": 0.1271674328315128,
+  "release_rate": 1.0,
+  "initial_bilateral_rate": 1.0,
+  "results": [
+    {
+      "episode": 0,
+      "seed": 1000,
+      "return": 11.635191394198646,
+      "outcome": "miss",
+      "success": false,
+      "released": true,
+      "landing_error": 0.1271674328315128,
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.022,
+          0.02,
+          0.025
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": null,
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ]
+      },
+      "release": {
+        "time": 0.5039999999999999,
+        "position": [
+          0.3899506053630598,
+          0.4659577673980587,
+          0.3383380883725879
+        ],
+        "com_position": [
+          0.3899506053630598,
+          0.4659577673980587,
+          0.3383380883725879
+        ],
+        "velocity": [
+          2.7854806011742315,
+          -1.3669198797907085,
+          -0.1539398954130505
+        ],
+        "angular_velocity": [
+          0.6345019235835769,
+          4.036814642055159,
+          -8.471216860090585
+        ]
+      },
+      "landing": {
+        "position": [
+          1.030891681277033,
+          0.12335825874596126,
+          -0.0008763486196487688
+        ],
+        "error": 0.1271674328315128,
+        "success": false
+      },
+      "flight_horizontal_distance": 0.7267598545065764,
+      "flight_time": 0.22099999999997566
+    },
+    {
+      "episode": 1,
+      "seed": 1001,
+      "return": 11.635191394198646,
+      "outcome": "miss",
+      "success": false,
+      "released": true,
+      "landing_error": 0.1271674328315128,
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.022,
+          0.02,
+          0.025
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": null,
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ]
+      },
+      "release": {
+        "time": 0.5039999999999999,
+        "position": [
+          0.3899506053630598,
+          0.4659577673980587,
+          0.3383380883725879
+        ],
+        "com_position": [
+          0.3899506053630598,
+          0.4659577673980587,
+          0.3383380883725879
+        ],
+        "velocity": [
+          2.7854806011742315,
+          -1.3669198797907085,
+          -0.1539398954130505
+        ],
+        "angular_velocity": [
+          0.6345019235835769,
+          4.036814642055159,
+          -8.471216860090585
+        ]
+      },
+      "landing": {
+        "position": [
+          1.030891681277033,
+          0.12335825874596126,
+          -0.0008763486196487688
+        ],
+        "error": 0.1271674328315128,
+        "success": false
+      },
+      "flight_horizontal_distance": 0.7267598545065764,
+      "flight_time": 0.22099999999997566
+    }
+  ]
+}
