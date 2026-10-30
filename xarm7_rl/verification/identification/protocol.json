@@ -1,0 +1,153 @@
+{
+  "geometry_m": [
+    0.06,
+    0.05,
+    0.07
+  ],
+  "wall_m": 0.001,
+  "shell_mass_kg": 0.02,
+  "ballast_dimensions_m": [
+    0.02,
+    0.02,
+    0.024
+  ],
+  "objects": {
+    "center_100": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.1,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.6038638824439298e-05,
+        2.8482026295436964e-05,
+        2.2088584686774958e-05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.08,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "corner_100": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.1,
+      "com": [
+        0.015199999999999998,
+        0.0112,
+        0.017599999999999998
+      ],
+      "inertia": [
+        3.69186388244393e-05,
+        4.200202629543696e-05,
+        3.1000584686774956e-05,
+        -4.2559999999999996e-06,
+        -6.687999999999999e-06,
+        -4.928e-06
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.08,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.019,
+          0.014,
+          0.022
+        ]
+      }
+    },
+    "center_060": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.06,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.2785305491105966e-05,
+        2.5228692962103633e-05,
+        1.9421918020108288e-05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.04,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "training_seed": 2026,
+  "validation_seeds": [
+    30000,
+    30049
+  ],
+  "test_seeds": [
+    40000,
+    40199
+  ],
+  "target": [
+    1.0,
+    0.0,
+    0.0
+  ],
+  "radius": 0.1,
+  "initial_joint_noise_uniform_rad": 0.005,
+  "main_timestep": 0.001,
+  "secondary_timestep": 0.0005,
+  "method": "Three specialists; no mass/com randomization or imitation reward. Each policy keeps its own training estimate when tested in every physical world. Geometric-origin twist converted with the estimate. Preserve proprioception and object pose feedback.",
+  "interpretation": "Moving the same ballast changes CoM and the corresponding inertia. This sim-to-sim study does not itself demonstrate real-robot transfer.",
+  "frozen_checkpoint_sha256": {
+    "corner_100.pt": "9e38c319769cf90886289b92da857d11a4a8ee8fb9bd2354248801817f1c9e6f",
+    "center_060.pt": "e8c90d3d76ff08a6e38ba545c300aee01b1b5570b3a575d1ce1f34a181a38511",
+    "center_100.pt": "5f5390edd46fd119e5c46605ddd78c33582650fdb32b8c4d3d1b699576742532"
+  },
+  "selection": "Own-world validation only. Center100 screened saved checkpoints because training-window-best had poor deterministic validation. Corner100 and center60 selected late own-world validated checkpoints. No cross-world results seen before freezing."
+}

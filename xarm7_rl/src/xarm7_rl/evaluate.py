@@ -47,6 +47,9 @@ def evaluate(checkpoint, config, episodes=20, output="evaluation", video=False, 
                 if writer:
                     writer.close()
             result = {"episode": episode, "seed": seed + episode, "return": total, **info, "target": info["target"].tolist(), "object": json.loads(reset_info["object_json"]), "release": env.release, "landing": env.landing}
+            result["inertial_estimate"] = json.loads(reset_info.get("estimate_json", "null"))
+            if "initial_arm_target" in reset_info:
+                result["initial_arm_target"] = reset_info["initial_arm_target"].tolist()
             if not np.isfinite(result["landing_error"]):
                 result["landing_error"] = None
             if result["release"] and result["landing"]:

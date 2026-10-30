@@ -136,6 +136,13 @@ class ThrowEnv(gym.Env):
             cfg["timestep"] = float(self.np_random.choice(timesteps))
             cfg["substeps"] = round(self.policy_period / cfg["timestep"])
         self.object_spec = spec
+        estimate = cfg.get("inertial_estimate")
+        if estimate is not None:
+            if not {"mass", "com"}.issubset(estimate) or set(estimate)-{"mass","com","inertia"}:
+                raise ValueError("inertial_estimate requires mass and com, with optional inertia")
+            reported = merge_object(spec, {**estimate, "inertia":estimate.get("inertia")})
+            _, self.reported_mass, self.reported_com, reported_inertia, _ = object_geometry(reported, cfg["geometry_points"])
+            self.reported_inertia = reported_inertia[np.triu_indices(3)]
         signature = repr(spec)
         if self.model is None or signature != self.active_object or self.target[2] != self.model.geom_pos[self.floor_geom, 2]:
             if self.renderer:
@@ -147,7 +154,10 @@ class ThrowEnv(gym.Env):
             mujoco.mj_resetData(self.model, self.data)
         self.model.opt.timestep = cfg["timestep"]
         self.model.site_pos[self.model.site("target").id] = self.target + [0, 0, .002]
-        self.data.qpos[self.qadr] = cfg["initial_joint_positions"]
+        initial_q = np.array(cfg["initial_joint_positions"], dtype=float)
+        if cfg.get("initial_joint_noise"):
+            initial_q += self.np_random.uniform(-cfg["initial_joint_noise"], cfg["initial_joint_noise"], size=7)
+        self.data.qpos[self.qadr] = initial_q
         self.arm_target = self.data.qpos[self.qadr].copy()
         self.data.ctrl[self.arm_act] = self.arm_target
         # Initialize the native four-bar opening around the configured object width.
@@ -200,7 +210,11 @@ class ThrowEnv(gym.Env):
         self.initial_object_position = self.data.xpos[self.object_body].copy()
         self.previous_prediction_score = self._prediction_score()
         self.style_integral = self.style_error_integral = self.style_reward = 0.
-        return self._observation(), {"initialization": self.last_initialization, "object_json": json.dumps(spec), "target": self.target.copy()}
+        reported = {"mass":self.reported_mass,"com":self.reported_com.tolist(),
+                    "inertia":self.reported_inertia[[0,3,5,1,2,4]].tolist()} if estimate is not None else None
+        return self._observation(), {"initialization": self.last_initialization, "object_json": json.dumps(spec),
+                                    "estimate_json":json.dumps(reported), "target": self.target.copy(),
+                                    "initial_arm_target":self.arm_target.copy()}
 
     def _arm_points(self):
         return np.array([self.data.xpos[self.model.body(name).id] for name in ("link2", "link4", "link6")] + [self.data.site_xpos[self.tcp]])
@@ -224,6 +238,15 @@ class ThrowEnv(gym.Env):
 
     def _observation(self):
         position, quaternion, velocity, omega = self._object_state()
+        mass, com, inertia = self.mass, self.com, self.inertia
+        if self.config.get("inertial_estimate") is not None:
+            mass, com, inertia = self.reported_mass, self.reported_com, self.reported_inertia
+            # A pose tracker measures the geometric body-frame origin, not the
+            # hidden true CoM. Convert that observable twist using the estimate.
+            twist = np.zeros(6)
+            mujoco.mj_objectVelocity(self.model, self.data, mujoco.mjtObj.mjOBJ_XBODY, self.object_body, twist, 0)
+            omega = twist[:3]
+            velocity = twist[3:] + np.cross(omega, self.data.xmat[self.object_body].reshape(3,3) @ com)
         grip_q = self.model.jnt_qposadr[self.grip_joint]
         grip_v = self.model.jnt_dofadr[self.grip_joint]
         hand = self._contacts()[1]
@@ -231,7 +254,7 @@ class ThrowEnv(gym.Env):
             self.data.qpos[self.qadr], self.data.qvel[self.vadr],
             [self.data.qpos[grip_q], self.data.qvel[grip_v]],
             position, quaternion, velocity, omega,
-            self.target - position, [self.mass], self.com, self.inertia,
+            self.target - position, [mass], com, inertia,
             self.geometry.ravel(),
             [self.data.time - self.start_time, float(self.released), float(hand)],
             self.previous_action,

@@ -1,0 +1,677 @@
+[
+  {
+    "policy": "center_100",
+    "physics": "center_100",
+    "timestep": 0.001,
+    "episodes": 200,
+    "seed": 40000,
+    "checkpoint_steps": 262272,
+    "checkpoint_sha256": "5f5390edd46fd119e5c46605ddd78c33582650fdb32b8c4d3d1b699576742532",
+    "hits": 200,
+    "success_radius": 0.1,
+    "physical_object": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.1,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.6038638824439298e-05,
+        2.8482026295436964e-05,
+        2.2088584686774958e-05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.08,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "policy_inertial_estimate": {
+      "mass": 0.1,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.6038638824439298e-05,
+        2.8482026295436964e-05,
+        2.2088584686774958e-05,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "timeouts": 0,
+    "mean_free_flight_m": 0.43132945288166197,
+    "success_rate": 1.0,
+    "mean_landing_error_m": 0.029329134213586894,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0
+  },
+  {
+    "policy": "center_100",
+    "physics": "corner_100",
+    "timestep": 0.001,
+    "episodes": 200,
+    "seed": 40000,
+    "checkpoint_steps": 262272,
+    "checkpoint_sha256": "5f5390edd46fd119e5c46605ddd78c33582650fdb32b8c4d3d1b699576742532",
+    "hits": 200,
+    "success_radius": 0.1,
+    "physical_object": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.1,
+      "com": [
+        0.015199999999999998,
+        0.0112,
+        0.017599999999999998
+      ],
+      "inertia": [
+        3.69186388244393e-05,
+        4.200202629543696e-05,
+        3.1000584686774956e-05,
+        -4.2559999999999996e-06,
+        -6.687999999999999e-06,
+        -4.928e-06
+      ],
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.08,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.019,
+          0.014,
+          0.022
+        ]
+      }
+    },
+    "policy_inertial_estimate": {
+      "mass": 0.1,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.6038638824439298e-05,
+        2.8482026295436964e-05,
+        2.2088584686774958e-05,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "timeouts": 0,
+    "mean_free_flight_m": 0.4550622797941678,
+    "success_rate": 1.0,
+    "mean_landing_error_m": 0.053365771868808434,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0
+  },
+  {
+    "policy": "center_100",
+    "physics": "center_060",
+    "timestep": 0.001,
+    "episodes": 200,
+    "seed": 40000,
+    "checkpoint_steps": 262272,
+    "checkpoint_sha256": "5f5390edd46fd119e5c46605ddd78c33582650fdb32b8c4d3d1b699576742532",
+    "hits": 200,
+    "success_radius": 0.1,
+    "physical_object": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.06,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.2785305491105966e-05,
+        2.5228692962103633e-05,
+        1.9421918020108288e-05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.04,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "policy_inertial_estimate": {
+      "mass": 0.1,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.6038638824439298e-05,
+        2.8482026295436964e-05,
+        2.2088584686774958e-05,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "timeouts": 0,
+    "mean_free_flight_m": 0.4324620079219556,
+    "success_rate": 1.0,
+    "mean_landing_error_m": 0.013161636013284026,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0
+  },
+  {
+    "policy": "corner_100",
+    "physics": "center_100",
+    "timestep": 0.001,
+    "episodes": 200,
+    "seed": 40000,
+    "checkpoint_steps": 259200,
+    "checkpoint_sha256": "9e38c319769cf90886289b92da857d11a4a8ee8fb9bd2354248801817f1c9e6f",
+    "hits": 200,
+    "success_radius": 0.1,
+    "physical_object": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.1,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.6038638824439298e-05,
+        2.8482026295436964e-05,
+        2.2088584686774958e-05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.08,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "policy_inertial_estimate": {
+      "mass": 0.1,
+      "com": [
+        0.015199999999999998,
+        0.0112,
+        0.017599999999999998
+      ],
+      "inertia": [
+        3.69186388244393e-05,
+        4.200202629543696e-05,
+        3.1000584686774956e-05,
+        -4.2559999999999996e-06,
+        -6.687999999999999e-06,
+        -4.928e-06
+      ]
+    },
+    "timeouts": 0,
+    "mean_free_flight_m": 0.5648420250383487,
+    "success_rate": 1.0,
+    "mean_landing_error_m": 0.01879372187880194,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0
+  },
+  {
+    "policy": "corner_100",
+    "physics": "corner_100",
+    "timestep": 0.001,
+    "episodes": 200,
+    "seed": 40000,
+    "checkpoint_steps": 259200,
+    "checkpoint_sha256": "9e38c319769cf90886289b92da857d11a4a8ee8fb9bd2354248801817f1c9e6f",
+    "hits": 200,
+    "success_radius": 0.1,
+    "physical_object": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.1,
+      "com": [
+        0.015199999999999998,
+        0.0112,
+        0.017599999999999998
+      ],
+      "inertia": [
+        3.69186388244393e-05,
+        4.200202629543696e-05,
+        3.1000584686774956e-05,
+        -4.2559999999999996e-06,
+        -6.687999999999999e-06,
+        -4.928e-06
+      ],
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.08,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.019,
+          0.014,
+          0.022
+        ]
+      }
+    },
+    "policy_inertial_estimate": {
+      "mass": 0.1,
+      "com": [
+        0.015199999999999998,
+        0.0112,
+        0.017599999999999998
+      ],
+      "inertia": [
+        3.69186388244393e-05,
+        4.200202629543696e-05,
+        3.1000584686774956e-05,
+        -4.2559999999999996e-06,
+        -6.687999999999999e-06,
+        -4.928e-06
+      ]
+    },
+    "timeouts": 0,
+    "mean_free_flight_m": 0.5834574508836572,
+    "success_rate": 1.0,
+    "mean_landing_error_m": 0.02955880217615282,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0
+  },
+  {
+    "policy": "corner_100",
+    "physics": "center_060",
+    "timestep": 0.001,
+    "episodes": 200,
+    "seed": 40000,
+    "checkpoint_steps": 259200,
+    "checkpoint_sha256": "9e38c319769cf90886289b92da857d11a4a8ee8fb9bd2354248801817f1c9e6f",
+    "hits": 200,
+    "success_radius": 0.1,
+    "physical_object": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.06,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.2785305491105966e-05,
+        2.5228692962103633e-05,
+        1.9421918020108288e-05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.04,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "policy_inertial_estimate": {
+      "mass": 0.1,
+      "com": [
+        0.015199999999999998,
+        0.0112,
+        0.017599999999999998
+      ],
+      "inertia": [
+        3.69186388244393e-05,
+        4.200202629543696e-05,
+        3.1000584686774956e-05,
+        -4.2559999999999996e-06,
+        -6.687999999999999e-06,
+        -4.928e-06
+      ]
+    },
+    "timeouts": 0,
+    "mean_free_flight_m": 0.5566224500158246,
+    "success_rate": 1.0,
+    "mean_landing_error_m": 0.014451725779635766,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0
+  },
+  {
+    "policy": "center_060",
+    "physics": "center_100",
+    "timestep": 0.001,
+    "episodes": 200,
+    "seed": 40000,
+    "checkpoint_steps": 248448,
+    "checkpoint_sha256": "e8c90d3d76ff08a6e38ba545c300aee01b1b5570b3a575d1ce1f34a181a38511",
+    "hits": 200,
+    "success_radius": 0.1,
+    "physical_object": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.1,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.6038638824439298e-05,
+        2.8482026295436964e-05,
+        2.2088584686774958e-05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.08,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "policy_inertial_estimate": {
+      "mass": 0.06,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.2785305491105966e-05,
+        2.5228692962103633e-05,
+        1.9421918020108288e-05,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "timeouts": 0,
+    "mean_free_flight_m": 0.4721005947830365,
+    "success_rate": 1.0,
+    "mean_landing_error_m": 0.03838457816207669,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0
+  },
+  {
+    "policy": "center_060",
+    "physics": "corner_100",
+    "timestep": 0.001,
+    "episodes": 200,
+    "seed": 40000,
+    "checkpoint_steps": 248448,
+    "checkpoint_sha256": "e8c90d3d76ff08a6e38ba545c300aee01b1b5570b3a575d1ce1f34a181a38511",
+    "hits": 3,
+    "success_radius": 0.1,
+    "physical_object": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.1,
+      "com": [
+        0.015199999999999998,
+        0.0112,
+        0.017599999999999998
+      ],
+      "inertia": [
+        3.69186388244393e-05,
+        4.200202629543696e-05,
+        3.1000584686774956e-05,
+        -4.2559999999999996e-06,
+        -6.687999999999999e-06,
+        -4.928e-06
+      ],
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.08,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.019,
+          0.014,
+          0.022
+        ]
+      }
+    },
+    "policy_inertial_estimate": {
+      "mass": 0.06,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.2785305491105966e-05,
+        2.5228692962103633e-05,
+        1.9421918020108288e-05,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "timeouts": 0,
+    "mean_free_flight_m": 0.5617315963418356,
+    "success_rate": 0.015,
+    "mean_landing_error_m": 0.1455204840054619,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0
+  },
+  {
+    "policy": "center_060",
+    "physics": "center_060",
+    "timestep": 0.001,
+    "episodes": 200,
+    "seed": 40000,
+    "checkpoint_steps": 248448,
+    "checkpoint_sha256": "e8c90d3d76ff08a6e38ba545c300aee01b1b5570b3a575d1ce1f34a181a38511",
+    "hits": 200,
+    "success_radius": 0.1,
+    "physical_object": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.06,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.2785305491105966e-05,
+        2.5228692962103633e-05,
+        1.9421918020108288e-05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.04,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "policy_inertial_estimate": {
+      "mass": 0.06,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.2785305491105966e-05,
+        2.5228692962103633e-05,
+        1.9421918020108288e-05,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "timeouts": 0,
+    "mean_free_flight_m": 0.4880747761042519,
+    "success_rate": 1.0,
+    "mean_landing_error_m": 0.04118546984585507,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0
+  }
+]
