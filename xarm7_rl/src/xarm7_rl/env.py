@@ -11,6 +11,7 @@ import numpy as np
 
 from .config import merge_object
 from .objects import SHAPES, object_geometry
+from .imitation import PosePrior
 
 ASSETS = Path(__file__).parent / "assets" / "ufactory_xarm7"
 
@@ -25,6 +26,7 @@ class ThrowEnv(gym.Env):
     def __init__(self, config, render_mode=None):
         self.config = deepcopy(config)
         self.policy_period = config["timestep"] * config["substeps"]
+        self.pose_prior = PosePrior(config["imitation"]) if config.get("imitation") else None
         self.render_mode = render_mode
         self.renderer = None
         self.action_space = spaces.Box(-1, 1, (8,), np.float32)
@@ -197,7 +199,11 @@ class ThrowEnv(gym.Env):
         self.no_contact_steps = 0
         self.initial_object_position = self.data.xpos[self.object_body].copy()
         self.previous_prediction_score = self._prediction_score()
+        self.style_integral = self.style_error_integral = self.style_reward = 0.
         return self._observation(), {"initialization": self.last_initialization, "object_json": json.dumps(spec), "target": self.target.copy()}
+
+    def _arm_points(self):
+        return np.array([self.data.xpos[self.model.body(name).id] for name in ("link2", "link4", "link6")] + [self.data.site_xpos[self.tcp]])
 
     def _object_state(self):
         # cvel is angular/linear velocity at the body's CoM in the world frame.
@@ -240,6 +246,7 @@ class ThrowEnv(gym.Env):
         # -1 closes, +1 opens; all continuous intermediate openings are available.
         self.data.ctrl[self.grip_act] = (1 - action[7]) * 127.5
         reward, terminated = 0.0, False
+        step_start_time = self.data.time
         outcome = "running"
         for _ in range(cfg["substeps"]):
             self._physics_step()
@@ -256,6 +263,9 @@ class ThrowEnv(gym.Env):
                 if self.release_candidate is None:
                     pos, quat, vel, omega = self._object_state()
                     self.release_candidate = {"time": float(self.data.time - self.start_time), "position": pos.tolist(), "com_position": self.data.xipos[self.object_body].tolist(), "velocity": vel.tolist(), "angular_velocity": omega.tolist()}
+                    if self.pose_prior:
+                        self.release_candidate["imitation"] = self.pose_prior.compare(self._arm_points(), self.target)
+                        self.release_candidate["arm_qpos"] = self.data.qpos[self.qadr].tolist()
                 self.no_contact_steps += 1
                 # Debounce one physics-step contact flicker; timestamp stays at first separation.
                 if self.no_contact_steps * cfg["timestep"] >= cfg["release_confirm_seconds"] or floor:
@@ -288,6 +298,25 @@ class ThrowEnv(gym.Env):
         if truncated:
             outcome = "timeout"
         info = {"outcome": outcome, "success": bool(self.landing and self.landing["success"]), "released": self.released, "recontacts": self.recontacts, "landing_error": self.landing["error"] if self.landing else np.nan, "target": self.target.copy(), "initialization": self.last_initialization}
+        if self.pose_prior:
+            style = self.pose_prior.compare(self._arm_points(), self.target)
+            elapsed = self.data.time - step_start_time
+            style_reward = self.pose_prior.reward(style["score"], elapsed)
+            reward += style_reward
+            self.style_integral += style["score"] * elapsed
+            self.style_error_integral += style["error_degrees"] * elapsed
+            self.style_reward += style_reward
+            total_time = self.data.time - self.start_time
+            release_style = self.release.get("imitation", {}) if self.release else {}
+            if terminated or truncated:
+                terminal_style = self.pose_prior.terminal_reward(self.style_integral / total_time, release_style.get("score", 0.))
+                reward += terminal_style
+                self.style_reward += terminal_style
+            info.update(imitation_score=style["score"], imitation_mean_score=self.style_integral / total_time,
+                        imitation_mean_error_degrees=self.style_error_integral / total_time,
+                        imitation_release_score=release_style.get("score", 0.),
+                        imitation_release_error_degrees=release_style.get("error_degrees", 180.),
+                        imitation_reward=self.style_reward)
         return self._observation(), float(reward), terminated, truncated, info
 
     def _physics_step(self):

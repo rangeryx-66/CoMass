@@ -102,3 +102,41 @@ python -m xarm7_rl.diagnose_steps --config xarm7_rl/configs/default.yaml \
 释放记录在任何机械臂/夹爪再接触后重置，保留最终连续自由飞行段；一次性释放奖励不会因再接触重复发放。`flight_horizontal_distance` 是最终释放的物体原点至首次地面接触点的水平距离，`flight_com_horizontal_distance` 是同一时段 CoM 的实际水平位移。命中始终按首次地面接触点评价。
 
 算法与资产来源见 THIRD_PARTY.md。本模块仅仿真，不含硬件控制接口。训练预算、目标范围和物体分布是配置项；是否达到所需精度由独立评估结果判断。
+
+## 可选的视频姿态模仿实验
+
+已提供从公开投掷视频人工标注二维关键点、插值连杆方向、用 xArm7 IK 重定向、构造软模仿奖励，以及示教采集 / BC 预热 / PPO 联合训练的流程。具体数据、视频和未达到原命中率的实测结果见 [IMITATION_REPORT.md](IMITATION_REPORT.md)。当前只提供一个举臂上手投掷参考，来源和单目不确定性保存在 `assets/motions/mit_overhand.json`。
+
+默认配置不启用模仿。观测仍为 149 维、动作仍为八维，没有新增角度、轨迹、速度门槛或命中规则。参考用于奖励与训练数据，实际执行时由网络独立输出全部动作；不进行示教动作混合。原来的 checkpoint 可直接运行。
+
+```yaml
+# 放在 env 下；不添加本节即为原任务
+imitation:
+  reference: mit_overhand
+  angular_sigma_degrees: 45
+  bone_weights: [1.0, 1.0, 0.5]
+  reward_scale: 0.5
+  terminal_reward_scale: 4.0
+  release_reward_scale: 4.0
+```
+
+```bash
+# 仅生成姿态参考预览：不是实际投掷成绩
+python -m xarm7_rl.retarget --config xarm7_rl/configs/default.yaml \
+  --reference mit_overhand --output runs/pose_reference --video
+
+# 从已有策略直接加软奖励继续 PPO（可运行，但本轮改善有限）
+python -m xarm7_rl.train --config xarm7_rl/configs/imitation_appearance.yaml \
+  --resume xarm7_rl/verification/followup/checkpoints/conditioned.pt --reset-best
+
+# 可选的模仿预热；示教控制器只在采集数据时使用
+python -m xarm7_rl.imitate collect --config xarm7_rl/configs/imitation_appearance.yaml \
+  --episodes 100 --output runs/my_demos
+python -m xarm7_rl.imitate clone --config xarm7_rl/configs/imitation_bc_rl.yaml \
+  --checkpoint xarm7_rl/verification/followup/checkpoints/conditioned.pt \
+  --dataset runs/my_demos/demonstrations.npz --updates 2000 --output runs/my_bc.pt
+python -m xarm7_rl.train --config xarm7_rl/configs/imitation_bc_rl.yaml \
+  --resume runs/my_bc.pt --reset-best
+```
+
+各个 `imitation_*.yaml` 是实验配置。增大权重可能损失命中率，不会自动保证更好。可选 `ppo.bc_coef` / `ppo.bc_dataset` 仅增加训练时的手臂 BC 辅助损失，默认系数为零，夹爪仍由任务学习；本轮该辅助项也未解决风格与准确率的取舍。

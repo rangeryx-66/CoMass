@@ -39,6 +39,14 @@ class PPO:
         torch.manual_seed(config["seed"])
         if torch.cuda.is_available():
             torch.cuda.manual_seed_all(config["seed"])
+        self.bc_obs = self.bc_actions = None
+        if config["ppo"].get("bc_coef", 0) > 0:
+            with np.load(config["ppo"]["bc_dataset"]) as dataset:
+                observations, actions = dataset["observations"], dataset["actions"]
+                if len(observations) == 0 or observations.shape[1] != 53+3*config["env"]["geometry_points"] or actions.shape != (len(observations), 8):
+                    raise ValueError("Demonstration shapes must match policy observations and eight actions")
+                self.bc_obs = torch.as_tensor(observations.copy(), dtype=torch.float32, device=self.device)
+                self.bc_actions = torch.as_tensor(actions.copy(), dtype=torch.float32, device=self.device)
         creators = [partial(ThrowEnv, config["env"]) for _ in range(config["num_envs"])]
         self.env = gym.vector.AsyncVectorEnv(creators, context="spawn", autoreset_mode=gym.vector.AutoresetMode.SAME_STEP)
         self.model = ActorCritic(self.env.single_observation_space.shape[0], config["ppo"]["hidden"]).to(self.device)
@@ -54,6 +62,8 @@ class PPO:
         self.returns = deque(maxlen=200)
         self.release_flags = deque(maxlen=200)
         self.initialized = deque(maxlen=200)
+        self.styles = deque(maxlen=200)
+        self.style_errors = deque(maxlen=200)
         self.episode_returns = np.zeros(config["num_envs"])
         self.output = Path(config["output"])
         self.output.mkdir(parents=True, exist_ok=True)
@@ -101,6 +111,9 @@ class PPO:
                 self.errors.append(float(final["landing_error"][index]))
             init = final.get("initialization", {})
             self.initialized.append(bool(init["bilateral_contact"][index]))
+            if "imitation_mean_score" in final:
+                self.styles.append(float(final["imitation_mean_score"][index]))
+                self.style_errors.append(float(final["imitation_mean_error_degrees"][index]))
             self.episode_returns[index] = 0
 
     def train(self):
@@ -148,6 +161,13 @@ class PPO:
                         actor_loss = torch.maximum(-advantage[batch] * ratio, -advantage[batch] * ratio.clamp(1 - cfg["clip"], 1 + cfg["clip"])).mean()
                         value_loss = .5 * (value - returns[batch]).square().mean()
                         loss = actor_loss + cfg["value_coef"] * value_loss - cfg["entropy_coef"] * entropy.mean()
+                        if self.bc_obs is not None:
+                            demo = torch.randint(len(self.bc_obs), (128,), device=self.device)
+                            imitation_action = self.model.actor(self.normalizer(self.bc_obs[demo])).tanh()
+                            # Soft training regularization of arm style only. Release
+                            # timing remains task-learned; no action blending at inference.
+                            bc_loss = (imitation_action[:, :7] - self.bc_actions[demo, :7]).square().mean()
+                            loss = loss + cfg["bc_coef"] * bc_loss
                         self.optimizer.zero_grad()
                         loss.backward()
                         torch.nn.utils.clip_grad_norm_(self.model.parameters(), cfg["grad_norm"])
@@ -169,6 +189,11 @@ class PPO:
                 success = float(np.mean(self.successes)) if self.successes else 0.0
                 error = float(np.mean(self.errors)) if self.errors else None
                 record = {"steps": self.steps, "update": self.update, "episodes_in_window": len(self.successes), "success_rate": success, "landing_error_m": error, "release_rate": float(np.mean(self.release_flags)) if self.release_flags else 0.0, "initial_bilateral_rate": float(np.mean(self.initialized)) if self.initialized else 0.0, "return": float(np.mean(self.returns)) if self.returns else 0.0, "loss": last_loss, "kl": last_kl, "fps": (self.steps - run_start_steps) / (time.monotonic() - self.start_time)}
+                if self.styles:
+                    record.update(imitation_mean_score=float(np.mean(self.styles)),
+                                  imitation_mean_error_degrees=float(np.mean(self.style_errors)))
+                if self.bc_obs is not None:
+                    record["bc_arm_action_mse"] = float(bc_loss.detach())
                 print(json.dumps(record), flush=True)
                 with (self.output / "metrics.jsonl").open("a") as stream:
                     stream.write(json.dumps(record) + "\n")

@@ -1,0 +1,426 @@
+[
+  {
+    "label": "Task_only",
+    "episode": 0,
+    "seed": 9000,
+    "return": 21.975728597438813,
+    "outcome": "hit",
+    "success": true,
+    "released": true,
+    "recontacts": 2,
+    "landing_error": 0.03254167493738069,
+    "target": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "initialization": {
+      "bilateral_contact": true,
+      "hand_contact": true,
+      "on_floor": false
+    },
+    "imitation_score": 0.06779196145624222,
+    "imitation_mean_score": 0.06332356357009428,
+    "imitation_mean_error_degrees": 59.90030113074374,
+    "imitation_release_score": 0.05246940106423824,
+    "imitation_release_error_degrees": 60.69931132405505,
+    "imitation_reward": 0.0,
+    "object": {
+      "type": "box",
+      "size": [
+        0.022,
+        0.02,
+        0.025
+      ],
+      "mass": 0.1,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": null,
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ]
+    },
+    "release": {
+      "time": 0.2150000000000002,
+      "position": [
+        0.5719449069882501,
+        -0.052434360860173244,
+        0.40767094147222105
+      ],
+      "com_position": [
+        0.5719449069882501,
+        -0.052434360860173244,
+        0.40767094147222105
+      ],
+      "velocity": [
+        1.4478639803704842,
+        0.1769649346259946,
+        0.3982540785473341
+      ],
+      "angular_velocity": [
+        0.3581395671872469,
+        5.20545937935059,
+        -5.533091299143263
+      ],
+      "imitation": {
+        "score": 0.05246940106423824,
+        "error_degrees": 60.69931132405505,
+        "reference_index": 63
+      },
+      "arm_qpos": [
+        0.03754989134714208,
+        0.01000774126894782,
+        -0.3098960267712977,
+        1.148532870683902,
+        0.8013412323495993,
+        0.8440812604116633,
+        0.510834843482567
+      ]
+    },
+    "landing": {
+      "position": [
+        1.0322153244555194,
+        -0.004597116265199425,
+        -0.0005876984478147898
+      ],
+      "com_position": [
+        1.032365652746054,
+        0.0038404883508933976,
+        0.03674272845027268
+      ],
+      "object_position": [
+        1.032365652746054,
+        0.0038404883508933976,
+        0.03674272845027268
+      ],
+      "error": 0.03254167493738069,
+      "success": true
+    },
+    "flight_horizontal_distance": 0.4627496722483267,
+    "flight_com_horizontal_distance": 0.4638470887888601,
+    "flight_time": 0.3179999999999965
+  },
+  {
+    "label": "Video_imitation",
+    "episode": 0,
+    "seed": 9000,
+    "return": 9.399959210227285,
+    "outcome": "miss",
+    "success": false,
+    "released": true,
+    "recontacts": 1,
+    "landing_error": 0.3517391586249917,
+    "target": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "initialization": {
+      "bilateral_contact": true,
+      "hand_contact": true,
+      "on_floor": false
+    },
+    "imitation_score": 0.9874594138951021,
+    "imitation_mean_score": 0.682662563226794,
+    "imitation_mean_error_degrees": 22.768253405224645,
+    "imitation_release_score": 0.9520142772031597,
+    "imitation_release_error_degrees": 7.840220599661402,
+    "imitation_reward": 0.0,
+    "object": {
+      "type": "box",
+      "size": [
+        0.022,
+        0.02,
+        0.025
+      ],
+      "mass": 0.1,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": null,
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ]
+    },
+    "release": {
+      "time": 1.338999999999908,
+      "position": [
+        0.0586416169801835,
+        -0.02119628343330779,
+        1.215466521698508
+      ],
+      "com_position": [
+        0.0586416169801835,
+        -0.02119628343330779,
+        1.215466521698508
+      ],
+      "velocity": [
+        1.3102153590428804,
+        -0.32002255232493376,
+        -0.15607858708675387
+      ],
+      "angular_velocity": [
+        3.580221501288684,
+        5.088653254284269,
+        -0.9786845137889435
+      ],
+      "imitation": {
+        "score": 0.9520142772031597,
+        "error_degrees": 7.840220599661402,
+        "reference_index": 49
+      },
+      "arm_qpos": [
+        -0.08308648626955475,
+        -0.5366368039268224,
+        -0.005766020568295597,
+        2.266934524547974,
+        -0.3425705078285893,
+        0.5105399477306033,
+        -0.11504029299739581
+      ]
+    },
+    "landing": {
+      "position": [
+        0.6873253441704071,
+        -0.16110554091049367,
+        -0.0020285285159283885
+      ],
+      "com_position": [
+        0.6809939125255434,
+        -0.17320699578765297,
+        0.03230869283230108
+      ],
+      "object_position": [
+        0.6809939125255434,
+        -0.17320699578765297,
+        0.03230869283230108
+      ],
+      "error": 0.3517391586249917,
+      "success": false
+    },
+    "flight_horizontal_distance": 0.6440635288242994,
+    "flight_com_horizontal_distance": 0.640647825596134,
+    "flight_time": 0.4749999999999477
+  },
+  {
+    "label": "Imitation_plus_RL",
+    "episode": 0,
+    "seed": 9000,
+    "return": 21.942192920666038,
+    "outcome": "hit",
+    "success": true,
+    "released": true,
+    "recontacts": 3,
+    "landing_error": 0.03421696538191054,
+    "target": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "initialization": {
+      "bilateral_contact": true,
+      "hand_contact": true,
+      "on_floor": false
+    },
+    "imitation_score": 0.08886925754893127,
+    "imitation_mean_score": 0.0633536440049414,
+    "imitation_mean_error_degrees": 60.16693370544032,
+    "imitation_release_score": 0.05119849267405764,
+    "imitation_release_error_degrees": 60.95126318758548,
+    "imitation_reward": 0.0,
+    "object": {
+      "type": "box",
+      "size": [
+        0.022,
+        0.02,
+        0.025
+      ],
+      "mass": 0.1,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": null,
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ]
+    },
+    "release": {
+      "time": 0.2310000000000002,
+      "position": [
+        0.5736706813774854,
+        0.0007536860295189394,
+        0.4018908231416636
+      ],
+      "com_position": [
+        0.5736706813774854,
+        0.0007536860295189394,
+        0.4018908231416636
+      ],
+      "velocity": [
+        1.3321741002837206,
+        -0.0756955513523714,
+        0.23391699708682176
+      ],
+      "angular_velocity": [
+        -2.1110327113307297,
+        4.6654838123074915,
+        -2.295673201761315
+      ],
+      "imitation": {
+        "score": 0.05119849267405764,
+        "error_degrees": 60.95126318758548,
+        "reference_index": 63
+      },
+      "arm_qpos": [
+        -0.7909794059312122,
+        0.01689649476716604,
+        0.5824713935110564,
+        1.1253913328694978,
+        0.8862498802883935,
+        0.8029685983341968,
+        0.3074294976450757
+      ]
+    },
+    "landing": {
+      "position": [
+        0.9676151188846309,
+        -0.011046275168140418,
+        -0.0013248047837519233
+      ],
+      "com_position": [
+        0.9706585632620415,
+        -0.021803588273487606,
+        0.03455277827353578
+      ],
+      "object_position": [
+        0.9706585632620415,
+        -0.021803588273487606,
+        0.03455277827353578
+      ],
+      "error": 0.03421696538191054,
+      "success": true
+    },
+    "flight_horizontal_distance": 0.3941211221529335,
+    "flight_com_horizontal_distance": 0.3976282296155132,
+    "flight_time": 0.29799999999999693
+  },
+  {
+    "label": "Strong_style_RL",
+    "episode": 0,
+    "seed": 9000,
+    "return": 4.745445600302547,
+    "outcome": "miss",
+    "success": false,
+    "released": true,
+    "recontacts": 4,
+    "landing_error": 0.6812953291860658,
+    "target": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "initialization": {
+      "bilateral_contact": true,
+      "hand_contact": true,
+      "on_floor": false
+    },
+    "imitation_score": 0.0013608705601774293,
+    "imitation_mean_score": 0.1572989081517925,
+    "imitation_mean_error_degrees": 57.786962181438994,
+    "imitation_release_score": 0.010110034269875773,
+    "imitation_release_error_degrees": 75.78115577317553,
+    "imitation_reward": 0.0,
+    "object": {
+      "type": "box",
+      "size": [
+        0.022,
+        0.02,
+        0.025
+      ],
+      "mass": 0.1,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": null,
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ]
+    },
+    "release": {
+      "time": 1.0199999999999432,
+      "position": [
+        0.3923494346061829,
+        0.14963545213209906,
+        0.8984707789512673
+      ],
+      "com_position": [
+        0.3923494346061829,
+        0.14963545213209906,
+        0.8984707789512673
+      ],
+      "velocity": [
+        0.02588988888806029,
+        0.628036355274349,
+        -1.1073769322058329
+      ],
+      "angular_velocity": [
+        -12.414589372216263,
+        -1.969527704618545,
+        2.8324894871108888
+      ],
+      "imitation": {
+        "score": 0.010110034269875773,
+        "error_degrees": 75.78115577317553,
+        "reference_index": 41
+      },
+      "arm_qpos": [
+        3.2965022211886987,
+        -0.6016969235504586,
+        -3.0577991861420557,
+        2.670351748408919,
+        4.51186497234294,
+        2.856681306406417,
+        -1.0116243797020659
+      ]
+    },
+    "landing": {
+      "position": [
+        0.40410624245027177,
+        0.33026346344095564,
+        -0.00017969805754525572
+      ],
+      "com_position": [
+        0.40068597882814316,
+        0.3518631585304398,
+        0.03174597678099111
+      ],
+      "object_position": [
+        0.40068597882814316,
+        0.3518631585304398,
+        0.03174597678099111
+      ],
+      "error": 0.6812953291860658,
+      "success": false
+    },
+    "flight_horizontal_distance": 0.1810102234683866,
+    "flight_com_horizontal_distance": 0.20239946443777515,
+    "flight_time": 0.32199999999996454
+  }
+]

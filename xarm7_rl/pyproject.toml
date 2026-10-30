@@ -21,7 +21,7 @@ xarm7-eval = "xarm7_rl.evaluate:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-xarm7_rl = ["assets/ufactory_xarm7/*.xml", "assets/ufactory_xarm7/SOURCE.json", "assets/ufactory_xarm7/LICENSE", "assets/ufactory_xarm7/assets/*.stl"]
+xarm7_rl = ["assets/ufactory_xarm7/*.xml", "assets/ufactory_xarm7/SOURCE.json", "assets/ufactory_xarm7/LICENSE", "assets/ufactory_xarm7/assets/*.stl", "assets/motions/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,0 +1,101 @@
+seed: 42
+device: cpu
+num_envs: 16
+output: runs/xarm7_throw
+env:
+  object:
+    type: box
+    size:
+    - 0.022
+    - 0.02
+    - 0.025
+    mass: 0.1
+    com:
+    - 0.0
+    - 0.0
+    - 0.0
+    inertia: null
+    friction:
+    - 0.8
+    - 0.01
+    - 0.001
+  target:
+    position:
+    - 1.0
+    - 0.0
+    - 0.0
+    low: null
+    high: null
+    success_radius: 0.1
+  randomization:
+    objects: []
+    mass_range: null
+    com_low: null
+    com_high: null
+    size_scale_range: null
+  initial_joint_positions:
+  - 0.0
+  - -0.247
+  - 0.0
+  - 0.909
+  - 0.0
+  - 1.15644
+  - 0.0
+  base_translation:
+  - 0.0
+  - 0.0
+  - 0.0
+  grasp_position:
+  - 0.0
+  - 0.0
+  - 0.145
+  grasp_quaternion:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  settle_time: 0.5
+  release_confirm_seconds: 0.01
+  episode_seconds: 4.0
+  timestep: 0.001
+  substeps: 20
+  action_rate: 0.5
+  geometry_points: 32
+  reward:
+    prediction_progress: 2.0
+    release: 1.0
+    landing: 10.0
+    hit: 10.0
+    distance_scale: 0.5
+    action_cost: 0.0
+  render_width: 1280
+  render_height: 720
+  render_camera:
+    lookat:
+    - 0.4
+    - 0
+    - 0.7
+    distance: 2.6
+    azimuth: 90
+    elevation: -12
+  imitation:
+    reference: mit_overhand
+    reward_scale: 0
+    angular_sigma_degrees: 25.0
+ppo:
+  hidden:
+  - 256
+  - 128
+  horizon: 128
+  minibatch_size: 512
+  epochs: 6
+  total_steps: 2000000
+  learning_rate: 0.0005
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip: 0.2
+  value_coef: 2.0
+  entropy_coef: 0.001
+  grad_norm: 1.0
+  target_kl: 0.016
+  save_every: 20

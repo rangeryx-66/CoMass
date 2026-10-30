@@ -55,6 +55,10 @@ def main():
                    "by_geometry": {shape: {"episodes": sum(r["object"]["type"] == shape for r in results),
                                              "hits": sum(r["success"] for r in results if r["object"]["type"] == shape)} for shape in shapes}}
             rows.append(row)
+            if results and "imitation_mean_score" in results[0]:
+                row.update(imitation_mean_score=float(np.mean([r["imitation_mean_score"] for r in results])),
+                           imitation_mean_error_degrees=float(np.mean([r["imitation_mean_error_degrees"] for r in results])),
+                           imitation_release_error_degrees=float(np.mean([r["imitation_release_error_degrees"] for r in results])))
             (root / "table.json").write_text(json.dumps(rows, indent=2) + "\n")
             print(json.dumps(row), flush=True)
 

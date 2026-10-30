@@ -18,6 +18,12 @@ def load_config(path, overrides=()):
     for spec in [config["env"]["object"], *config["env"].get("randomization", {}).get("objects", [])]:
         if spec.get("mesh"):
             spec["mesh"] = str((path.parent / spec["mesh"]).resolve())
+    imitation = config["env"].get("imitation", {})
+    reference = imitation.get("reference", "")
+    if reference and ("/" in reference or reference.endswith(".json")):
+        imitation["reference"] = str((path.parent / reference).resolve())
+    if config["ppo"].get("bc_dataset"):
+        config["ppo"]["bc_dataset"] = str((path.parent / config["ppo"]["bc_dataset"]).resolve())
     return config
 
 

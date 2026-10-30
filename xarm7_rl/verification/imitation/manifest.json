@@ -1,0 +1,52 @@
+{
+  "source": "MIT UAN throw_annotated.m4v; manual 2-D keyframes, not recovered source joint angles",
+  "base_checkpoint_steps": 1071616,
+  "train_seed": 107,
+  "demonstration_seeds": [
+    11000,
+    11099
+  ],
+  "demonstration_transitions": 9039,
+  "bc_updates": 2000,
+  "validation_seeds": [
+    7000,
+    7079
+  ],
+  "test_seeds": [
+    9000,
+    9099
+  ],
+  "test_episodes_per_model_and_timestep": 100,
+  "checkpoint_sha256": {
+    "overhand.pt": "99f863e435cb034df1f616c0b4c8284909415733917d5a79ade87dcc409777fd",
+    "bc_rl.pt": "e5ba6f3def7e170cb1aa43512bbf21390fb4b206c12cd54159bb610384399470",
+    "bc.pt": "ab16ef936addc7713928f7c39e421eabc800e3c19b6d062b540f54388f0170a0",
+    "control.pt": "e55fb6fb051970b513d77bc7211f6a2066e6a71e087202481bfc7374818664f9"
+  },
+  "source_sha256": {
+    "diagnose_steps.py": "ac28d7dd061f9854335c7ba30b0db99cbfc361d975bf5a2bbf1a3cfd58618e47",
+    "compare_imitation.py": "c4fcf847948da656245c70dcdd6125c043f893174c5eb22c3a15309cbe4e36b0",
+    "config.py": "35f4f80c9b844208fe6c34f66613be336a75466b94bdee7f060300dd7dfb7aaf",
+    "env.py": "172cc52baab68e9e01aad341686c52327d44570a7766ba0c0624904ed9c08a4e",
+    "benchmark.py": "536ffb79455f036d3b2e34addd2585a908932dd8ee081322be4602be48ded70a",
+    "retarget.py": "3d5bd20299364996c88e1d5854e0d41afb184a1d6627fe71481c42c2f08dd988",
+    "policy.py": "73b4d6938df583569f5d02a8bda7b72a6dc5b8373f35d1f50836e0580fa8c2e6",
+    "__init__.py": "f25cda6a0aad981ac2ab3e91484ca8ba858b24df971af55df65243e4a3df9802",
+    "imitation.py": "97f958b4a7a914195944b15c5a15c4948df8d3a9ec077f19fa503cadd897278b",
+    "showcase.py": "c3c264e1e6993f85077a5ff96f240c8f602a7ea7e1604abc3636c2bf91170ced",
+    "train.py": "80a8f182938b3b108fa13ccf4633ea772d40ea91e5b2712bda4fe8907850dbc4",
+    "evaluate.py": "44dfdffb48b63f2e9623f9ecc582b6d50de15e0670aaa1ad984b09a0cfbd6e7c",
+    "objects.py": "5a544720b20943f7d471ff8c41e167dc708fe5cb06b0978ad537cba33c98aa39",
+    "imitate.py": "bafa38e7fec8bf447d7218f69d82e399be18b36a89e296d96349a06486d09b60"
+  },
+  "default_behavior": "Imitation absent by default. All existing policy observations and action ranges unchanged.",
+  "reference_sha256": "162fed5ee0fa28482493228d9ec54f7e98c29ad4b21d9b8f09a7c2d3fa4a7eaa",
+  "comparison_sha256": "b40e7a8fba73a5ad2468b6feddb5438258e375578c3de39bfb8bf35c2c47fa70",
+  "notes": [
+    "All formal models were frozen before the fresh 9000-9099 test.",
+    "Whole-episode pose RMS is of projected link directions, not source 3-D joint error.",
+    "Raw release-pose table assigns 180 deg to missing release; release_geometry.json also reports valid-release-only metrics.",
+    "Style-first overhand PPO budget is 131328 new steps; control and BC+RL total 262272. Not a pure single-factor ablation."
+  ],
+  "demonstrations_sha256": "3177d5f8d261933f84bcb470e51d3dad212274652eeea95770ca8ddcedeea102"
+}
