@@ -1,0 +1,44 @@
+[
+  {
+    "label": "far",
+    "checkpoint_steps": 699648,
+    "timestep": 0.002,
+    "episodes": 5,
+    "seed": 5000,
+    "success_radius": 0.1,
+    "hits": 5,
+    "success_rate": 1.0,
+    "mean_landing_error_m": 0.0675571394064529,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.0675571394064529,
+    "recontact_rate": 1.0,
+    "by_geometry": {
+      "box": {
+        "episodes": 5,
+        "hits": 5
+      }
+    }
+  },
+  {
+    "label": "far",
+    "checkpoint_steps": 699648,
+    "timestep": 0.001,
+    "episodes": 5,
+    "seed": 5000,
+    "success_radius": 0.1,
+    "hits": 5,
+    "success_rate": 1.0,
+    "mean_landing_error_m": 0.07254294148114515,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.07254294148114515,
+    "recontact_rate": 1.0,
+    "by_geometry": {
+      "box": {
+        "episodes": 5,
+        "hits": 5
+      }
+    }
+  }
+]

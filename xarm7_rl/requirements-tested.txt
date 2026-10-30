@@ -1,0 +1,12 @@
+# Versions used for the recorded server verification; install the matching PyTorch
+# CUDA wheel from its official index for your machine, or use a CPU build.
+numpy==1.26.4
+scipy==1.15.3
+mujoco==3.17.0
+gymnasium==1.4.0
+torch==2.8.0
+PyOpenGL==3.1.10
+PyYAML==6.0.3
+trimesh==4.10.0
+imageio==2.37.2
+imageio-ffmpeg==0.6.0

@@ -1,0 +1,27 @@
+{
+  "criterion": "Own-world success, then own-world landing error; no cross-world scores used",
+  "seed": 50000,
+  "episodes": 50,
+  "finalists": [
+    {
+      "checkpoint": "runs/xarm7_identification_2m/candidates_corner_100/best.pt",
+      "success_rate": 1.0,
+      "mean_error_m": 0.05475392666372958
+    },
+    {
+      "checkpoint": "runs/xarm7_identification_2m/candidates_corner_100/step_direct_best.pt",
+      "success_rate": 0.98,
+      "mean_error_m": 0.05202141415053517
+    },
+    {
+      "checkpoint": "runs/xarm7_identification_2m/candidates_corner_100/last.pt",
+      "success_rate": 0.98,
+      "mean_error_m": 0.06657756826004449
+    }
+  ],
+  "selected": {
+    "checkpoint": "runs/xarm7_identification_2m/candidates_corner_100/best.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.05475392666372958
+  }
+}

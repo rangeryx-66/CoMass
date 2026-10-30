@@ -1,0 +1,179 @@
+{
+  "source": {
+    "name": "MIT athletic overhand throwing projected pose prototype",
+    "source_page": "https://uan.csail.mit.edu/",
+    "source_video": "https://uan.csail.mit.edu/rsc/throw_annotated.m4v",
+    "source_sha256": "41674a687a87275f3f5f9fd4854cd8bf384035349cc563d37448060da4d3fc95",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "image_forward": [
+      -1,
+      0
+    ],
+    "image_up": [
+      0,
+      -1
+    ],
+    "landmarks": [
+      "shoulder",
+      "elbow",
+      "wrist",
+      "palm"
+    ],
+    "extraction": "Manual keyframe annotation from inspected source video; cubic interpolation of projected bone angles. No source joint telemetry, metric camera calibration, or observed depth.",
+    "timing": "Video includes slow motion and an annotated freeze; timestamps are presentation times, not physical motion timing. Reward is phase-free.",
+    "uncertainty": "Approximate projected landmarks; motion blur and self-occlusion. No unique 3-D joint reconstruction. No source gripper orientation or fingers are supervised.",
+    "raw_media_distribution": "Raw source video is not redistributed; only numerical annotations and original xArm renderings are included.",
+    "keyframes": [
+      {
+        "frame": 18,
+        "source_pts_seconds": 0.6097560975609756,
+        "stage": "windup",
+        "confidence": 0.85,
+        "points_pixels": [
+          [
+            1130.0,
+            575.0
+          ],
+          [
+            1246.6666666666667,
+            416.6666666666667
+          ],
+          [
+            1250.0,
+            310.0
+          ],
+          [
+            1190.0,
+            201.66666666666669
+          ]
+        ]
+      },
+      {
+        "frame": 22,
+        "source_pts_seconds": 0.7452574525745258,
+        "stage": "raise",
+        "confidence": 0.8,
+        "points_pixels": [
+          [
+            1131.6666666666667,
+            573.3333333333334
+          ],
+          [
+            1255.0,
+            406.6666666666667
+          ],
+          [
+            1266.6666666666667,
+            300.0
+          ],
+          [
+            1203.3333333333335,
+            175.0
+          ]
+        ]
+      },
+      {
+        "frame": 24,
+        "source_pts_seconds": 0.8130081300813008,
+        "stage": "acceleration",
+        "confidence": 0.65,
+        "points_pixels": [
+          [
+            1116.6666666666667,
+            550.0
+          ],
+          [
+            1243.3333333333335,
+            393.33333333333337
+          ],
+          [
+            1246.6666666666667,
+            276.6666666666667
+          ],
+          [
+            1228.3333333333335,
+            123.33333333333334
+          ]
+        ]
+      },
+      {
+        "frame": 25,
+        "source_pts_seconds": 0.8468834688346883,
+        "stage": "acceleration",
+        "confidence": 0.55,
+        "points_pixels": [
+          [
+            1106.6666666666667,
+            550.0
+          ],
+          [
+            1191.6666666666667,
+            396.6666666666667
+          ],
+          [
+            1171.6666666666667,
+            268.33333333333337
+          ],
+          [
+            1150.0,
+            95.0
+          ]
+        ]
+      },
+      {
+        "frame": 26,
+        "source_pts_seconds": 0.8807588075880759,
+        "stage": "release",
+        "confidence": 0.55,
+        "points_pixels": [
+          [
+            1108.3333333333335,
+            550.0
+          ],
+          [
+            1166.6666666666667,
+            391.6666666666667
+          ],
+          [
+            1126.6666666666667,
+            270.0
+          ],
+          [
+            1046.6666666666667,
+            100.0
+          ]
+        ]
+      },
+      {
+        "frame": 123,
+        "source_pts_seconds": 4.166666666666667,
+        "stage": "follow_through",
+        "confidence": 0.65,
+        "points_pixels": [
+          [
+            1100.0,
+            553.3333333333334
+          ],
+          [
+            1090.0,
+            443.33333333333337
+          ],
+          [
+            1048.3333333333333,
+            361.6666666666667
+          ],
+          [
+            935.0,
+            271.6666666666667
+          ]
+        ]
+      }
+    ]
+  },
+  "mean_projection_error_degrees": 0.0016762728788088433,
+  "max_projection_error_degrees": 0.0329344890831357,
+  "assumptions": "Monocular projected angles; weak planar/continuity regularization selects one IK solution. Not source 3-D joint telemetry or a dynamically feasible throw."
+}

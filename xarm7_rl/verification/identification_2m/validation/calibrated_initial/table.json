@@ -1,0 +1,26 @@
+[
+  {
+    "case": "center_060",
+    "episodes": 20,
+    "success_rate": 0.0,
+    "mean_landing_error_m": 0.20695322932313567,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0
+  },
+  {
+    "case": "center_100",
+    "episodes": 20,
+    "success_rate": 0.0,
+    "mean_landing_error_m": 0.2226359731088637,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0
+  },
+  {
+    "case": "corner_100",
+    "episodes": 20,
+    "success_rate": 0.0,
+    "mean_landing_error_m": 0.20180924222460334,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0
+  }
+]

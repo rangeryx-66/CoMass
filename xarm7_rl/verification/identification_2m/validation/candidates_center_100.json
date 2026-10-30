@@ -1,0 +1,22 @@
+[
+  {
+    "candidate": "runs/xarm7_identification_2m/candidates_center_100/step_direct_best.pt",
+    "source": "runs/xarm7_identification_2m/center_100/best.pt",
+    "sha256": "0e176aea6fcac98a79db72a2e5c0d8c748331a52f12b63fac7b6c7227a09f94c"
+  },
+  {
+    "candidate": "runs/xarm7_identification_2m/candidates_center_100/step_direct_last.pt",
+    "source": "runs/xarm7_identification_2m/center_100/last.pt",
+    "sha256": "fa09782ce28980245dcbb2981c35459d9529660ba057fe9355d9fc4caa52ab30"
+  },
+  {
+    "candidate": "runs/xarm7_identification_2m/candidates_center_100/best.pt",
+    "source": "runs/xarm7_identification_2m/calibrated_center_100/best.pt",
+    "sha256": "ea3b00c760d95628a7ad89c2499babe3d443571206fa5c2440931d8e49844af8"
+  },
+  {
+    "candidate": "runs/xarm7_identification_2m/candidates_center_100/last.pt",
+    "source": "runs/xarm7_identification_2m/calibrated_center_100/last.pt",
+    "sha256": "f7619be6cb29f9f768211e1f7f9f500fa0fd135409e20e45ef9c6066e3dbd29c"
+  }
+]

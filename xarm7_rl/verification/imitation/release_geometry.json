@@ -1,0 +1,66 @@
+[
+  {
+    "case": "balanced_0.001",
+    "released": 100,
+    "wrist_above_elbow_fraction": 0.33,
+    "palm_above_elbow_fraction": 0.0,
+    "mean_palm_release_height_m": 0.49799864422199447,
+    "mean_valid_release_pose_error_degrees": 53.974542191787286
+  },
+  {
+    "case": "balanced_0.002",
+    "released": 100,
+    "wrist_above_elbow_fraction": 0.34,
+    "palm_above_elbow_fraction": 0.0,
+    "mean_palm_release_height_m": 0.4979042844321495,
+    "mean_valid_release_pose_error_degrees": 54.00126077110658
+  },
+  {
+    "case": "control_0.001",
+    "released": 100,
+    "wrist_above_elbow_fraction": 0.08,
+    "palm_above_elbow_fraction": 0.0,
+    "mean_palm_release_height_m": 0.44603703563768526,
+    "mean_valid_release_pose_error_degrees": 58.2881548824579
+  },
+  {
+    "case": "control_0.002",
+    "released": 100,
+    "wrist_above_elbow_fraction": 0.07,
+    "palm_above_elbow_fraction": 0.01,
+    "mean_palm_release_height_m": 0.44628208596380176,
+    "mean_valid_release_pose_error_degrees": 58.27700820495358
+  },
+  {
+    "case": "original_0.001",
+    "released": 100,
+    "wrist_above_elbow_fraction": 0.05,
+    "palm_above_elbow_fraction": 0.0,
+    "mean_palm_release_height_m": 0.4500085016666062,
+    "mean_valid_release_pose_error_degrees": 57.97392894818518
+  },
+  {
+    "case": "original_0.002",
+    "released": 100,
+    "wrist_above_elbow_fraction": 0.05,
+    "palm_above_elbow_fraction": 0.0,
+    "mean_palm_release_height_m": 0.4519331750195803,
+    "mean_valid_release_pose_error_degrees": 57.82850675060374
+  },
+  {
+    "case": "overhand_0.001",
+    "released": 92,
+    "wrist_above_elbow_fraction": 0.9565217391304348,
+    "palm_above_elbow_fraction": 0.5978260869565217,
+    "mean_palm_release_height_m": 0.7279222702443208,
+    "mean_valid_release_pose_error_degrees": 40.01713733653343
+  },
+  {
+    "case": "overhand_0.002",
+    "released": 92,
+    "wrist_above_elbow_fraction": 0.9565217391304348,
+    "palm_above_elbow_fraction": 0.6304347826086957,
+    "mean_palm_release_height_m": 0.7289962004005802,
+    "mean_valid_release_pose_error_degrees": 40.04320249137385
+  }
+]

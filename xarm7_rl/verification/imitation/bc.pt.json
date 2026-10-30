@@ -1,0 +1,87 @@
+{
+  "updates": 2000,
+  "dataset": "runs/xarm7_imitation/demonstrations/demonstrations.npz",
+  "transitions": 9039,
+  "log": [
+    {
+      "update": 0,
+      "action_mse": 0.9422200918197632
+    },
+    {
+      "update": 100,
+      "action_mse": 0.35888200998306274
+    },
+    {
+      "update": 200,
+      "action_mse": 0.11135576665401459
+    },
+    {
+      "update": 300,
+      "action_mse": 0.06915274262428284
+    },
+    {
+      "update": 400,
+      "action_mse": 0.043239325284957886
+    },
+    {
+      "update": 500,
+      "action_mse": 0.036179788410663605
+    },
+    {
+      "update": 600,
+      "action_mse": 0.026219550520181656
+    },
+    {
+      "update": 700,
+      "action_mse": 0.026742098852992058
+    },
+    {
+      "update": 800,
+      "action_mse": 0.017670752480626106
+    },
+    {
+      "update": 900,
+      "action_mse": 0.014081110246479511
+    },
+    {
+      "update": 1000,
+      "action_mse": 0.016571128740906715
+    },
+    {
+      "update": 1100,
+      "action_mse": 0.014573436230421066
+    },
+    {
+      "update": 1200,
+      "action_mse": 0.02185938134789467
+    },
+    {
+      "update": 1300,
+      "action_mse": 0.014440774917602539
+    },
+    {
+      "update": 1400,
+      "action_mse": 0.019072379916906357
+    },
+    {
+      "update": 1500,
+      "action_mse": 0.017919767647981644
+    },
+    {
+      "update": 1600,
+      "action_mse": 0.014655450358986855
+    },
+    {
+      "update": 1700,
+      "action_mse": 0.012294585816562176
+    },
+    {
+      "update": 1800,
+      "action_mse": 0.018032029271125793
+    },
+    {
+      "update": 1900,
+      "action_mse": 0.01040904875844717
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+[
+  {
+    "label": "original",
+    "checkpoint_steps": 1071616,
+    "timestep": 0.002,
+    "episodes": 100,
+    "seed": 9000,
+    "success_radius": 0.1,
+    "hits": 72,
+    "success_rate": 0.72,
+    "mean_landing_error_m": 0.07840679140131245,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.0640510658275399,
+    "recontact_rate": 0.4,
+    "by_geometry": {
+      "box": {
+        "episodes": 23,
+        "hits": 14
+      },
+      "capsule": {
+        "episodes": 13,
+        "hits": 11
+      },
+      "cylinder": {
+        "episodes": 23,
+        "hits": 23
+      },
+      "ellipsoid": {
+        "episodes": 22,
+        "hits": 10
+      },
+      "sphere": {
+        "episodes": 19,
+        "hits": 14
+      }
+    },
+    "imitation_mean_score": 0.05168027419071864,
+    "imitation_mean_error_degrees": 65.91383003112892,
+    "imitation_release_error_degrees": 57.82850675060374
+  },
+  {
+    "label": "original",
+    "checkpoint_steps": 1071616,
+    "timestep": 0.001,
+    "episodes": 100,
+    "seed": 9000,
+    "success_radius": 0.1,
+    "hits": 71,
+    "success_rate": 0.71,
+    "mean_landing_error_m": 0.07977975908246664,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.06851577937957246,
+    "recontact_rate": 0.41,
+    "by_geometry": {
+      "box": {
+        "episodes": 23,
+        "hits": 15
+      },
+      "capsule": {
+        "episodes": 13,
+        "hits": 10
+      },
+      "cylinder": {
+        "episodes": 23,
+        "hits": 20
+      },
+      "ellipsoid": {
+        "episodes": 22,
+        "hits": 12
+      },
+      "sphere": {
+        "episodes": 19,
+        "hits": 14
+      }
+    },
+    "imitation_mean_score": 0.051702737227188954,
+    "imitation_mean_error_degrees": 65.97299032203918,
+    "imitation_release_error_degrees": 57.97392894818518
+  },
+  {
+    "label": "control",
+    "checkpoint_steps": 1333888,
+    "timestep": 0.002,
+    "episodes": 100,
+    "seed": 9000,
+    "success_radius": 0.1,
+    "hits": 69,
+    "success_rate": 0.69,
+    "mean_landing_error_m": 0.07919039855459686,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.07092913970516385,
+    "recontact_rate": 0.44,
+    "by_geometry": {
+      "box": {
+        "episodes": 23,
+        "hits": 17
+      },
+      "capsule": {
+        "episodes": 13,
+        "hits": 13
+      },
+      "cylinder": {
+        "episodes": 23,
+        "hits": 14
+      },
+      "ellipsoid": {
+        "episodes": 22,
+        "hits": 10
+      },
+      "sphere": {
+        "episodes": 19,
+        "hits": 15
+      }
+    },
+    "imitation_mean_score": 0.06349237015933153,
+    "imitation_mean_error_degrees": 66.3693308151731,
+    "imitation_release_error_degrees": 58.27700820495358
+  },
+  {
+    "label": "control",
+    "checkpoint_steps": 1333888,
+    "timestep": 0.001,
+    "episodes": 100,
+    "seed": 9000,
+    "success_radius": 0.1,
+    "hits": 71,
+    "success_rate": 0.71,
+    "mean_landing_error_m": 0.0811438225002019,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.07731890969624905,
+    "recontact_rate": 0.38,
+    "by_geometry": {
+      "box": {
+        "episodes": 23,
+        "hits": 17
+      },
+      "capsule": {
+        "episodes": 13,
+        "hits": 13
+      },
+      "cylinder": {
+        "episodes": 23,
+        "hits": 14
+      },
+      "ellipsoid": {
+        "episodes": 22,
+        "hits": 12
+      },
+      "sphere": {
+        "episodes": 19,
+        "hits": 15
+      }
+    },
+    "imitation_mean_score": 0.062236857837871744,
+    "imitation_mean_error_degrees": 66.43451669657344,
+    "imitation_release_error_degrees": 58.2881548824579
+  },
+  {
+    "label": "balanced",
+    "checkpoint_steps": 1333888,
+    "timestep": 0.002,
+    "episodes": 100,
+    "seed": 9000,
+    "success_radius": 0.1,
+    "hits": 53,
+    "success_rate": 0.53,
+    "mean_landing_error_m": 0.10571144445777712,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.08648877992879929,
+    "recontact_rate": 0.81,
+    "by_geometry": {
+      "box": {
+        "episodes": 23,
+        "hits": 11
+      },
+      "capsule": {
+        "episodes": 13,
+        "hits": 10
+      },
+      "cylinder": {
+        "episodes": 23,
+        "hits": 8
+      },
+      "ellipsoid": {
+        "episodes": 22,
+        "hits": 14
+      },
+      "sphere": {
+        "episodes": 19,
+        "hits": 10
+      }
+    },
+    "imitation_mean_score": 0.13747812208870935,
+    "imitation_mean_error_degrees": 54.46847850640561,
+    "imitation_release_error_degrees": 54.00126077110658
+  },
+  {
+    "label": "balanced",
+    "checkpoint_steps": 1333888,
+    "timestep": 0.001,
+    "episodes": 100,
+    "seed": 9000,
+    "success_radius": 0.1,
+    "hits": 57,
+    "success_rate": 0.57,
+    "mean_landing_error_m": 0.10621842944841908,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.08530043305451308,
+    "recontact_rate": 0.77,
+    "by_geometry": {
+      "box": {
+        "episodes": 23,
+        "hits": 13
+      },
+      "capsule": {
+        "episodes": 13,
+        "hits": 10
+      },
+      "cylinder": {
+        "episodes": 23,
+        "hits": 10
+      },
+      "ellipsoid": {
+        "episodes": 22,
+        "hits": 14
+      },
+      "sphere": {
+        "episodes": 19,
+        "hits": 10
+      }
+    },
+    "imitation_mean_score": 0.13885588502342303,
+    "imitation_mean_error_degrees": 54.31559141549756,
+    "imitation_release_error_degrees": 53.974542191787286
+  },
+  {
+    "label": "overhand",
+    "checkpoint_steps": 1202944,
+    "timestep": 0.002,
+    "episodes": 100,
+    "seed": 9000,
+    "success_radius": 0.1,
+    "hits": 16,
+    "success_rate": 0.16,
+    "mean_landing_error_m": 0.3844669592969847,
+    "release_rate": 0.92,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.2677193670866363,
+    "recontact_rate": 0.65,
+    "by_geometry": {
+      "box": {
+        "episodes": 23,
+        "hits": 0
+      },
+      "capsule": {
+        "episodes": 13,
+        "hits": 3
+      },
+      "cylinder": {
+        "episodes": 23,
+        "hits": 7
+      },
+      "ellipsoid": {
+        "episodes": 22,
+        "hits": 4
+      },
+      "sphere": {
+        "episodes": 19,
+        "hits": 2
+      }
+    },
+    "imitation_mean_score": 0.2582456672492671,
+    "imitation_mean_error_degrees": 48.32344812516604,
+    "imitation_release_error_degrees": 51.239746292063955
+  },
+  {
+    "label": "overhand",
+    "checkpoint_steps": 1202944,
+    "timestep": 0.001,
+    "episodes": 100,
+    "seed": 9000,
+    "success_radius": 0.1,
+    "hits": 17,
+    "success_rate": 0.17,
+    "mean_landing_error_m": 0.3927551560906558,
+    "release_rate": 0.92,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.27607510457046314,
+    "recontact_rate": 0.69,
+    "by_geometry": {
+      "box": {
+        "episodes": 23,
+        "hits": 0
+      },
+      "capsule": {
+        "episodes": 13,
+        "hits": 4
+      },
+      "cylinder": {
+        "episodes": 23,
+        "hits": 7
+      },
+      "ellipsoid": {
+        "episodes": 22,
+        "hits": 4
+      },
+      "sphere": {
+        "episodes": 19,
+        "hits": 2
+      }
+    },
+    "imitation_mean_score": 0.257190229352933,
+    "imitation_mean_error_degrees": 48.338808557309314,
+    "imitation_release_error_degrees": 51.215766349610746
+  }
+]

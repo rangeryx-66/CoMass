@@ -1,0 +1,94 @@
+{
+  "episodes": 1,
+  "success_rate": 1.0,
+  "mean_landing_error_m": 0.07254293076547168,
+  "release_rate": 1.0,
+  "initial_bilateral_rate": 1.0,
+  "results": [
+    {
+      "episode": 0,
+      "seed": 5000,
+      "return": 22.419113185108785,
+      "outcome": "hit",
+      "success": true,
+      "released": true,
+      "recontacts": 3,
+      "landing_error": 0.07254293076547168,
+      "target": [
+        2.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.022,
+          0.02,
+          0.025
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": null,
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ]
+      },
+      "release": {
+        "time": 0.6099999999999882,
+        "position": [
+          0.5297147205643397,
+          0.5533713701002907,
+          0.6071177451199586
+        ],
+        "com_position": [
+          0.5297147205643397,
+          0.5533713701002907,
+          0.6071177451199586
+        ],
+        "velocity": [
+          4.402171806181275,
+          -1.6687238857210815,
+          -0.21816778267068596
+        ],
+        "angular_velocity": [
+          3.0965186580367123,
+          2.4648118632509024,
+          2.502224289337413
+        ]
+      },
+      "landing": {
+        "position": [
+          1.9338410752391315,
+          0.029756906400527597,
+          -0.0005184741448681467
+        ],
+        "com_position": [
+          1.9340075267361738,
+          0.021048450555265222,
+          0.03681982244800959
+        ],
+        "object_position": [
+          1.9340075267361738,
+          0.021048450555265222,
+          0.03681982244800959
+        ],
+        "error": 0.07254293076547168,
+        "success": true
+      },
+      "flight_horizontal_distance": 1.4985803036500613,
+      "flight_com_horizontal_distance": 1.5018009109528814,
+      "flight_time": 0.31899999999996487
+    }
+  ]
+}

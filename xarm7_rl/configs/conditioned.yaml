@@ -1,0 +1,65 @@
+seed: 42
+device: cuda:0
+num_envs: 16
+output: runs/xarm7_conditioned
+env:
+  # All dimensions are metres, masses kg; quaternions use w,x,y,z.
+  object:
+    type: box
+    size: [0.022, 0.020, 0.025]
+    mass: 0.10
+    com: [0.0, 0.0, 0.0]
+    # Optional inertia: [Ixx,Iyy,Izz,Ixy,Ixz,Iyz] about the CoM in object axes.
+    inertia: null
+    friction: [0.8, 0.01, 0.001]
+  target:
+    position: [1.0, 0.0, 0.0]
+    # Optional low/high: resample a target each episode. z is the landing-plane height.
+    low: [0.8, -0.15, 0.0]
+    high: [1.1, 0.15, 0.0]
+    success_radius: 0.10
+  randomization:
+    # Empty means fixed object. Entries override object fields before each reset.
+    objects:
+      - {type: box, size: [0.022, 0.020, 0.025]}
+      - {type: cylinder, size: [0.020, 0.025]}
+    mass_range: [0.08, 0.12]
+    com_low: [-0.002, -0.002, -0.002]
+    com_high: [0.002, 0.002, 0.002]
+    size_scale_range: [0.95, 1.05]
+  initial_joint_positions: [0.0, -0.247, 0.0, 0.909, 0.0, 1.15644, 0.0]
+  base_translation: [0.0, 0.0, 0.0]
+  grasp_position: [0.0, 0.0, 0.145]
+  grasp_quaternion: [1.0, 0.0, 0.0, 0.0]
+  settle_time: 0.5
+  release_confirm_seconds: 0.01
+  episode_seconds: 4.0
+  timestep: 0.002
+  substeps: 10
+  # Joint action is a fraction of the upstream actuator position range per second.
+  # This is an action parametrization, not a velocity/acceleration rejection gate.
+  action_rate: 0.5
+  geometry_points: 32
+  reward:
+    prediction_progress: 2.0
+    release: 1.0
+    landing: 10.0
+    hit: 10.0
+    distance_scale: 0.5
+    # No prescribed angle, flight time, wrist linkage, or minimum distance.
+    action_cost: 0.0
+ppo:
+  hidden: [256, 128]
+  horizon: 128
+  minibatch_size: 512
+  epochs: 6
+  total_steps: 2000000
+  learning_rate: 0.0005
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip: 0.2
+  value_coef: 2.0
+  entropy_coef: 0.001
+  grad_norm: 1.0
+  target_kl: 0.016
+  save_every: 20

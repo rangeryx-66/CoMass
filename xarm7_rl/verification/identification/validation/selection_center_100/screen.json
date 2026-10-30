@@ -1,0 +1,182 @@
+[
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_107520.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.18483262074131307
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_115200.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.14850865180433165
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_122880.pt",
+    "success_rate": 0.1,
+    "mean_error_m": 0.13897618279740517
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_130560.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.05860873444676584
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_138240.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.10589260118882475
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_145920.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.0583315909086524
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_15360.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.5856154333186012
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_153600.pt",
+    "success_rate": 0.4,
+    "mean_error_m": 0.10132168351305744
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_161280.pt",
+    "success_rate": 0.6,
+    "mean_error_m": 0.09940385382966278
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_168960.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.06679008993238421
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_176640.pt",
+    "success_rate": 0.4,
+    "mean_error_m": 0.12111397549378936
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_184320.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.15408149539516958
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_192000.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.087219698854865
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_199680.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.05152292199193894
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_207360.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.038973974810896636
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_215040.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.06246263746995471
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_222720.pt",
+    "success_rate": 0.9,
+    "mean_error_m": 0.0901480651404887
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_23040.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.22584567812760784
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_230400.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.0931891426580677
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_238080.pt",
+    "success_rate": 0.8,
+    "mean_error_m": 0.09638267887958277
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_245760.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.04611974197201982
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_253440.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.07643455720390449
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_261120.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.08064678966414643
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_30720.pt",
+    "success_rate": 0.4,
+    "mean_error_m": 0.11995465227293182
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_38400.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.2061310627783363
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_46080.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.1420097228902311
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_53760.pt",
+    "success_rate": 0.7,
+    "mean_error_m": 0.0788205503826378
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_61440.pt",
+    "success_rate": 0.5,
+    "mean_error_m": 0.09619492600952897
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_69120.pt",
+    "success_rate": 0.1,
+    "mean_error_m": 0.11641592856773667
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_7680.pt",
+    "success_rate": 0.0,
+    "mean_error_m": null
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_76800.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.052101223926149944
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_84480.pt",
+    "success_rate": 0.8,
+    "mean_error_m": 0.08477321874848805
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_92160.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.13348500900728286
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/step_99840.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.18834395996699616
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/best.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.11027400158496836
+  },
+  {
+    "checkpoint": "runs/xarm7_identification/center_100/last.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.0324953926379834
+  }
+]

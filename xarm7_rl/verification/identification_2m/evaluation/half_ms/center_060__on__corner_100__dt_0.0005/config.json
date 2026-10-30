@@ -1,0 +1,143 @@
+{
+  "seed": 2026,
+  "device": "cpu",
+  "num_envs": 3,
+  "output": "runs/xarm7_identification_2m/corner_100",
+  "env": {
+    "object": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.1,
+      "com": [
+        0.015199999999999998,
+        0.0112,
+        0.017599999999999998
+      ],
+      "inertia": [
+        3.69186388244393e-05,
+        4.200202629543696e-05,
+        3.1000584686774956e-05,
+        -4.2559999999999996e-06,
+        -6.687999999999999e-06,
+        -4.928e-06
+      ],
+      "friction": [
+        0.8,
+        0.01,
+        0.001
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.08,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.019,
+          0.014,
+          0.022
+        ]
+      }
+    },
+    "target": {
+      "position": [
+        2.0,
+        0.0,
+        0.0
+      ],
+      "low": null,
+      "high": null,
+      "success_radius": 0.1
+    },
+    "randomization": {
+      "objects": [],
+      "mass_range": null,
+      "com_low": null,
+      "com_high": null,
+      "size_scale_range": null
+    },
+    "initial_joint_positions": [
+      0.0,
+      -0.247,
+      0.0,
+      0.909,
+      0.0,
+      1.15644,
+      0.0
+    ],
+    "base_translation": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "grasp_position": [
+      0.0,
+      0.0,
+      0.145
+    ],
+    "grasp_quaternion": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "settle_time": 0.5,
+    "release_confirm_seconds": 0.01,
+    "episode_seconds": 4.0,
+    "timestep": 0.0005,
+    "substeps": 40,
+    "action_rate": 0.5,
+    "geometry_points": 32,
+    "reward": {
+      "prediction_progress": 2.0,
+      "release": 1.0,
+      "landing": 10.0,
+      "hit": 10.0,
+      "distance_scale": 1.0,
+      "action_cost": 0.0
+    },
+    "initial_joint_noise": 0.005,
+    "inertial_estimate": {
+      "mass": 0.06,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.2785305491105966e-05,
+        2.5228692962103633e-05,
+        1.9421918020108288e-05,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "ppo": {
+    "hidden": [
+      256,
+      128
+    ],
+    "horizon": 128,
+    "minibatch_size": 512,
+    "epochs": 6,
+    "total_steps": 521344,
+    "learning_rate": 0.0003,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip": 0.2,
+    "value_coef": 2.0,
+    "entropy_coef": 0.0003,
+    "grad_norm": 1.0,
+    "target_kl": 0.016,
+    "save_every": 20
+  }
+}

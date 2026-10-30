@@ -1,0 +1,16 @@
+Processing ./xarm7_rl
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: comass-xarm7-rl
+  Building wheel for comass-xarm7-rl (pyproject.toml): started
+  Building wheel for comass-xarm7-rl (pyproject.toml): finished with status 'done'
+  Created wheel for comass-xarm7-rl: filename=comass_xarm7_rl-0.1.0-py3-none-any.whl size=1640037 sha256=b7f8ceb2169650398b067b20778e31cdac66ba7e2745a3877efbcaf875f199b6
+  Stored in directory: /private/var/folders/lc/q_3bnv495w71_22b7yy1zj000000gn/T/pip-ephem-wheel-cache-f0dsjdc3/wheels/09/37/88/806d607ccde96aabd76d859b42cd024cd6f1f18995118ce68f
+Successfully built comass-xarm7-rl
+
+[notice] A new release of pip is available: 25.1.1 -> 26.2.2
+[notice] To update, run: /Users/rangeryx/Documents/ChatGPT/CoMass/.venv-xarm7-local/bin/python -m pip install --upgrade pip

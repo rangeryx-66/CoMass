@@ -1,0 +1,220 @@
+{
+  "geometry_m": [
+    0.06,
+    0.05,
+    0.07
+  ],
+  "wall_m": 0.001,
+  "shell_mass_kg": 0.02,
+  "ballast_dimensions_m": [
+    0.02,
+    0.02,
+    0.024
+  ],
+  "objects": {
+    "center_100": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.1,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.6038638824439298e-05,
+        2.8482026295436964e-05,
+        2.2088584686774958e-05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.08,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "corner_100": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.1,
+      "com": [
+        0.015199999999999998,
+        0.0112,
+        0.017599999999999998
+      ],
+      "inertia": [
+        3.69186388244393e-05,
+        4.200202629543696e-05,
+        3.1000584686774956e-05,
+        -4.2559999999999996e-06,
+        -6.687999999999999e-06,
+        -4.928e-06
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.08,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.019,
+          0.014,
+          0.022
+        ]
+      }
+    },
+    "center_060": {
+      "type": "box",
+      "size": [
+        0.03,
+        0.025,
+        0.035
+      ],
+      "mass": 0.06,
+      "com": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inertia": [
+        2.2785305491105966e-05,
+        2.5228692962103633e-05,
+        1.9421918020108288e-05,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ballast": {
+        "wall_thickness": 0.001,
+        "shell_mass": 0.02,
+        "mass": 0.04,
+        "half_sizes": [
+          0.01,
+          0.01,
+          0.012
+        ],
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "training_seed": 2026,
+  "validation_seeds": [
+    50000,
+    50049
+  ],
+  "test_seeds": [
+    60000,
+    60199
+  ],
+  "target": [
+    2.0,
+    0.0,
+    0.0
+  ],
+  "radius": 0.1,
+  "initial_joint_noise_uniform_rad": 0.005,
+  "main_timestep": 0.001,
+  "secondary_timestep": 0.0005,
+  "method": "Three specialists; no mass/com randomization or imitation reward. Each policy keeps its own training estimate when tested in every physical world. Geometric-origin twist converted with the estimate. Preserve proprioception and object pose feedback.",
+  "interpretation": "Moving the same ballast changes CoM and the corresponding inertia. This sim-to-sim study does not itself demonstrate real-robot transfer.",
+  "selection": "Own-world validation success, then error only. Freeze before cross-world evaluation.",
+  "training_additional_steps": 262144,
+  "training": "Continue the matching 1 m specialist at 2 m; no imitation. Distance reward shaping sigma 1 m, unchanged 10 cm hit radius and original actions.",
+  "initial_checkpoints": {
+    "center_060": {
+      "path": "xarm7_rl/verification/identification/checkpoints/center_060.pt",
+      "steps": 248448,
+      "sha256": "e8c90d3d76ff08a6e38ba545c300aee01b1b5570b3a575d1ce1f34a181a38511"
+    },
+    "center_100": {
+      "path": "xarm7_rl/verification/identification/checkpoints/center_100.pt",
+      "steps": 262272,
+      "sha256": "5f5390edd46fd119e5c46605ddd78c33582650fdb32b8c4d3d1b699576742532"
+    },
+    "corner_100": {
+      "path": "xarm7_rl/verification/identification/checkpoints/corner_100.pt",
+      "steps": 259200,
+      "sha256": "9e38c319769cf90886289b92da857d11a4a8ee8fb9bd2354248801817f1c9e6f"
+    }
+  },
+  "additional_initialization": {
+    "reason": "Direct 1 m continuation remains short for centered objects in own-world validation; also fine-tune existing 2 m throw skill for each object. Selection uses own-world validation only, never cross-world failure.",
+    "path": "xarm7_rl/verification/followup/checkpoints/far.pt",
+    "sha256": "7e79f16770528636346d5c34d076b9c28f4ef4bf268b87dc9a88fc6bdf4cb2ad",
+    "steps": 699648,
+    "additional_steps_per_object": 262144
+  },
+  "final_selection_candidates": "Per object: best and last from completed direct 1m continuation and calibrated common far-skill continuation. Screen on 10 own-world seeds 50000..50009; top three validate on 50 own-world seeds 50000..50049. No cross-world scores used. Uncalibrated runs aborted after failed own-world behavior and retained.",
+  "static_feature_calibration": {
+    "indices": [
+      32,
+      138
+    ],
+    "method": "Initialize normalizer means for fixed mass/com/inertia/surface points from the new TRAINING object, set their variances to zero. Actor weights unchanged. Test-world estimates are never recalibrated.",
+    "reason": "Uncalibrated far-skill transfer clips changed fixed geometry/inertia descriptors and collapses to dropping; calibrated initialization own-world error is 20-22 cm before training.",
+    "training_additional_steps_per_object": 196608,
+    "learning_rate": 0.0002
+  },
+  "own_validation_search_extension": "Center100 best/last screened only 80%/90% on own 10-seed screen; expand to all saved calibrated Center100 checkpoints, still using own-world validation only, before any final cross evaluation. Retain both initial and expanded selections.",
+  "selected_from": {
+    "center_060": "selection_center_060",
+    "center_100": "selection_center_100_expanded",
+    "corner_100": "selection_corner_100"
+  },
+  "frozen_checkpoints": {
+    "center_060": {
+      "sha256": "d284ebabc16c3cae20a93ed30312d2d601c24c4350f71820bd9afbae8c3a4e51",
+      "steps": 865152,
+      "own_validation": {
+        "checkpoint": "runs/xarm7_identification_2m/candidates_center_060/best.pt",
+        "success_rate": 1.0,
+        "mean_error_m": 0.04984811475561176
+      }
+    },
+    "center_100": {
+      "sha256": "a8658cb26a5168aaf5a9c411dbc1fc227d74924a45d8b60664360f47e4e78d77",
+      "steps": 782208,
+      "own_validation": {
+        "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_782208.pt",
+        "success_rate": 1.0,
+        "mean_error_m": 0.028391246779254146
+      }
+    },
+    "corner_100": {
+      "sha256": "c5bb52eeb48bcfaf402372e05441b9b043d8c6cde084e466e2002a41f2496579",
+      "steps": 732288,
+      "own_validation": {
+        "checkpoint": "runs/xarm7_identification_2m/candidates_corner_100/best.pt",
+        "success_rate": 1.0,
+        "mean_error_m": 0.05475392666372958
+      }
+    }
+  }
+}

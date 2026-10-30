@@ -1,0 +1,102 @@
+[
+  {
+    "label": "baseline",
+    "checkpoint_steps": 126976,
+    "timestep": 0.002,
+    "episodes": 80,
+    "seed": 3000,
+    "success_radius": 0.1,
+    "hits": 36,
+    "success_rate": 0.45,
+    "mean_landing_error_m": 0.11877020604582444,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.10765244385876815,
+    "recontact_rate": 1.0,
+    "by_geometry": {
+      "box": {
+        "episodes": 41,
+        "hits": 15
+      },
+      "cylinder": {
+        "episodes": 39,
+        "hits": 21
+      }
+    }
+  },
+  {
+    "label": "baseline",
+    "checkpoint_steps": 126976,
+    "timestep": 0.001,
+    "episodes": 80,
+    "seed": 3000,
+    "success_radius": 0.1,
+    "hits": 38,
+    "success_rate": 0.475,
+    "mean_landing_error_m": 0.11248948375363836,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.10304497276118726,
+    "recontact_rate": 0.975,
+    "by_geometry": {
+      "box": {
+        "episodes": 41,
+        "hits": 17
+      },
+      "cylinder": {
+        "episodes": 39,
+        "hits": 21
+      }
+    }
+  },
+  {
+    "label": "robust",
+    "checkpoint_steps": 630016,
+    "timestep": 0.002,
+    "episodes": 80,
+    "seed": 3000,
+    "success_radius": 0.1,
+    "hits": 64,
+    "success_rate": 0.8,
+    "mean_landing_error_m": 0.07368345645404537,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.06390819432327297,
+    "recontact_rate": 0.7625,
+    "by_geometry": {
+      "box": {
+        "episodes": 41,
+        "hits": 36
+      },
+      "cylinder": {
+        "episodes": 39,
+        "hits": 28
+      }
+    }
+  },
+  {
+    "label": "robust",
+    "checkpoint_steps": 630016,
+    "timestep": 0.001,
+    "episodes": 80,
+    "seed": 3000,
+    "success_radius": 0.1,
+    "hits": 56,
+    "success_rate": 0.7,
+    "mean_landing_error_m": 0.07561443020168275,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.07217691705958613,
+    "recontact_rate": 0.7375,
+    "by_geometry": {
+      "box": {
+        "episodes": 41,
+        "hits": 30
+      },
+      "cylinder": {
+        "episodes": 39,
+        "hits": 26
+      }
+    }
+  }
+]

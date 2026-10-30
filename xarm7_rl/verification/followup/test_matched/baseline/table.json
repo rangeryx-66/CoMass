@@ -1,0 +1,52 @@
+[
+  {
+    "label": "baseline",
+    "checkpoint_steps": 126976,
+    "timestep": 0.002,
+    "episodes": 200,
+    "seed": 5000,
+    "success_radius": 0.1,
+    "hits": 94,
+    "success_rate": 0.47,
+    "mean_landing_error_m": 0.10703329489847296,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.10414283913597328,
+    "recontact_rate": 1.0,
+    "by_geometry": {
+      "box": {
+        "episodes": 103,
+        "hits": 45
+      },
+      "cylinder": {
+        "episodes": 97,
+        "hits": 49
+      }
+    }
+  },
+  {
+    "label": "baseline",
+    "checkpoint_steps": 126976,
+    "timestep": 0.001,
+    "episodes": 200,
+    "seed": 5000,
+    "success_radius": 0.1,
+    "hits": 94,
+    "success_rate": 0.47,
+    "mean_landing_error_m": 0.1055734528395484,
+    "release_rate": 1.0,
+    "initial_bilateral_rate": 1.0,
+    "median_landing_error_m": 0.10204756469308712,
+    "recontact_rate": 0.995,
+    "by_geometry": {
+      "box": {
+        "episodes": 103,
+        "hits": 44
+      },
+      "cylinder": {
+        "episodes": 97,
+        "hits": 50
+      }
+    }
+  }
+]

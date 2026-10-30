@@ -1,0 +1,96 @@
+{
+  "repository": "https://github.com/google-deepmind/mujoco_menagerie",
+  "commit": "f3b6013629c7b94f8ee93fd977b161fa8350f9bc",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha": "2ac522888a6639e7de4666d8c8e2c25e8eaf21a4",
+      "size": 1522
+    },
+    {
+      "path": "assets/base_link.stl",
+      "sha": "6a3263b5b510d6c597623b1b48e9aed612812f49",
+      "size": 1211434
+    },
+    {
+      "path": "assets/end_tool.stl",
+      "sha": "e2324f41efef9f2ec9a59ff00ad56fb406e71ed4",
+      "size": 13084
+    },
+    {
+      "path": "assets/left_finger.stl",
+      "sha": "41f2c0d76f853505dbe6027e9f690fbb54265be7",
+      "size": 242684
+    },
+    {
+      "path": "assets/left_inner_knuckle.stl",
+      "sha": "abeff0cec09e2f937f2db8f0c470b3d112f8a674",
+      "size": 366284
+    },
+    {
+      "path": "assets/left_outer_knuckle.stl",
+      "sha": "639add9e0e89267e328ddbe6b0790e9fc4f162e9",
+      "size": 22284
+    },
+    {
+      "path": "assets/link1.stl",
+      "sha": "a5ca309d62ecfdcaba798f1ea20533b1111cf7d7",
+      "size": 184184
+    },
+    {
+      "path": "assets/link2.stl",
+      "sha": "1539adb628e97b42bf6ba3598aa97c4217e7085c",
+      "size": 225584
+    },
+    {
+      "path": "assets/link3.stl",
+      "sha": "23926351ee6b7514c8c8f199ce3f94f18a2b4f40",
+      "size": 237084
+    },
+    {
+      "path": "assets/link4.stl",
+      "sha": "a24cc91df0608a9f83886d411584bb121d04f1c6",
+      "size": 243684
+    },
+    {
+      "path": "assets/link5.stl",
+      "sha": "7f91e37cfaa95173a63e35a7bc1d869ab3803c88",
+      "size": 229084
+    },
+    {
+      "path": "assets/link6.stl",
+      "sha": "04fc4805665c38e5f7a65b90adfe012200b41662",
+      "size": 399384
+    },
+    {
+      "path": "assets/link7.stl",
+      "sha": "0e9963c387d349ce36cb27f65fae6ebe72de6094",
+      "size": 231684
+    },
+    {
+      "path": "assets/link_base.stl",
+      "sha": "555d6f2ea304faf0a97de76e0dc47a34d4acbe94",
+      "size": 304784
+    },
+    {
+      "path": "assets/right_finger.stl",
+      "sha": "53f0eecae871ae24615afa2e4e4fb7c3426b8c3b",
+      "size": 242684
+    },
+    {
+      "path": "assets/right_inner_knuckle.stl",
+      "sha": "f1a486daf31cceae2b32a0dd156c12713c51fe86",
+      "size": 366284
+    },
+    {
+      "path": "assets/right_outer_knuckle.stl",
+      "sha": "3099dfdedaf0275f8f1f15e89bdbf5c8fd038038",
+      "size": 22284
+    },
+    {
+      "path": "xarm7.xml",
+      "sha": "5fc44fbf47516784945709fa838c4094952d05f6",
+      "size": 10682
+    }
+  ]
+}

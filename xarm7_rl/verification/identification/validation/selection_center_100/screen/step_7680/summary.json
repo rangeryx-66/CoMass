@@ -1,0 +1,899 @@
+{
+  "episodes": 10,
+  "success_rate": 0.0,
+  "mean_landing_error_m": null,
+  "release_rate": 0.0,
+  "initial_bilateral_rate": 1.0,
+  "results": [
+    {
+      "episode": 0,
+      "seed": 30000,
+      "return": -0.24605069408210797,
+      "outcome": "timeout",
+      "success": false,
+      "released": false,
+      "recontacts": 0,
+      "landing_error": null,
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.03,
+          0.025,
+          0.035
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ],
+        "ballast": {
+          "wall_thickness": 0.001,
+          "shell_mass": 0.02,
+          "mass": 0.08,
+          "half_sizes": [
+            0.01,
+            0.01,
+            0.012
+          ],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "release": null,
+      "landing": null,
+      "inertial_estimate": {
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_arm_target": [
+        -0.0019936650831036706,
+        -0.24584414894118975,
+        -0.003839305221026701,
+        0.9079252536672474,
+        -0.0032754940100932486,
+        1.155396050582426,
+        0.0012800677973680175
+      ]
+    },
+    {
+      "episode": 1,
+      "seed": 30001,
+      "return": -0.246950281306905,
+      "outcome": "timeout",
+      "success": false,
+      "released": false,
+      "recontacts": 0,
+      "landing_error": null,
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.03,
+          0.025,
+          0.035
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ],
+        "ballast": {
+          "wall_thickness": 0.001,
+          "shell_mass": 0.02,
+          "mass": 0.08,
+          "half_sizes": [
+            0.01,
+            0.01,
+            0.012
+          ],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "release": null,
+      "landing": null,
+      "inertial_estimate": {
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_arm_target": [
+        -0.0013869316415259193,
+        -0.24341826520378906,
+        5.13871776718744e-05,
+        0.9103427999718433,
+        0.003803150343365932,
+        1.1541400544808327,
+        -0.0036076115416127496
+      ]
+    },
+    {
+      "episode": 2,
+      "seed": 30002,
+      "return": -0.24174754490541636,
+      "outcome": "timeout",
+      "success": false,
+      "released": false,
+      "recontacts": 0,
+      "landing_error": null,
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.03,
+          0.025,
+          0.035
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ],
+        "ballast": {
+          "wall_thickness": 0.001,
+          "shell_mass": 0.02,
+          "mass": 0.08,
+          "half_sizes": [
+            0.01,
+            0.01,
+            0.012
+          ],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "release": null,
+      "landing": null,
+      "inertial_estimate": {
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_arm_target": [
+        -0.0014282262375536737,
+        -0.24214261859517527,
+        -0.0007100960856111538,
+        0.9100732961470404,
+        0.0029245080491891442,
+        1.1608357345926843,
+        -0.0030061850228620193
+      ]
+    },
+    {
+      "episode": 3,
+      "seed": 30003,
+      "return": -0.24411669625487198,
+      "outcome": "timeout",
+      "success": false,
+      "released": false,
+      "recontacts": 0,
+      "landing_error": null,
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.03,
+          0.025,
+          0.035
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ],
+        "ballast": {
+          "wall_thickness": 0.001,
+          "shell_mass": 0.02,
+          "mass": 0.08,
+          "half_sizes": [
+            0.01,
+            0.01,
+            0.012
+          ],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "release": null,
+      "landing": null,
+      "inertial_estimate": {
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_arm_target": [
+        0.003980050187263812,
+        -0.24467342202214126,
+        -0.004545517755418721,
+        0.9067626560653079,
+        0.0038565410999182705,
+        1.15653434089419,
+        0.000775862539268064
+      ]
+    },
+    {
+      "episode": 4,
+      "seed": 30004,
+      "return": -0.24410227315272415,
+      "outcome": "timeout",
+      "success": false,
+      "released": false,
+      "recontacts": 0,
+      "landing_error": null,
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.03,
+          0.025,
+          0.035
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ],
+        "ballast": {
+          "wall_thickness": 0.001,
+          "shell_mass": 0.02,
+          "mass": 0.08,
+          "half_sizes": [
+            0.01,
+            0.01,
+            0.012
+          ],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "release": null,
+      "landing": null,
+      "inertial_estimate": {
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_arm_target": [
+        -0.003092945988362653,
+        -0.2439579499783496,
+        -0.002168103112848977,
+        0.9127891823999777,
+        0.0018879983677483436,
+        1.1602217497680285,
+        -0.0003986248880465848
+      ]
+    },
+    {
+      "episode": 5,
+      "seed": 30005,
+      "return": -0.2436657125936198,
+      "outcome": "timeout",
+      "success": false,
+      "released": false,
+      "recontacts": 0,
+      "landing_error": null,
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.03,
+          0.025,
+          0.035
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ],
+        "ballast": {
+          "wall_thickness": 0.001,
+          "shell_mass": 0.02,
+          "mass": 0.08,
+          "half_sizes": [
+            0.01,
+            0.01,
+            0.012
+          ],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "release": null,
+      "landing": null,
+      "inertial_estimate": {
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_arm_target": [
+        -0.0019833509193243884,
+        -0.24219932661778898,
+        -0.0009317722829611608,
+        0.9086415332527084,
+        0.0024544510331333427,
+        1.157743517444725,
+        0.0028638885504447343
+      ]
+    },
+    {
+      "episode": 6,
+      "seed": 30006,
+      "return": -0.2449560489344524,
+      "outcome": "timeout",
+      "success": false,
+      "released": false,
+      "recontacts": 0,
+      "landing_error": null,
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.03,
+          0.025,
+          0.035
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ],
+        "ballast": {
+          "wall_thickness": 0.001,
+          "shell_mass": 0.02,
+          "mass": 0.08,
+          "half_sizes": [
+            0.01,
+            0.01,
+            0.012
+          ],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "release": null,
+      "landing": null,
+      "inertial_estimate": {
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_arm_target": [
+        -0.004734687895736079,
+        -0.2465647872659038,
+        -0.0011232350852039231,
+        0.9045227125757573,
+        0.0022593628111507325,
+        1.1540206578574361,
+        -0.0026555721679527543
+      ]
+    },
+    {
+      "episode": 7,
+      "seed": 30007,
+      "return": -0.24271756631283473,
+      "outcome": "timeout",
+      "success": false,
+      "released": false,
+      "recontacts": 0,
+      "landing_error": null,
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.03,
+          0.025,
+          0.035
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ],
+        "ballast": {
+          "wall_thickness": 0.001,
+          "shell_mass": 0.02,
+          "mass": 0.08,
+          "half_sizes": [
+            0.01,
+            0.01,
+            0.012
+          ],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "release": null,
+      "landing": null,
+      "inertial_estimate": {
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_arm_target": [
+        0.0013919537186725494,
+        -0.2515363887416069,
+        -0.0006965138089326873,
+        0.9043666056005072,
+        0.004341627600180197,
+        1.1577733590357593,
+        -0.0014392067507887662
+      ]
+    },
+    {
+      "episode": 8,
+      "seed": 30008,
+      "return": -0.24703018277552372,
+      "outcome": "timeout",
+      "success": false,
+      "released": false,
+      "recontacts": 0,
+      "landing_error": null,
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.03,
+          0.025,
+          0.035
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ],
+        "ballast": {
+          "wall_thickness": 0.001,
+          "shell_mass": 0.02,
+          "mass": 0.08,
+          "half_sizes": [
+            0.01,
+            0.01,
+            0.012
+          ],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "release": null,
+      "landing": null,
+      "inertial_estimate": {
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_arm_target": [
+        0.0038984529127470548,
+        -0.2460988298124169,
+        -0.00025036207534381963,
+        0.9075242452181116,
+        -0.003851923967358597,
+        1.1533567937524467,
+        0.0006049369124771076
+      ]
+    },
+    {
+      "episode": 9,
+      "seed": 30009,
+      "return": -0.24378182873043014,
+      "outcome": "timeout",
+      "success": false,
+      "released": false,
+      "recontacts": 0,
+      "landing_error": null,
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "initialization": {
+        "bilateral_contact": true,
+        "hand_contact": true,
+        "on_floor": false
+      },
+      "object": {
+        "type": "box",
+        "size": [
+          0.03,
+          0.025,
+          0.035
+        ],
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "friction": [
+          0.8,
+          0.01,
+          0.001
+        ],
+        "ballast": {
+          "wall_thickness": 0.001,
+          "shell_mass": 0.02,
+          "mass": 0.08,
+          "half_sizes": [
+            0.01,
+            0.01,
+            0.012
+          ],
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "release": null,
+      "landing": null,
+      "inertial_estimate": {
+        "mass": 0.1,
+        "com": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inertia": [
+          2.6038638824439298e-05,
+          2.8482026295436964e-05,
+          2.2088584686774958e-05,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_arm_target": [
+        -0.0028817839863717423,
+        -0.2479890398051845,
+        -0.0049915275052707575,
+        0.904599198439339,
+        0.001725403729069216,
+        1.1565817208405453,
+        0.001709252740513585
+      ]
+    }
+  ]
+}
