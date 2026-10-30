@@ -33,6 +33,9 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument("--results",required=True);parser.add_argument("--output",required=True)
     args=parser.parse_args();root=Path(args.results);out=Path(args.output);out.mkdir(parents=True,exist_ok=True)
     rows=json.loads((root/"table.json").read_text());lookup={(r['policy'],r['physics']):r for r in rows}
+    first=rows[0]
+    config=json.loads((root/f"{first['policy']}__on__{first['physics']}__dt_{first['timestep']:g}"/'config.json').read_text())
+    goal_distance=np.linalg.norm(config['env']['target']['position'][:2])
     fig,axes=plt.subplots(1,2,figsize=(13,5.1),layout="constrained")
     values=np.array([[100*lookup[p,w]['success_rate'] for w in ORDER] for p in ORDER])
     axes[0].imshow(values,vmin=0,vmax=100,cmap="RdYlGn")
@@ -41,7 +44,7 @@ def main():
     for i,p in enumerate(ORDER):
         for j,w in enumerate(ORDER):
             r=lookup[p,w];axes[0].text(j,i,f"{r['hits']}/{r['episodes']}\n{100*r['success_rate']:g}%",ha="center",va="center",fontsize=13)
-    axes[0].set_title("Complete transfer matrix (1 ms, hit radius 10 cm)")
+    axes[0].set_title(f"Complete transfer matrix (target {goal_distance:g} m)\n1 ms, hit radius 10 cm")
     for w,color in [('center_100','#2678b2'),('corner_100','#d95d39')]:
         data=json.loads((root/f'center_060__on__{w}__dt_0.001'/'summary.json').read_text())['results']
         error=np.array([np.asarray(r['landing']['position'])[:2]-np.asarray(r['target'])[:2] for r in data if r['landing']])

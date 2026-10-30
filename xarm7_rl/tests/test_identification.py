@@ -4,10 +4,12 @@ from pathlib import Path
 import mujoco
 import numpy as np
 import pytest
+import torch
 
 from xarm7_rl.ballast import ballasted_box, parallel_axis
 from xarm7_rl.config import load_config
 from xarm7_rl.env import ThrowEnv
+from xarm7_rl.initialize_object import calibrate_static_features
 
 ROOT = Path(__file__).parents[1]
 
@@ -75,3 +77,17 @@ def test_initial_jitter_is_paired_and_each_case_starts_held():
         assert not np.array_equal(envs[0].arm_target,np.array(config['initial_joint_positions']))
     finally:
         for e in envs:e.close()
+
+
+def test_training_initialization_changes_only_static_object_statistics():
+    state={"mean":torch.arange(149,dtype=torch.float64),
+           "var":torch.ones(149,dtype=torch.float64),"count":torch.tensor(1000.)}
+    original={key:value.clone() for key,value in state.items()}
+    obs=np.linspace(-1,1,149,dtype=np.float32)
+    calibrate_static_features(state,obs,32)
+    assert torch.equal(state['mean'][32:138],torch.as_tensor(obs[32:138],dtype=torch.float64))
+    assert torch.count_nonzero(state['var'][32:138])==0
+    for key in ['mean','var']:
+        assert torch.equal(state[key][:32],original[key][:32])
+        assert torch.equal(state[key][138:],original[key][138:])
+    assert torch.equal(state['count'],original['count'])

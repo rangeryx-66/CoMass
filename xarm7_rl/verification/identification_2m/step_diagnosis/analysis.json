@@ -1,0 +1,18 @@
+{
+  "common_start_frozen_actions_2vs1ms_landing_delta_m": 0.18145597441844447,
+  "last_contact_geometries": {
+    "closed_0.002": "right_finger_pad_2",
+    "closed_0.001": "left_finger_pad_2",
+    "closed_0.0005": "left_finger_pad_2",
+    "closed_0.00025": "left_finger_pad_2",
+    "open_native_0.002": "right_finger_pad_2",
+    "open_native_0.001": "left_finger_pad_2",
+    "open_native_0.0005": "left_finger_pad_2",
+    "open_native_0.00025": "left_finger_pad_2",
+    "open_common_0.002": "right_finger_pad_2",
+    "open_common_0.001": "left_finger_pad_2",
+    "open_common_0.0005": "left_finger_pad_2",
+    "open_common_0.00025": "left_finger_pad_2"
+  },
+  "interpretation": "Same initial qpos/qvel and frozen actions still differ by 18.15 cm between 2 and 1 ms, whereas final-flight ballistic residuals are 6.21 and 1.94 mm. Discrepancy arises primarily during held/contact/release integration, with last finger contact and release velocity changing. This isolates a source of sensitivity, not a correction or proof of numerical convergence."
+}

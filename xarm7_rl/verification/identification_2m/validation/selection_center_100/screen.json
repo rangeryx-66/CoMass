@@ -1,0 +1,22 @@
+[
+  {
+    "checkpoint": "runs/xarm7_identification_2m/candidates_center_100/step_direct_best.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.4794483454391406
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/candidates_center_100/step_direct_last.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.4491267552889167
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/candidates_center_100/best.pt",
+    "success_rate": 0.8,
+    "mean_error_m": 0.08487121701566958
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/candidates_center_100/last.pt",
+    "success_rate": 0.9,
+    "mean_error_m": 0.07951937985556748
+  }
+]

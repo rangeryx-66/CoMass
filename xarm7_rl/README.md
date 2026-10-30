@@ -109,6 +109,8 @@ python -m xarm7_rl.diagnose_steps --config xarm7_rl/configs/default.yaml \
 
 见 [PARAMETER_TRANSFER_REPORT.md](PARAMETER_TRANSFER_REPORT.md) 和 `configs/identification/`：同一盒体、中心或角落固定配重，分别从头训练三个 PPO 专家并交叉评估。60 g 居中策略自有模型 200/200，原样部署到 100 g 角落模型为 3/200；按正确角落参数训练的策略为 200/200。100 g 居中策略迁移角落也为 200/200，完整矩阵保留这个反例。这说明存在参数错配失败案例，尚不能证明质量正确时质心识别必然带来提升。0.5 ms 复核、原始轨迹、冻结模型和实际投掷视频在 `verification/identification/`。本轮未运行 VLM/Delta 或真机。
 
+2 m 延伸见 [PARAMETER_TRANSFER_2M_REPORT.md](PARAMETER_TRANSFER_2M_REPORT.md) 和 `configs/identification_2m/`。正确角落配重策略在 1 ms 下为 199/200，实际自由飞行约 1.57 m，命中半径仍为 10 cm；0.5 ms 为 30/30，但 2 ms 为 0/30。错误 60 g 居中策略换到角落模型仍有 98% 命中，不能声称远距离必然放大参数识别收益。视频、完整矩阵和共同初始状态/固定动作的步长诊断保存在 `verification/identification_2m/`。可选 `initialize_object` 只为固定新训练物体校准静态输入统计，不在交叉评估时改估计或网络。
+
 ## 可选的视频姿态模仿实验
 
 已提供从公开投掷视频人工标注二维关键点、插值连杆方向、用 xArm7 IK 重定向、构造软模仿奖励，以及示教采集 / BC 预热 / PPO 联合训练的流程。具体数据、视频和未达到原命中率的实测结果见 [IMITATION_REPORT.md](IMITATION_REPORT.md)。当前只提供一个举臂上手投掷参考，来源和单目不确定性保存在 `assets/motions/mit_overhand.json`。

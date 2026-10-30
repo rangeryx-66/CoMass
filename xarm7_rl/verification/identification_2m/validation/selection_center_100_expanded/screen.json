@@ -1,0 +1,137 @@
+[
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_705408.pt",
+    "success_rate": 0.0,
+    "mean_error_m": 0.13213588479724928
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_713088.pt",
+    "success_rate": 0.9,
+    "mean_error_m": 0.07218127840187935
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_720768.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.034206049274684576
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_728448.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.061128280818168554
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_736128.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.03853068862933288
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_743808.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.057106982209298975
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_751488.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.0461272202333479
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_759168.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.04131242816323756
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_766848.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.05763645632872596
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_774528.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.07053145716255904
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_782208.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.02968015790596492
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_789888.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.07236044528686693
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_797568.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.024054211472442025
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_805248.pt",
+    "success_rate": 0.4,
+    "mean_error_m": 0.10046429391946457
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_812928.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.06884492616889223
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_820608.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.04081678448043636
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_828288.pt",
+    "success_rate": 0.9,
+    "mean_error_m": 0.051997282011684645
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_835968.pt",
+    "success_rate": 0.8,
+    "mean_error_m": 0.07558918503016973
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_843648.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.038533155801955654
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_851328.pt",
+    "success_rate": 0.7,
+    "mean_error_m": 0.08033957582799221
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_859008.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.07904676809552331
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_866688.pt",
+    "success_rate": 0.9,
+    "mean_error_m": 0.05391235907118761
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_874368.pt",
+    "success_rate": 0.9,
+    "mean_error_m": 0.0743264432530447
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_882048.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.03405507864658354
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/step_889728.pt",
+    "success_rate": 1.0,
+    "mean_error_m": 0.032932804669069664
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/best.pt",
+    "success_rate": 0.8,
+    "mean_error_m": 0.08487121701566958
+  },
+  {
+    "checkpoint": "runs/xarm7_identification_2m/calibrated_center_100/last.pt",
+    "success_rate": 0.9,
+    "mean_error_m": 0.07951937985556748
+  }
+]
